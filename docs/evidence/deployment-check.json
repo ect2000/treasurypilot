@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-03T17:09:52.071Z",
+  "url": "https://treasurypilot-sooty.vercel.app",
+  "publicHttpStatus": 200,
+  "source": "AIRWALLEX_REST_SANDBOX",
+  "financialEvidence": [
+    {
+      "kind": "FX_CONVERSION",
+      "id": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+      "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "status": "SETTLED",
+      "buyCurrency": "EUR",
+      "sellCurrency": "USD",
+      "buyAmount": 1400000,
+      "sellAmount": 1597187,
+      "createdAt": "2026-10-03T16:51:21+0000"
+    },
+    {
+      "kind": "TRANSFER",
+      "id": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+      "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "status": "PAID",
+      "amount": 1400000,
+      "currency": "EUR",
+      "createdAt": "2026-10-03T16:55:10+0000"
+    }
+  ],
+  "realAI": {
+    "provider": "DETERMINISTIC FALLBACK",
+    "model": "Local evidence parser"
+  },
+  "browserErrors": [],
+  "forgedApprovalHttpStatus": 400,
+  "financialMutationsDuringDeploymentCheck": 0
+}

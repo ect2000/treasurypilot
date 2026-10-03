@@ -1,0 +1,398 @@
+{
+  "checkedAt": "2026-10-03T16:43:11.831Z",
+  "snapshot": {
+    "balances": [
+      {
+        "currency": "AED",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "ARS",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "AUD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BDT",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BHD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BOB",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BRL",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CAD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CHF",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CLP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CNY",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "COP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CZK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "DKK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "EGP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "EUR",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "GBP",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "HKD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "HRK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "HUF",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "IDR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "ILS",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "INR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "JPY",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "KRW",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "LKR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "MAD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "MXN",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "MYR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "NOK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "NPR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "NZD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PEN",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PHP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PKR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PLN",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "RON",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "SAR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "SEK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "SGD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "THB",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "TRY",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "USD",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "UYU",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "VND",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "ZAR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      }
+    ],
+    "rates": {
+      "USD": "1",
+      "EUR": "1.110648",
+      "GBP": "1.307068",
+      "CNY": "0.14717062992267360763"
+    },
+    "globalAccounts": [
+      {
+        "currency": "EUR",
+        "country": "NL",
+        "status": "ACTIVE"
+      }
+    ],
+    "beneficiaries": [
+      {
+        "currency": "EUR",
+        "country": "DE",
+        "method": "LOCAL"
+      },
+      {
+        "currency": "EUR",
+        "country": "DE",
+        "method": "SWIFT"
+      },
+      {
+        "currency": "CNY",
+        "country": "CN",
+        "method": "LOCAL"
+      },
+      {
+        "currency": "CNY",
+        "country": "CN",
+        "method": "SWIFT"
+      },
+      {
+        "currency": "GBP",
+        "country": "GB",
+        "method": "SWIFT"
+      },
+      {
+        "currency": "USD",
+        "country": "US",
+        "method": "LOCAL"
+      },
+      {
+        "currency": "USD",
+        "country": "US",
+        "method": "SWIFT"
+      }
+    ],
+    "evidence": [],
+    "fetchedAt": "2026-10-03T16:43:08.531Z",
+    "source": "AIRWALLEX_REST_SANDBOX",
+    "rateSource": "Airwallex indicative rates · normalized to USD per unit",
+    "executionAvailable": true
+  },
+  "quote": {
+    "id": "a9bca4aa-966f-31a2-b86f-79d5ea9f3824",
+    "buyAmount": 14000,
+    "sellAmount": 15971.87,
+    "validUntil": "2026-10-03T16:58:09+0000"
+  },
+  "interpretation": {
+    "summary": "Customer reports a USD 20,000 payment delayed by 5 days, expected next week.",
+    "forecastDelayDays": 5,
+    "invoice": null,
+    "rejectedInstructions": false,
+    "provider": "OPENROUTER",
+    "model": "nvidia/nemotron-3-super-120b-a12b:free"
+  }
+}
