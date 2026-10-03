@@ -14,5 +14,8 @@ The original approval capture includes a development issue indicator from a redu
 8. `08-policy-blocked.png` — hypothetical reserve violation; no mutation.
 9. `09-airwallex-transfer.png` — real supplier transfer evidence.
 10. `10-audit-replan.png` — actual activity and financial IDs.
+11. `11-deposit-before.png` — delayed forecast, explicit one-time Sandbox deposit action and live EUR balance before the receipt.
+12. `12-deposit-after.png` — provider-verified before/deposit/after delta, one reopened contractor decision and resulting reserve.
+13. `13-deposit-audit.png` — deposit evidence plus `DEPOSIT_SIMULATED`, `BALANCES_REFRESHED` and `PLAN_RECALCULATED` events.
 
 `responsive-1024.png` and `responsive-390.png` demonstrate tablet and mobile layouts. Screenshots are point-in-time evidence, not staged provider responses.
