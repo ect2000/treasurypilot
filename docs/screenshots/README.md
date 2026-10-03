@@ -2,6 +2,8 @@
 
 Desktop captures are 1440 pixels wide. `05-fx-action` and `07-human-approval` are genuine pre-conversion views captured before the first financial execution. Later captures show fresh state after real operations. No account credentials or bank details appear.
 
+The original approval capture includes a development issue indicator from a reduced-motion hydration mismatch that was corrected before the final build. It is preserved as genuine historical evidence; the final public deployment has no hydration/page errors.
+
 1. `01-landing.png` — full composition and approach.
 2. `02-treasury-dashboard.png` — actual Sandbox balances and explicit policy metrics.
 3. `03-five-obligations-plan.png` — calculated obligation ledger and timeline.

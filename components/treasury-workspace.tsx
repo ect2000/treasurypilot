@@ -982,8 +982,12 @@ export function TreasuryWorkspace() {
                           <strong>
                             {b ? formatMoney(b.available, c, true) : "Reading…"}
                           </strong>
-                          <small>Available · {c}</small>
+                          <small>Available · {c} · rounded summary</small>
                           <dl>
+                            <div>
+                              <dt>Available, exact</dt>
+                              <dd>{b ? formatMoney(b.available, c) : "—"}</dd>
+                            </div>
                             <div>
                               <dt>Pending</dt>
                               <dd>{b ? formatMoney(b.pending, c) : "—"}</dd>
@@ -994,7 +998,7 @@ export function TreasuryWorkspace() {
                             </div>
                             <div>
                               <dt>Total</dt>
-                              <dd>{b ? formatMoney(b.total, c, true) : "—"}</dd>
+                              <dd>{b ? formatMoney(b.total, c) : "—"}</dd>
                             </div>
                           </dl>
                         </div>

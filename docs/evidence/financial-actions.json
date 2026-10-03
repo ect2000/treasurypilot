@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-03T17:05:52.334Z",
+  "checkedAt": "2026-10-03T17:23:24.245Z",
   "environment": "SANDBOX",
   "authorization": "Owner-authorized live browser validation through proposal, checkbox, exact approval and execution gates",
   "unit": "integer minor units in JSON; all Airwallex requests use major units",
@@ -422,7 +422,7 @@
         "createdAt": "2026-10-03T16:55:10+0000"
       }
     ],
-    "fetchedAt": "2026-10-03T17:05:52.328Z",
+    "fetchedAt": "2026-10-03T17:23:24.241Z",
     "source": "AIRWALLEX_REST_SANDBOX",
     "rateSource": "Airwallex indicative rates · normalized to USD per unit",
     "executionAvailable": true
