@@ -427,5 +427,80 @@
     "rateSource": "Airwallex indicative rates · normalized to USD per unit",
     "executionAvailable": true
   },
-  "browserErrors": []
+  "browserErrors": [],
+  "deposit": {
+    "providerReadback": {
+      "id": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "status": "SETTLED",
+      "currency": "EUR",
+      "amountMajor": 8000,
+      "reference": "TreasuryPilot Kit 1 customer receipt"
+    },
+    "simulationEndpoint": "POST /api/v1/simulation/deposit/create",
+    "localRouteResponse": {
+      "status": 400,
+      "explanation": "Airwallex created the deposit; the initial local response guard rejected an omitted statement_ref field. The durable lock prevented retry. A read-only provider/balance reconciliation completed the proof."
+    },
+    "proof": {
+      "verified": true,
+      "id": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "status": "SETTLED",
+      "currency": "EUR",
+      "amountMinor": 800000,
+      "statementRef": "TPKIT1-2026-ONE",
+      "beforeAvailable": 1000000000,
+      "afterAvailable": 1000800000,
+      "delta": 800000,
+      "credit": 800000,
+      "verifiedAt": "2026-10-03T18:22:18.526Z",
+      "planBefore": {
+        "contractor": "ESCALATE",
+        "remaining": 1882813
+      },
+      "planAfter": {
+        "contractor": "CONVERT_AND_PAY",
+        "remaining": 1702512,
+        "reopened": [
+          "contractor"
+        ],
+        "unchanged": [
+          "logistics",
+          "cloud",
+          "insurance",
+          "marketing"
+        ]
+      }
+    },
+    "balancesAfter": [
+      {
+        "currency": "CNY",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "EUR",
+        "available": 1000800000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000800000
+      },
+      {
+        "currency": "GBP",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "USD",
+        "available": 998402813,
+        "pending": 0,
+        "reserved": 0,
+        "total": 998402813
+      }
+    ],
+    "snapshotFetchedAt": "2026-10-03T18:25:54.246Z"
+  }
 }

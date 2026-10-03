@@ -12,6 +12,12 @@ const snapshot = {
   globalAccounts: [{ currency: "EUR", country: "NL", status: "ACTIVE" }],
   beneficiaries: [{ currency: "EUR", country: "DE", method: "LOCAL" }],
   evidence: [],
+  deposit: {
+    state: "READY",
+    operatorAvailable: false,
+    amount: minor("8000", "EUR"),
+    currency: "EUR",
+  },
   fetchedAt: "2026-10-03T12:00:00Z",
   source: "AIRWALLEX_REST_SANDBOX",
   executionAvailable: true,
@@ -34,6 +40,74 @@ test.beforeEach(async ({ page }) => {
       },
     }),
   );
+});
+test("one explicit Sandbox receipt refreshes the real-balance fixture and only reopens contractor", async ({
+  page,
+}) => {
+  const delayed = {
+    confidence: 0.31,
+    amount: minor("20000"),
+    dueHours: 144,
+    delayed: true,
+    received: false,
+  };
+  const live = structuredClone(snapshot);
+  live.deposit.operatorAvailable = true;
+  await page.route("**/api/session", (route) =>
+    route.fulfill({ json: { forecast: delayed, version: "fixture-delayed" } }),
+  );
+  await page.route("**/api/snapshot", (route) => route.fulfill({ json: live }));
+  let posts = 0;
+  await page.route("**/api/deposit", (route) => {
+    posts++;
+    const before = live.balances.find((b) => b.currency === "EUR")!.available;
+    live.balances.find((b) => b.currency === "EUR")!.available += minor(
+      "8000",
+      "EUR",
+    );
+    Object.assign(live.deposit, {
+      state: "RECEIVED",
+      operatorAvailable: false,
+      id: "fixture-deposit",
+      status: "SETTLED",
+      beforeAvailable: before,
+      afterAvailable: before + minor("8000", "EUR"),
+      delta: minor("8000", "EUR"),
+      credit: minor("8000"),
+      decisionBefore: "ESCALATE",
+      decisionAfter: "CONVERT_AND_PAY",
+      reserveBefore: minor("18840"),
+      reserveAfter: minor("16940"),
+      reopened: ["contractor"],
+      unchanged: ["logistics", "cloud", "insurance", "marketing"],
+    });
+    return route.fulfill({
+      json: { deposit: { status: "SETTLED", delta: minor("8000", "EUR") } },
+    });
+  });
+  await page.goto("/treasury");
+  await page.getByRole("button", { name: "Build treasury plan" }).click();
+  await expect(
+    page.getByRole("button", { name: "SIMULATE CUSTOMER DEPOSIT" }),
+  ).toBeEnabled();
+  await page.getByRole("button", { name: "SIMULATE CUSTOMER DEPOSIT" }).click();
+  expect(posts).toBe(0);
+  await page
+    .getByRole("button", { name: "CONFIRM ONE-TIME SANDBOX DEPOSIT" })
+    .click();
+  await expect(page.getByText("DEPOSIT RECEIVED")).toBeVisible();
+  await expect(page.getByText("REOPENED DECISIONS: 1")).toBeVisible();
+  await expect(page.getByText("UNCHANGED DECISIONS: 4")).toBeVisible();
+  await expect(page.locator(".deposit-changed-row")).toContainText(
+    "Convert + pay",
+  );
+  expect(posts).toBe(1);
+  await page.reload();
+  await expect(page.getByText("DEPOSIT RECEIVED")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "SIMULATE CUSTOMER DEPOSIT" }),
+  ).toHaveCount(0);
+  expect(posts).toBe(1);
 });
 test("plan, explanation, exact approval and reserve block", async ({
   page,

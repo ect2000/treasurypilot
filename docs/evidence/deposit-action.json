@@ -1,0 +1,30 @@
+{
+  "verified": true,
+  "id": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+  "status": "SETTLED",
+  "currency": "EUR",
+  "amountMinor": 800000,
+  "statementRef": "TPKIT1-2026-ONE",
+  "beforeAvailable": 1000000000,
+  "afterAvailable": 1000800000,
+  "delta": 800000,
+  "credit": 800000,
+  "verifiedAt": "2026-10-03T18:22:18.526Z",
+  "planBefore": {
+    "contractor": "ESCALATE",
+    "remaining": 1882813
+  },
+  "planAfter": {
+    "contractor": "CONVERT_AND_PAY",
+    "remaining": 1702512,
+    "reopened": [
+      "contractor"
+    ],
+    "unchanged": [
+      "logistics",
+      "cloud",
+      "insurance",
+      "marketing"
+    ]
+  }
+}

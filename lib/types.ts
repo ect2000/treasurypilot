@@ -47,6 +47,7 @@ export type AuditEvent = {
 export type Plan = {
   decisions: Decision[];
   allocation: number;
+  receiptCredit: number;
   reserve: number;
   autonomy: number;
   spendable: number;
@@ -56,6 +57,25 @@ export type Plan = {
   reopened: string[];
   unchanged: string[];
   timeline: { hour: number; cash: number; expected: number }[];
+};
+export type DepositEvidence = {
+  state: "READY" | "RECEIVED";
+  operatorAvailable: boolean;
+  amount: number;
+  currency: "EUR";
+  id?: string;
+  status?: string;
+  beforeAvailable?: number;
+  afterAvailable?: number;
+  delta?: number;
+  credit?: number;
+  receivedAt?: string;
+  decisionBefore?: string;
+  decisionAfter?: string;
+  reserveBefore?: number;
+  reserveAfter?: number;
+  reopened?: string[];
+  unchanged?: string[];
 };
 export type FinancialEvidence = {
   kind: "FX_CONVERSION" | "TRANSFER";
@@ -76,6 +96,7 @@ export type Snapshot = {
   globalAccounts: { currency: string; country: string; status: string }[];
   beneficiaries: { currency: string; country: string; method: string }[];
   evidence: FinancialEvidence[];
+  deposit: DepositEvidence;
   fetchedAt: string;
   source: "AIRWALLEX_REST_SANDBOX";
   rateSource: string;

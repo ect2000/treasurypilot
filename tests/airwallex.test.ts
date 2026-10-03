@@ -73,4 +73,49 @@ describe("Airwallex REST adapters", () => {
       }),
     ).toMatchObject({ amount: 1400000, currency: "EUR" });
   });
+  it("posts one fixed major-unit Sandbox deposit with a stable unique statement reference", async () => {
+    const calls: { url: string; init?: RequestInit }[] = [];
+    const transport = vi.fn(
+      async (url: string | URL | Request, init?: RequestInit) => {
+        calls.push({ url: String(url), init });
+        return String(url).endsWith("/login")
+          ? Response.json({
+              token: "fixture",
+              expires_at: new Date(Date.now() + 3600_000).toISOString(),
+            })
+          : Response.json(
+              {
+                id: "deposit-fixture",
+                amount: 8000,
+                currency: "EUR",
+                status: "SETTLED",
+                statement_ref: "TPKIT1-2026-ONE",
+              },
+              { status: 201 },
+            );
+      },
+    );
+    const client = new AirwallexClient(
+      { base: SANDBOX_BASE, clientId: "fixture", apiKey: "fixture" },
+      transport as typeof fetch,
+    );
+    const response = await client.simulateDeposit(
+      "existing-eur-account",
+      "TPKIT1-2026-ONE",
+    );
+    expect(response.status).toBe("SETTLED");
+    const post = calls.find(({ url }) =>
+      url.endsWith("/simulation/deposit/create"),
+    )!;
+    expect(post.url.startsWith(SANDBOX_BASE)).toBe(true);
+    expect(JSON.parse(String(post.init?.body))).toMatchObject({
+      amount: 8000,
+      global_account_id: "existing-eur-account",
+      statement_ref: "TPKIT1-2026-ONE",
+      status: "SETTLED",
+    });
+    expect(JSON.parse(String(post.init?.body))).not.toHaveProperty(
+      "request_id",
+    );
+  });
 });

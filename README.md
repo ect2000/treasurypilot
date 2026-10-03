@@ -12,7 +12,7 @@ AI interprets the situation. Policy protects liquidity. Airwallex executes.
 
 A finance operator needs to decide which obligation matters next, which currency to acquire, which payment can wait and when uncertainty requires human judgment. A wallet balance or a generic chat response is insufficient.
 
-TreasuryPilot connects a genuine Airwallex **Sandbox** account to a deterministic treasury controller. Five synthetic obligations form a 72-hour scenario. An explicit **$48,000 operating allocation** and **$15,000 reserve** define agent authority. The live test wallet remains visible, even when it contains millions. We neither falsify those balances nor treat all test liquidity as permission to spend.
+TreasuryPilot connects a genuine Airwallex **Sandbox** account to a deterministic treasury controller. Five synthetic obligations form a 72-hour scenario. A **$48,000 base allocation** and **$15,000 reserve** define agent authority. One verified €8,000 customer deposit can add at most $8,000 of bounded planning authority; forecast cash adds nothing. The live test wallet remains visible, even when it contains millions.
 
 ## Demo and verified financial evidence
 
@@ -21,15 +21,17 @@ TreasuryPilot connects a genuine Airwallex **Sandbox** account to a deterministi
 3. Open Evidence inbox, interpret the customer delay email with the free model, review the candidate and accept it.
 4. Return to the overview: confidence moves 92% → 31%; autonomy moves $10,000 → $2,500; three decisions reopen and two remain unchanged in the baseline delay scenario.
 5. Test the reserve guard: a hypothetical $34,200 commitment would leave $13,800. It is blocked without calling a financial endpoint.
-6. Inspect Activity & audit and export JSON. The fixed campaign has already executed genuine financial actions; refreshing or visiting again must not duplicate them.
+6. In the one-time local operator recording, press **SIMULATE CUSTOMER DEPOSIT** and confirm. The existing EUR Global Account receives exactly €8,000 in Sandbox. The live EUR balance moves from €10,000,000 to €10,008,000; only the UK contractor reopens from `ESCALATE` to planned `CONVERT_AND_PAY`. Four decisions retain identity and timestamps; the resulting plan reserve is $17,025.12.
+7. Inspect Activity & audit and export JSON. The public demo shows verified before/deposit/after proof; refreshing or visiting again cannot repeat the receipt.
 
 | Real Sandbox operation | Verified evidence                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------- |
 | FX conversion          | USD **15,971.87** → EUR **14,000**, **SETTLED**; `1878f1df-3b32-4d92-8b1e-9bbd83287e4d`              |
 | Supplier transfer      | EUR **14,000**, initially **PROCESSING**; `9ad1dd38-ae3b-49bd-961b-ed0adfda7049`                     |
 | State simulation       | Actual Sandbox transition requests to **SENT**, then **PAID**, followed by transfer GET verification |
+| Deposit simulation     | One settled **€8,000** Sandbox receipt, provider ID `7bee857c-9151-43ac-adde-0d4310fe87fa`; exact EUR balance delta **+€8,000** |
 
-PAID is a **simulated Sandbox state**, not a claim of real bank settlement. See [verification](docs/airwallex-verification.md) and [machine-readable evidence](docs/evidence/financial-actions.json). JSON money is integer minor units; Airwallex REST requests use **major units**. Genuine quote and exact-approval screenshots were captured before the conversion. No new request ID was generated after its initial response failed local parsing.
+PAID is a **simulated Sandbox state**, not a claim of real bank settlement. The customer deposit is also a Sandbox simulation, not real money. See [verification](docs/airwallex-verification.md), [financial evidence](docs/evidence/financial-actions.json) and [deposit proof](docs/evidence/deposit-action.json). JSON money is integer minor units; Airwallex REST requests use **major units**. The FX conversion and supplier transfer were not rerun for this extension.
 
 ## How it works / adaptive treasury loop
 
@@ -51,9 +53,9 @@ The plan sorts by priority and deadline, evaluates costs in USD using normalized
 
 REST is the primary integration path. The server client authenticates once per warm instance, coalesces concurrent login requests and caches the token until one minute before expiry. It pins API version 2026-08-21, validates payloads with Zod, rounds with decimal.js, rejects redirects and permits only the exact Sandbox origin.
 
-Actual calls: authentication, balances, Global Account list, existing beneficiary list, indicative rates, guaranteed quote create/retrieve, conversion create/list, transfer validate/create/list/retrieve and transfer-state simulation. There was already an active Netherlands EUR Global Account and seven beneficiary corridors. **No new Global Account or beneficiary was needed.** No extra Starter Kit 1 permission was required.
+Actual calls: authentication, balances, Global Account list, deposit list, existing beneficiary list, indicative rates, guaranteed quote create/retrieve, conversion create/list, transfer validate/create/list/retrieve, transfer-state simulation and `POST /api/v1/simulation/deposit/create`. There was already an active Netherlands EUR Global Account and seven beneficiary corridors. **No new Global Account or beneficiary was needed.** No extra Starter Kit 1 permission was required.
 
-Docs MCP was available and used for public guidance. Developer MCP returned HTTP 401 and needs separate OAuth; it remains optional and does not block the product. Deposit simulation is documented and enabled in the account scope but is not executed or implemented as a public demo action.
+Docs MCP was available and used for public guidance. Developer MCP returned HTTP 401 and needs separate OAuth; it remains optional and does not block the product. The deposit POST is local-operator-only; the deployed site displays read-only, provider-verified evidence. The [official simulation API](https://www.airwallex.com/docs/api/simulation/deposits/create) uses a unique `statement_ref`, not a `request_id` field.
 
 ## AI usage
 
@@ -75,13 +77,13 @@ The reviewed five-day delay deterministically changes confidence to 31% and push
 
 ## Incremental replanning
 
-Every decision has semantic dependencies, an input signature, evaluation timestamp and revision. Re-evaluation compares signatures and preserves the actual object identity/timestamp when unaffected. The baseline delay reopens cloud and insurance approval requirements plus the contractor's action, while logistics and marketing remain unchanged. Counts come from calculations. FX changes can propagate to later liquidity-dependent decisions; they are not artificially constrained to a fixed demo count.
+Every decision has semantic dependencies, an input signature, evaluation timestamp and revision. Re-evaluation compares signatures and preserves the actual object identity/timestamp when unaffected. The baseline delay reopens cloud and insurance approval requirements plus the contractor's action, while logistics and marketing remain unchanged. Once the deposit is verified, only the reserve-blocked contractor changes to planned `CONVERT_AND_PAY`; logistics, cloud, insurance and marketing retain identity and evaluation time. The $48,000 base envelope gains exactly $8,000 of receipt-backed authority because the live EUR→USD indicative value exceeds the fixed $8,000 cap. The forecast itself remains excluded. No contractor FX or transfer is executed.
 
 ## Human approval and security
 
 An exact server proposal binds the operation, obligation, quote, amount, currency, full beneficiary hash, wallet hash, forecast, state revision, reserve, campaign and request ID. An AES-GCM sealed five-minute approval conceals those fields and detects tampering. The user confirms the exact Sandbox action. The server re-reads live state and recomputes the deterministic gate before execution. Client-supplied PASS or arbitrary amounts are not accepted.
 
-To make a public demo financially bounded without a database, **only one fixed critical-supplier lifecycle** can execute: EUR 14,000 bought for at most USD 18,000 and one EUR 14,000 local transfer. All visitors share the campaign's stable request IDs. Existing provider results and duplicate-ID protection prevent replayed financial spending. Other obligations demonstrate planning and approval requirements but do not expose arbitrary payouts. Conversion and transfer are a single allocation commitment, counted once.
+To make a public demo financially bounded without a database, **only one fixed critical-supplier lifecycle** can execute: EUR 14,000 bought for at most USD 18,000 and one EUR 14,000 local transfer. All visitors share stable campaign request IDs. The separate deposit action is enabled only for a local development operator, requires two explicit clicks and reviewed delay state, and uses a fixed provider-unique `statement_ref` plus a durable local lock. A provider-accepted response is reconciled with deposit GET and exact balance delta instead of reposted. The deployed route refuses deposit writes. Other obligations remain planning-only. Conversion and transfer are a single allocation commitment, counted once.
 
 Secrets are server-only and ignored by Git. Public evidence includes provider operation IDs but no client ID, API key, bearer token, recipient identifier or bank details. See [security and practical limitations](docs/security-and-limitations.md). No authentication, multi-tenant SaaS, ERP or production banking has been added.
 
@@ -104,11 +106,11 @@ flowchart LR
   AU --> B
 ```
 
-No database is needed for the fixed demonstration. Request/session state lives in sealed short-lived tokens; browser-local audit records are exportable. Airwallex is the durable financial source of truth. This does not claim to be a general ledger or exactly-once payment infrastructure.
+No database is needed for the fixed demonstration. The one-time local operator latch is ignored by Git; the verified deposit proof is committed without credentials or Global Account ID. Request/session state lives in sealed short-lived tokens; browser-local audit records are exportable. Airwallex is the durable financial source of truth. This does not claim to be a general ledger or exactly-once payment infrastructure.
 
 ## Screenshots and tech stack
 
-[Screenshot pack](docs/screenshots/README.md): ten 1440px desktop views plus 1024px and 390px captures. The interface uses a restrained charcoal/orange workspace, a code-native animated liquidity graphic, a responsive obligation ledger, timeline and accessible Radix inspector. Reduced motion is honored.
+[Screenshot pack](docs/screenshots/README.md): thirteen 1440px desktop views plus 1024px and 390px captures, including deposit before/after/audit proof. The interface uses a restrained charcoal/orange workspace, a code-native animated liquidity graphic, a responsive obligation ledger, timeline and accessible Radix inspector. Reduced motion is honored.
 
 Next.js 16.3.8 App Router, React 19.3, TypeScript, Tailwind 4, Radix/shadcn-style dialog primitive, Motion, Lucide, Recharts, React Hook Form, Zod, decimal.js, Vitest, Playwright and Vercel.
 
@@ -133,6 +135,7 @@ Open `http://127.0.0.1:3000`.
 | `AUTHORIZATION_SECRET`                      | Random server secret, at least 32 characters                             |
 | `EXECUTION_CAMPAIGN`                        | Stable unique operator campaign, never per-click or per-retry            |
 | `EXECUTION_ENABLED_UNTIL`                   | Explicit short ISO timestamp cutoff; absent/invalid/past disables writes |
+| `DEPOSIT_OPERATOR_ENABLED`                  | `true` only in local development for the one-time receipt; never on deployment |
 
 Do not paste credentials into issues, commits or browser forms. Keep the execution window within seven days of the campaign's first transfer; do not extend it to bypass duplicate protection. The deployed campaign was bounded to 9 October 2026. Financial execution is disabled when the cutoff expires; read and planning capabilities remain.
 
@@ -150,7 +153,7 @@ npm run test:live
 
 Vitest covers money precision, reserve enforcement, deterministic autonomy, priority/defer/escalate behavior, semantic replanning, exact approval, token tampering, stable IDs, prompt-injection handling, Sandbox origin and same-origin proxy checks, token caching and response adapters. Playwright uses explicitly isolated test fixtures and covers the plan, inspector, approval checkbox, reserve block, evidence/replan and responsive navigation at three widths. Fixture tests are not claimed as live financial evidence.
 
-`test:live` performs genuine Sandbox reads, creates a non-financial FX quote and makes a real free OpenRouter call. `validate:financial` is an explicit operator command that may create the fixed financial campaign after authorization gates; it is never run by tests/build/deployment and reuses existing operation IDs. `scripts/capture-live.ts` captures real browser state and may execute that campaign with the owner's authorization. Never reset IDs to make tests repeat spending.
+`test:live` performs genuine Sandbox reads, creates a non-financial FX quote and makes a real free OpenRouter call. `validate:financial` was not rerun for this extension. Playwright's deposit test uses only fixtures. The single real receipt is evidenced in committed JSON and screenshots. Never reset IDs or delete the local latch to repeat spending.
 
 Production dependency audit: zero vulnerabilities with `npm audit --omit=dev`. Five development-only linter advisory paths remain with no compatible patched registry release; their exact scope is documented in security limitations.
 

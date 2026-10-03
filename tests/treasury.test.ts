@@ -6,6 +6,7 @@ import {
   initialForecast,
   POLICY,
   reserveCheck,
+  replanAfterDeposit,
   updateForecast,
 } from "../lib/treasury";
 const rates = { USD: "1", EUR: "1.14", GBP: "1.32", CNY: "0.14" };
@@ -87,5 +88,58 @@ describe("money and treasury policy", () => {
     expect(next.decisions.find((d) => d.id === "marketing")).toBe(
       p.decisions.find((d) => d.id === "marketing"),
     );
+  });
+  it("credits only a bounded verified receipt and reopens only the liquidity-blocked contractor", () => {
+    const delayed = updateForecast(initialForecast, 5);
+    const before = buildPlan(
+      rates,
+      delayed,
+      undefined,
+      [],
+      "2026-10-03T10:00:00Z",
+      minor("15971.87"),
+    );
+    const after = replanAfterDeposit(
+      rates,
+      delayed,
+      before,
+      minor("8000"),
+      minor("15971.87"),
+      [],
+      "2026-10-03T11:00:00Z",
+    );
+    expect(before.decisions.find((d) => d.id === "contractor")?.action).toBe(
+      "ESCALATE",
+    );
+    expect(after.decisions.find((d) => d.id === "contractor")?.action).toBe(
+      "CONVERT_AND_PAY",
+    );
+    expect(after.reopened).toEqual(["contractor"]);
+    expect(after.unchanged).toEqual([
+      "logistics",
+      "cloud",
+      "insurance",
+      "marketing",
+    ]);
+    for (const id of after.unchanged)
+      expect(after.decisions.find((d) => d.id === id)).toBe(
+        before.decisions.find((d) => d.id === id),
+      );
+    expect(
+      after.decisions.find((d) => d.id === "contractor")?.evaluatedAt,
+    ).toBe("2026-10-03T11:00:00Z");
+    expect(after.remaining).toBeGreaterThanOrEqual(POLICY.reserve);
+    expect(after.receiptCredit).toBe(minor("8000"));
+    expect(() =>
+      buildPlan(
+        rates,
+        delayed,
+        undefined,
+        [],
+        undefined,
+        undefined,
+        minor("8000.01"),
+      ),
+    ).toThrow();
   });
 });

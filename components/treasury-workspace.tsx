@@ -46,6 +46,7 @@ import {
   buildPlan,
   initialForecast,
   POLICY,
+  replanAfterDeposit,
   reserveCheck,
 } from "@/lib/treasury";
 import { currencies, formatMoney, minor } from "@/lib/money";
@@ -92,13 +93,33 @@ function evaluate(
   previous?: Plan,
   custom: Obligation[] = [],
 ) {
+  const receiptCredit =
+    live.deposit?.state === "RECEIVED" ? (live.deposit.credit ?? 0) : 0;
+  const settledCost = live.evidence.find(
+    (e) => e.kind === "FX_CONVERSION",
+  )?.sellAmount;
+  if (
+    previous &&
+    previous.receiptCredit === 0 &&
+    receiptCredit > 0 &&
+    forecast.delayed
+  )
+    return replanAfterDeposit(
+      live.rates,
+      forecast,
+      previous,
+      receiptCredit,
+      settledCost,
+      custom,
+    );
   return buildPlan(
     live.rates,
     forecast,
     previous,
     custom,
     new Date().toISOString(),
-    live.evidence.find((e) => e.kind === "FX_CONVERSION")?.sellAmount,
+    settledCost,
+    receiptCredit,
   );
 }
 function actionLabel(action: Decision["action"]) {
@@ -137,6 +158,10 @@ export function TreasuryWorkspace() {
   const [error, setError] = useState<string>();
   const [selected, setSelected] = useState<string>();
   const [blocked, setBlocked] = useState(false);
+  const [confirmDeposit, setConfirmDeposit] = useState(false);
+  const [depositPhase, setDepositPhase] = useState<
+    "idle" | "received" | "replanned"
+  >("idle");
   const [mobileMenu, setMobileMenu] = useState(false);
   const [interpretation, setInterpretation] = useState<Interpretation>();
   const [proposal, setProposal] = useState<Proposal>();
@@ -213,7 +238,42 @@ export function TreasuryWorkspace() {
           const stored = JSON.parse(
             localStorage.getItem("tp_audit_v1") ?? "[]",
           );
-          if (Array.isArray(stored)) setEvents(stored.slice(0, 150));
+          if (Array.isArray(stored)) {
+            const at = live.deposit.receivedAt ?? live.fetchedAt;
+            const permanent: AuditEvent[] =
+              live.deposit.state === "RECEIVED" &&
+              !stored.some(
+                (event: AuditEvent) => event.title === "DEPOSIT_SIMULATED",
+              )
+                ? [
+                    {
+                      id: "deposit-provider",
+                      at,
+                      actor: "AIRWALLEX",
+                      title: "DEPOSIT_SIMULATED",
+                      detail: `Settled ${formatMoney(live.deposit.amount, "EUR")} in the existing EUR Global Account; provider record verified.`,
+                    },
+                    {
+                      id: "deposit-balances",
+                      at,
+                      actor: "AIRWALLEX",
+                      title: "BALANCES_REFRESHED",
+                      detail: `EUR available increased by ${formatMoney(live.deposit.delta ?? 0, "EUR")}; before and after were read from Sandbox REST.`,
+                    },
+                    {
+                      id: "deposit-plan",
+                      at,
+                      actor: "TREASURY_ENGINE",
+                      title: "PLAN_RECALCULATED",
+                      detail: `${live.deposit.reopened?.length ?? 0} reopened; ${live.deposit.unchanged?.length ?? 0} unchanged. Resulting reserve ${formatMoney(live.deposit.reserveAfter ?? 0)}.`,
+                    },
+                  ]
+                : [];
+            const next = [...permanent, ...stored].slice(0, 150);
+            setEvents(next);
+            if (permanent.length)
+              localStorage.setItem("tp_audit_v1", JSON.stringify(next));
+          }
         } catch {
           /* Local history is optional. */
         }
@@ -276,6 +336,56 @@ export function TreasuryWorkspace() {
           `${next.reopened.length} reopened (${next.reopened.join(", ") || "none"}); ${next.unchanged.length} unchanged. Evaluation identities preserved for unchanged decisions.`,
         );
       }
+    });
+  }
+  async function simulateDeposit() {
+    if (
+      !snapshot?.deposit.operatorAvailable ||
+      !forecast.delayed ||
+      !plan ||
+      !confirmDeposit
+    )
+      return;
+    setConfirmDeposit(false);
+    await task("Simulating one Sandbox customer deposit", async () => {
+      const result = await api<{ deposit: { status: string; delta: number } }>(
+        "deposit",
+        {
+          confirm: "SIMULATE CUSTOMER DEPOSIT",
+        },
+      );
+      if (result.deposit.status !== "SETTLED")
+        throw new Error("Deposit did not settle");
+      setDepositPhase("received");
+      record(
+        "AIRWALLEX",
+        "DEPOSIT_SIMULATED",
+        "One fixed €8,000 customer receipt posted to the existing EUR Global Account in Sandbox.",
+      );
+      const live = await api<Snapshot>("snapshot");
+      if (
+        live.deposit.state !== "RECEIVED" ||
+        live.deposit.delta !== result.deposit.delta
+      )
+        throw new Error(
+          "Deposit response and refreshed balance evidence do not agree",
+        );
+      setSnapshot(live);
+      record(
+        "AIRWALLEX",
+        "BALANCES_REFRESHED",
+        `EUR available: ${formatMoney(live.deposit.beforeAvailable!, "EUR")} → ${formatMoney(live.deposit.afterAvailable!, "EUR")}; exact delta ${formatMoney(live.deposit.delta!, "EUR")}.`,
+      );
+      const next = evaluate(live, forecast, currentPlan.current, custom);
+      currentPlan.current = next;
+      setPlan(next);
+      clearAuthorization();
+      record(
+        "TREASURY_ENGINE",
+        "PLAN_RECALCULATED",
+        `${next.reopened.length} reopened (${next.reopened.join(", ")}); ${next.unchanged.length} unchanged. Resulting reserve ${formatMoney(next.remaining)}.`,
+      );
+      setTimeout(() => setDepositPhase("replanned"), 450);
     });
   }
   async function interpret(data: z.infer<typeof evidenceSchema>) {
@@ -405,6 +515,7 @@ export function TreasuryWorkspace() {
       exportedAt: new Date().toISOString(),
       source: snapshot?.source,
       financialEvidence: snapshot?.evidence,
+      depositEvidence: snapshot?.deposit,
       plan,
       audit: events,
       disclosure:
@@ -622,9 +733,10 @@ export function TreasuryWorkspace() {
               <div className="allocation-explainer">
                 <ShieldCheck size={15} />
                 <span>
-                  The agent can allocate <strong>$48,000</strong> of the test
-                  wallet. Live Airwallex balances are shown separately below.
-                  Forecast cash is never spendable authority.
+                  Base authority is <strong>$48,000</strong>. A verified
+                  customer receipt may add at most <strong>$8,000</strong> of
+                  bounded authority. Live wallet balances are separate; forecast
+                  cash never authorizes spending.
                 </span>
               </div>
               {tab === "overview" && (
@@ -809,6 +921,124 @@ export function TreasuryWorkspace() {
                   </section>
                 </div>
               )}
+              {tab === "overview" && snapshot && (
+                <section
+                  className="deposit-panel"
+                  aria-label="Sandbox customer deposit"
+                >
+                  <div className="section-heading">
+                    <div>
+                      <h2>Customer receipt</h2>
+                      <span>One-time deposit-triggered replan</span>
+                    </div>
+                    <span className="quiet-label">AIRWALLEX SANDBOX</span>
+                  </div>
+                  <div className="deposit-main">
+                    <strong>
+                      + {formatMoney(snapshot.deposit.amount, "EUR")}
+                    </strong>
+                    <span>
+                      {snapshot.deposit.state === "RECEIVED"
+                        ? "DEPOSIT RECEIVED"
+                        : "Awaiting explicit operator action"}
+                    </span>
+                  </div>
+                  {snapshot.deposit.state === "READY" ? (
+                    <div className="deposit-action">
+                      <p>
+                        The customer delay must be reviewed first. This action
+                        uses the existing active EUR Global Account and can post
+                        only once.
+                      </p>
+                      {snapshot.deposit.operatorAvailable ? (
+                        <button
+                          className="button primary"
+                          disabled={!plan || !forecast.delayed || !!busy}
+                          onClick={() =>
+                            confirmDeposit
+                              ? void simulateDeposit()
+                              : setConfirmDeposit(true)
+                          }
+                        >
+                          {confirmDeposit
+                            ? "CONFIRM ONE-TIME SANDBOX DEPOSIT"
+                            : "SIMULATE CUSTOMER DEPOSIT"}
+                        </button>
+                      ) : (
+                        <span className="quiet-label">
+                          LOCAL SANDBOX OPERATOR ONLY
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="deposit-story">
+                      <div>
+                        <small>BEFORE · EUR AVAILABLE</small>
+                        <strong>
+                          {formatMoney(
+                            snapshot.deposit.beforeAvailable!,
+                            "EUR",
+                          )}
+                        </strong>
+                        <span>
+                          Contractor: {snapshot.deposit.decisionBefore}
+                        </span>
+                      </div>
+                      <div>
+                        <small>DEPOSIT · SETTLED</small>
+                        <strong>
+                          + {formatMoney(snapshot.deposit.delta!, "EUR")}
+                        </strong>
+                        <span>Provider-confirmed Sandbox receipt</span>
+                      </div>
+                      <div>
+                        <small>AFTER · EUR AVAILABLE</small>
+                        <strong>
+                          {formatMoney(snapshot.deposit.afterAvailable!, "EUR")}
+                        </strong>
+                        <span>
+                          Contractor:{" "}
+                          {snapshot.deposit.decisionAfter === "CONVERT_AND_PAY"
+                            ? "CONVERT + PAY"
+                            : snapshot.deposit.decisionAfter}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                  {snapshot.deposit.state === "RECEIVED" && (
+                    <motion.div
+                      className="deposit-outcome"
+                      initial={reduced ? false : { opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <strong>
+                        REOPENED DECISIONS:{" "}
+                        {depositPhase === "replanned" && plan
+                          ? plan.reopened.length
+                          : (snapshot.deposit.reopened?.length ?? 0)}
+                      </strong>
+                      <strong>
+                        UNCHANGED DECISIONS:{" "}
+                        {depositPhase === "replanned" && plan
+                          ? plan.unchanged.length
+                          : (snapshot.deposit.unchanged?.length ?? 0)}
+                      </strong>
+                      <span>
+                        UK contractor: ESCALATE → CONVERT + PAY (planned; no new
+                        FX or transfer executed)
+                      </span>
+                      <span>
+                        Reserve after proposed commitments:{" "}
+                        {formatMoney(
+                          depositPhase === "replanned" && plan
+                            ? plan.remaining
+                            : (snapshot.deposit.reserveAfter ?? 0),
+                        )}
+                      </span>
+                    </motion.div>
+                  )}
+                </section>
+              )}
               {plan && plan.reopened.length > 0 && (
                 <motion.div
                   className="replan-strip"
@@ -818,8 +1048,13 @@ export function TreasuryWorkspace() {
                   <Workflow size={17} />
                   <div>
                     <strong>
-                      {plan.reopened.length} decisions reopened ·{" "}
-                      {plan.unchanged.length} unchanged
+                      {snapshot?.deposit.state === "RECEIVED"
+                        ? "Deposit replan"
+                        : "Latest plan update"}: {snapshot?.deposit.state === "RECEIVED"
+                        ? snapshot.deposit.reopened?.length ?? plan.reopened.length
+                        : plan.reopened.length} decisions reopened · {snapshot?.deposit.state === "RECEIVED"
+                        ? snapshot.deposit.unchanged?.length ?? plan.unchanged.length
+                        : plan.unchanged.length} unchanged
                     </strong>
                     <span>
                       Only affected decisions were revised. Unchanged evaluation
@@ -861,6 +1096,12 @@ export function TreasuryWorkspace() {
                       {plan?.decisions.map((d, i) => (
                         <motion.tr
                           key={d.id}
+                          className={
+                            snapshot?.deposit.state === "RECEIVED" &&
+                            d.id === "contractor"
+                              ? "deposit-changed-row"
+                              : undefined
+                          }
                           layout={!reduced}
                           initial={reduced ? false : { opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -1231,6 +1472,27 @@ export function TreasuryWorkspace() {
                     No campaign financial actions have been performed yet.
                   </div>
                 )}
+                {snapshot?.deposit.state === "RECEIVED" && (
+                  <article className="financial-row">
+                    <span className="evidence-icon">
+                      <ArrowDownLeft size={20} />
+                    </span>
+                    <div>
+                      <h3>Real Sandbox customer deposit</h3>
+                      <p>
+                        + {formatMoney(snapshot.deposit.amount, "EUR")} · exact
+                        wallet delta{" "}
+                        {formatMoney(snapshot.deposit.delta!, "EUR")}
+                      </p>
+                      <code>{snapshot.deposit.id}</code>
+                      <small>
+                        Existing EUR Global Account · fixed one-time statement
+                        reference
+                      </small>
+                    </div>
+                    <span className="action-badge action-pay_now">SETTLED</span>
+                  </article>
+                )}
                 {transferred && transferred.status !== "PAID" && (
                   <div className="simulation-controls">
                     <span>Sandbox state simulation · explicitly labelled</span>
@@ -1291,12 +1553,17 @@ export function TreasuryWorkspace() {
                   <CheckCheck size={18} />
                   <div>
                     <strong>
-                      {snapshot.evidence.length} real Sandbox actions verified
+                      {snapshot.evidence.length +
+                        (snapshot.deposit.state === "RECEIVED" ? 1 : 0)}{" "}
+                      real Sandbox actions verified
                     </strong>
                     <span>
                       {converted ? "FX conversion" : ""}
-                      {transferred ? " + supplier transfer" : ""} · Inspect
-                      provider IDs, states and request IDs.
+                      {transferred ? " + supplier transfer" : ""}
+                      {snapshot.deposit.state === "RECEIVED"
+                        ? " + customer deposit"
+                        : ""}{" "}
+                      · Inspect provider IDs and states.
                     </span>
                   </div>
                   <button className="text-link" onClick={() => setTab("audit")}>

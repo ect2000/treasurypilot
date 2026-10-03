@@ -57,6 +57,16 @@ const BeneficiarySchema = z
   })
   .passthrough();
 export type Beneficiary = z.infer<typeof BeneficiarySchema>;
+export const DepositSchema = z
+  .object({
+    id: z.string(),
+    amount: moneySchema,
+    currency: z.string(),
+    status: z.string(),
+    statement_ref: z.string().optional(),
+    reference: z.string().optional(),
+  })
+  .passthrough();
 const ConversionSchema = z
   .object({
     conversion_id: z.string(),
@@ -301,6 +311,29 @@ export class AirwallexClient {
       .object({ items: z.array(TransferSchema) })
       .parse(await this.request("/api/v1/transfers?page_size=100")).items;
   }
+  async deposits() {
+    const raw = await this.request("/api/v1/deposits");
+    // This Sandbox account currently returns [] for an empty list; the public
+    // API example documents { items: [], has_more }. Accept both envelopes.
+    const items = Array.isArray(raw)
+      ? raw
+      : z.object({ items: z.array(z.unknown()) }).parse(raw).items;
+    return z.array(DepositSchema).parse(items);
+  }
+  async simulateDeposit(globalAccountId: string, statementRef: string) {
+    return DepositSchema.parse(
+      await this.request("/api/v1/simulation/deposit/create", "POST", {
+        amount: 8000, // Airwallex API amounts are major units.
+        global_account_id: globalAccountId,
+        payer_bankname: "Sandbox customer bank",
+        payer_country: "NL",
+        payer_name: "TreasuryPilot demo customer",
+        reference: "TreasuryPilot Kit 1 customer receipt",
+        statement_ref: statementRef,
+        status: "SETTLED",
+      }),
+    );
+  }
   async convert(quote: RawQuote, requestId: string) {
     return conversionEvidence(
       await this.request("/api/v1/fx/conversions/create", "POST", {
@@ -365,15 +398,23 @@ export function executionOpen() {
 }
 export async function readSnapshot(): Promise<Snapshot> {
   const client = airwallex();
-  const [balances, rates, accounts, beneficiaries, conversions, transfers] =
-    await Promise.all([
-      client.balances(),
-      client.rates(),
-      client.globalAccounts(),
-      client.beneficiaries(),
-      client.conversions(),
-      client.transfers(),
-    ]);
+  const [
+    balances,
+    rates,
+    accounts,
+    beneficiaries,
+    conversions,
+    transfers,
+    deposit,
+  ] = await Promise.all([
+    client.balances(),
+    client.rates(),
+    client.globalAccounts(),
+    client.beneficiaries(),
+    client.conversions(),
+    client.transfers(),
+    (await import("./deposit")).depositEvidence(),
+  ]);
   const campaign = (await import("./authorization")).campaignIds();
   return {
     balances,
@@ -396,6 +437,7 @@ export async function readSnapshot(): Promise<Snapshot> {
         .filter((t) => t.request_id === campaign.transfer)
         .map(transferEvidence),
     ],
+    deposit,
     fetchedAt: new Date().toISOString(),
     source: "AIRWALLEX_REST_SANDBOX",
     rateSource: "Airwallex indicative rates · normalized to USD per unit",

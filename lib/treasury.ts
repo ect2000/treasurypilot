@@ -5,6 +5,7 @@ export const POLICY = Object.freeze({
   reserve: minor("15000"),
   executionCap: minor("18000"),
   maxCampaignBuy: minor("14000", "EUR"),
+  receiptCreditCap: minor("8000"),
 });
 export const obligations: Obligation[] = [
   {
@@ -91,6 +92,7 @@ export function reserveCheck(
   allocation: number,
   cost: number,
   reserve: number = POLICY.reserve,
+  maxAllocation: number = POLICY.allocation,
 ) {
   if (
     ![allocation, cost, reserve].every(Number.isSafeInteger) ||
@@ -100,7 +102,7 @@ export function reserveCheck(
   )
     return { pass: false, after: 0 };
   const after = allocation - cost;
-  return { pass: after >= reserve && allocation <= POLICY.allocation, after };
+  return { pass: after >= reserve && allocation <= maxAllocation, after };
 }
 // Decisions depend on semantic inputs. Identical signatures preserve identity and evaluation time.
 export function buildPlan(
@@ -110,8 +112,15 @@ export function buildPlan(
   custom: Obligation[] = [],
   now = new Date().toISOString(),
   settledSupplierCost?: number,
+  receiptCredit = 0,
 ): Plan {
-  const allocation = POLICY.allocation;
+  if (
+    !Number.isSafeInteger(receiptCredit) ||
+    receiptCredit < 0 ||
+    receiptCredit > POLICY.receiptCreditCap
+  )
+    throw new Error("Unverified receipt credit exceeds the fixed campaign cap");
+  const allocation = POLICY.allocation + receiptCredit;
   const autonomy = autonomyLimit(forecast.confidence);
   let remaining = allocation;
   const rank = { CRITICAL: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
@@ -130,7 +139,7 @@ export function buildPlan(
         : usdCost(obligation.amount, rates[obligation.currency]);
     if (!Number.isSafeInteger(cost) || cost <= 0)
       throw new Error("Invalid obligation cost");
-    const check = reserveCheck(remaining, cost);
+    const check = reserveCheck(remaining, cost, POLICY.reserve, allocation);
     const dependencies = [
       `obligation:${obligation.id}`,
       `rate:${obligation.currency}`,
@@ -230,6 +239,7 @@ export function buildPlan(
   return {
     decisions,
     allocation,
+    receiptCredit,
     reserve: POLICY.reserve,
     autonomy,
     spendable: allocation - POLICY.reserve,
@@ -240,4 +250,49 @@ export function buildPlan(
     unchanged,
     timeline,
   };
+}
+
+// A verified receipt changes the liquidity branch only. Prior funded decisions
+// retain their original evaluation identity and historical reserve-at-decision.
+export function replanAfterDeposit(
+  rates: Rates,
+  forecast: Forecast,
+  previous: Plan,
+  receiptCredit: number,
+  settledSupplierCost: number | undefined,
+  custom: Obligation[] = [],
+  now = new Date().toISOString(),
+): Plan {
+  if (!forecast.delayed || previous.receiptCredit !== 0 || receiptCredit <= 0)
+    throw new Error("Deposit replan requires the delayed pre-deposit plan");
+  const next = buildPlan(
+    rates,
+    forecast,
+    previous,
+    custom,
+    now,
+    settledSupplierCost,
+    receiptCredit,
+  );
+  const reopened: string[] = [];
+  const unchanged: string[] = [];
+  next.decisions = next.decisions.map((decision) => {
+    const old = previous.decisions.find((item) => item.id === decision.id);
+    if (
+      old &&
+      old.action === decision.action &&
+      old.cost === decision.cost &&
+      old.approvalRequired === decision.approvalRequired &&
+      old.reason === decision.reason &&
+      JSON.stringify(old.obligation) === JSON.stringify(decision.obligation)
+    ) {
+      unchanged.push(decision.id);
+      return old;
+    }
+    if (old) reopened.push(decision.id);
+    return decision;
+  });
+  next.reopened = reopened;
+  next.unchanged = unchanged;
+  return next;
 }
