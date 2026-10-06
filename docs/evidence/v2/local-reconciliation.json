@@ -1,0 +1,169 @@
+[
+  {
+    "id": "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
+    "actionId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+    "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+    "kind": "FX_CONVERSION",
+    "expected": [
+      {
+        "currency": "USD",
+        "amount": -1597187
+      },
+      {
+        "currency": "EUR",
+        "amount": 1400000
+      }
+    ],
+    "observed": [
+      {
+        "currency": "USD",
+        "amount": -1597187
+      },
+      {
+        "currency": "EUR",
+        "amount": 1400000
+      }
+    ],
+    "difference": [
+      {
+        "currency": "USD",
+        "amount": 0
+      },
+      {
+        "currency": "EUR",
+        "amount": 0
+      }
+    ],
+    "expectedStatus": "SETTLED",
+    "observedStatus": "SETTLED",
+    "status": "MATCHED",
+    "checkedAt": "2026-10-06T08:48:08.894Z",
+    "basis": "LIVE_RESOURCE",
+    "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
+  },
+  {
+    "id": "rec-de5b666d-b246-5bd0-abd6-21adc50ab756",
+    "actionId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+    "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+    "kind": "TRANSFER",
+    "expected": [
+      {
+        "currency": "EUR",
+        "amount": -1400000
+      }
+    ],
+    "observed": [
+      {
+        "currency": "EUR",
+        "amount": -1400000
+      }
+    ],
+    "difference": [
+      {
+        "currency": "EUR",
+        "amount": 0
+      }
+    ],
+    "expectedStatus": "PAID",
+    "observedStatus": "PAID",
+    "status": "MATCHED",
+    "checkedAt": "2026-10-06T08:48:08.894Z",
+    "basis": "LIVE_RESOURCE",
+    "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
+  },
+  {
+    "id": "rec-TPKIT1-2026-ONE",
+    "actionId": "TPKIT1-2026-ONE",
+    "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+    "kind": "DEPOSIT",
+    "expected": [
+      {
+        "currency": "EUR",
+        "amount": 800000
+      }
+    ],
+    "observed": [
+      {
+        "currency": "EUR",
+        "amount": 800000
+      }
+    ],
+    "difference": [
+      {
+        "currency": "EUR",
+        "amount": 0
+      }
+    ],
+    "expectedStatus": "SETTLED",
+    "observedStatus": "SETTLED",
+    "checkedAt": "2026-10-06T08:48:08.894Z",
+    "status": "MATCHED",
+    "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
+    "detail": "Exact historical before/after EUR wallet delta plus current provider deposit readback. Subsequent unrelated wallet movements do not rewrite this receipt."
+  },
+  {
+    "id": "rec-campaign-wallet",
+    "actionId": "campaign-wallet",
+    "kind": "WALLET",
+    "expected": [
+      {
+        "currency": "CNY",
+        "amount": 1000000000
+      },
+      {
+        "currency": "EUR",
+        "amount": 1000800000
+      },
+      {
+        "currency": "GBP",
+        "amount": 1000000000
+      },
+      {
+        "currency": "USD",
+        "amount": 998402813
+      }
+    ],
+    "observed": [
+      {
+        "currency": "CNY",
+        "amount": 1000000000
+      },
+      {
+        "currency": "EUR",
+        "amount": 1000800000
+      },
+      {
+        "currency": "GBP",
+        "amount": 1000000000
+      },
+      {
+        "currency": "USD",
+        "amount": 998402813
+      }
+    ],
+    "difference": [
+      {
+        "currency": "CNY",
+        "amount": 0
+      },
+      {
+        "currency": "EUR",
+        "amount": 0
+      },
+      {
+        "currency": "GBP",
+        "amount": 0
+      },
+      {
+        "currency": "USD",
+        "amount": 0
+      }
+    ],
+    "expectedStatus": "CURRENT_BALANCES",
+    "observedStatus": "CURRENT_BALANCES",
+    "checkedAt": "2026-10-06T08:48:08.894Z",
+    "status": "MATCHED",
+    "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
+    "detail": "Current available wallets compared with the recorded campaign ending balances. A variance may be newer external activity and requires investigation; it never proves an original payment failed."
+  }
+]

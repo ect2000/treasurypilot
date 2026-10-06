@@ -1,0 +1,12 @@
+{
+  "id": "2c9bbd78-8b6a-41a7-ac08-3038cced9213",
+  "text": "Customer update · INV-4092\n\nThe expected USD 20,000 payment is delayed by 5 days. We expect to send it next week.",
+  "interpretation": {
+    "summary": "Customer update indicates that the expected USD 20,000 payment (INV-4092) is delayed by 5 days and will be sent next week.",
+    "forecastDelayDays": 5,
+    "invoice": null,
+    "rejectedInstructions": false,
+    "provider": "OPENROUTER",
+    "model": "nvidia/nemotron-3-super-120b-a12b:free"
+  }
+}

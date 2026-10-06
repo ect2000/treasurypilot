@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-10-06T08:48:13.269Z",
+  "url": "http://127.0.0.1:3000",
+  "environment": "AIRWALLEX_SANDBOX_ONLY",
+  "financialMutationsDuringValidation": 0,
+  "persistence": "PRIVATE_BLOB",
+  "provider": "OPENROUTER",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "confidenceBefore": 0.92,
+  "confidenceAfter": 0.31,
+  "autonomyBefore": 1000000,
+  "autonomyAfter": 250000,
+  "receiptWalletDeltaHistorical": 800000,
+  "newWalletDelta": 0,
+  "reopened": [
+    "contractor"
+  ],
+  "unchanged": [
+    "logistics",
+    "cloud",
+    "insurance",
+    "marketing"
+  ],
+  "reserveAfter": 1699712,
+  "reconciliation": [
+    {
+      "kind": "FX_CONVERSION",
+      "status": "MATCHED"
+    },
+    {
+      "kind": "TRANSFER",
+      "status": "MATCHED"
+    },
+    {
+      "kind": "DEPOSIT",
+      "status": "MATCHED"
+    },
+    {
+      "kind": "WALLET",
+      "status": "MATCHED"
+    }
+  ],
+  "responsive": [
+    {
+      "width": 375,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "overflow": false
+    }
+  ],
+  "browserErrors": [],
+  "staleRevisionHttp": 409,
+  "forgedOperationHttp": 400,
+  "priorActions": [
+    {
+      "id": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "kind": "FX_CONVERSION",
+      "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+      "status": "SETTLED",
+      "observedAt": "2026-10-06T08:48:08.894Z",
+      "provenance": "PRE_EXISTING_V1"
+    },
+    {
+      "id": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "kind": "TRANSFER",
+      "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+      "status": "PAID",
+      "observedAt": "2026-10-06T08:48:08.894Z",
+      "provenance": "PRE_EXISTING_V1"
+    },
+    {
+      "id": "TPKIT1-2026-ONE",
+      "requestId": "statement_ref:TPKIT1-2026-ONE",
+      "kind": "DEPOSIT",
+      "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "status": "SETTLED",
+      "provenance": "PRE_EXISTING_V1",
+      "observedAt": "2026-10-06T08:48:00.552Z"
+    }
+  ],
+  "disclosure": "Provider FX/transfer/deposit are pre-existing v1 financial operations. This v2 validation only reads/reconciles them and mutates application planning context."
+}

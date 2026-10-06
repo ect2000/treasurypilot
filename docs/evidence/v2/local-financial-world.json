@@ -1,0 +1,1658 @@
+{
+  "schema": 2,
+  "id": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+  "revision": 4,
+  "createdAt": "2026-10-06T08:48:00.552Z",
+  "updatedAt": "2026-10-06T08:48:08.895Z",
+  "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+  "snapshot": {
+    "balances": [
+      {
+        "currency": "AED",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "ARS",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "AUD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BDT",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BHD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BOB",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "BRL",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CAD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CHF",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CLP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CNY",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "COP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "CZK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "DKK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "EGP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "EUR",
+        "available": 1000800000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000800000
+      },
+      {
+        "currency": "GBP",
+        "available": 1000000000,
+        "pending": 0,
+        "reserved": 0,
+        "total": 1000000000
+      },
+      {
+        "currency": "HKD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "HRK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "HUF",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "IDR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "ILS",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "INR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "JPY",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "KRW",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "LKR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "MAD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "MXN",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "MYR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "NOK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "NPR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "NZD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PEN",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PHP",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PKR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "PLN",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "RON",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "SAR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "SEK",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "SGD",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "THB",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "TRY",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "USD",
+        "available": 998402813,
+        "pending": 0,
+        "reserved": 0,
+        "total": 998402813
+      },
+      {
+        "currency": "UYU",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "VND",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      },
+      {
+        "currency": "ZAR",
+        "available": 0,
+        "pending": 0,
+        "reserved": 0,
+        "total": 0
+      }
+    ],
+    "rates": {
+      "USD": "1",
+      "EUR": "1.113044",
+      "GBP": "1.310801",
+      "CNY": "0.1477399481432782017093512"
+    },
+    "globalAccounts": [
+      {
+        "currency": "EUR",
+        "country": "NL",
+        "status": "ACTIVE"
+      }
+    ],
+    "beneficiaries": [
+      {
+        "currency": "EUR",
+        "country": "DE",
+        "method": "LOCAL"
+      },
+      {
+        "currency": "EUR",
+        "country": "DE",
+        "method": "SWIFT"
+      },
+      {
+        "currency": "CNY",
+        "country": "CN",
+        "method": "LOCAL"
+      },
+      {
+        "currency": "CNY",
+        "country": "CN",
+        "method": "SWIFT"
+      },
+      {
+        "currency": "GBP",
+        "country": "GB",
+        "method": "SWIFT"
+      },
+      {
+        "currency": "USD",
+        "country": "US",
+        "method": "LOCAL"
+      },
+      {
+        "currency": "USD",
+        "country": "US",
+        "method": "SWIFT"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "FX_CONVERSION",
+        "id": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+        "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+        "status": "SETTLED",
+        "buyCurrency": "EUR",
+        "sellCurrency": "USD",
+        "buyAmount": 1400000,
+        "sellAmount": 1597187,
+        "createdAt": "2026-10-03T16:51:21+0000"
+      },
+      {
+        "kind": "TRANSFER",
+        "id": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+        "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+        "status": "PAID",
+        "amount": 1400000,
+        "currency": "EUR",
+        "createdAt": "2026-10-03T16:55:10+0000"
+      }
+    ],
+    "deposit": {
+      "state": "RECEIVED",
+      "operatorAvailable": false,
+      "amount": 800000,
+      "currency": "EUR",
+      "id": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "status": "SETTLED",
+      "beforeAvailable": 1000000000,
+      "afterAvailable": 1000800000,
+      "delta": 800000,
+      "credit": 800000,
+      "receivedAt": "2026-10-03T18:22:18.526Z",
+      "decisionBefore": "ESCALATE",
+      "decisionAfter": "CONVERT_AND_PAY",
+      "reserveBefore": 1882813,
+      "reserveAfter": 1702512,
+      "reopened": [
+        "contractor"
+      ],
+      "unchanged": [
+        "logistics",
+        "cloud",
+        "insurance",
+        "marketing"
+      ]
+    },
+    "fetchedAt": "2026-10-06T08:48:08.894Z",
+    "source": "AIRWALLEX_REST_SANDBOX",
+    "rateSource": "Airwallex indicative rates · normalized to USD per unit",
+    "executionAvailable": true
+  },
+  "forecast": {
+    "confidence": 0.31,
+    "amount": 2000000,
+    "dueHours": 144,
+    "delayed": true,
+    "received": false
+  },
+  "obligations": [
+    {
+      "id": "logistics",
+      "vendor": "Critical logistics supplier",
+      "amount": 1400000,
+      "currency": "EUR",
+      "dueAt": "2026-10-06T21:48:00.552Z",
+      "priority": "CRITICAL",
+      "criticality": "OPERATIONS_STOP",
+      "lateCostPerDay": 70000,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PAID_SANDBOX",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "cloud",
+      "vendor": "Cloud infrastructure",
+      "amount": 820000,
+      "currency": "USD",
+      "dueAt": "2026-10-07T10:48:00.552Z",
+      "priority": "HIGH",
+      "criticality": "CONTRACTUAL",
+      "lateCostPerDay": 30000,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "contractor",
+      "vendor": "UK contractor",
+      "amount": 750000,
+      "currency": "GBP",
+      "dueAt": "2026-10-07T22:48:00.552Z",
+      "priority": "MEDIUM",
+      "criticality": "CONTRACTUAL",
+      "lateCostPerDay": 7500,
+      "transferMethod": "SWIFT",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "insurance",
+      "vendor": "Insurance / compliance",
+      "amount": 500000,
+      "currency": "USD",
+      "dueAt": "2026-10-08T20:48:00.552Z",
+      "priority": "MEDIUM",
+      "criticality": "CONTRACTUAL",
+      "lateCostPerDay": 50000,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "marketing",
+      "vendor": "Marketing vendor",
+      "amount": 600000,
+      "currency": "USD",
+      "dueAt": "2026-10-09T06:48:00.552Z",
+      "priority": "LOW",
+      "criticality": "DISCRETIONARY",
+      "lateCostPerDay": 0,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    }
+  ],
+  "receivables": [
+    {
+      "id": "INV-4092",
+      "amount": 2000000,
+      "currency": "USD",
+      "expectedAt": "2026-10-12T08:48:00.552Z",
+      "confidence": 0.31,
+      "evidenceIds": [
+        "2c9bbd78-8b6a-41a7-ac08-3038cced9213"
+      ],
+      "state": "DELAYED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "sandbox-customer-receipt",
+      "amount": 800000,
+      "currency": "EUR",
+      "expectedAt": "2026-10-03T18:22:18.526Z",
+      "confidence": 1,
+      "evidenceIds": [
+        "7bee857c-9151-43ac-adde-0d4310fe87fa"
+      ],
+      "state": "SETTLED_SANDBOX",
+      "source": "AIRWALLEX"
+    }
+  ],
+  "receiptApplied": true,
+  "policy": {
+    "reserve": 1500000,
+    "baseAllocation": 4800000,
+    "receiptCap": 800000,
+    "fxCap": 1800000,
+    "maxRisk": 0.7,
+    "tiers": [
+      {
+        "confidence": 0.85,
+        "fx": 1000000,
+        "transfer": 1000000
+      },
+      {
+        "confidence": 0.6,
+        "fx": 500000,
+        "transfer": 500000
+      },
+      {
+        "confidence": 0,
+        "fx": 250000,
+        "transfer": 250000
+      }
+    ]
+  },
+  "plans": [
+    {
+      "id": "plan-001",
+      "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+      "createdAt": "2026-10-06T08:48:00.553Z",
+      "state": "SUPERSEDED",
+      "cause": "Initial operating allocation; historical receipt awaits explicit allocation.",
+      "plan": {
+        "decisions": [
+          {
+            "id": "logistics",
+            "obligation": {
+              "id": "logistics",
+              "title": "Critical logistics supplier",
+              "category": "Supply chain · Germany",
+              "amount": 1400000,
+              "currency": "EUR",
+              "dueHours": 13,
+              "priority": "CRITICAL",
+              "synthetic": true
+            },
+            "cost": 1597187,
+            "action": "CONVERT_AND_PAY",
+            "reserveAfter": 3202813,
+            "approvalRequired": true,
+            "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
+            "dependencies": [
+              "obligation:logistics",
+              "rate:EUR",
+              "allocation",
+              "reserve"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          },
+          {
+            "id": "cloud",
+            "obligation": {
+              "id": "cloud",
+              "title": "Cloud infrastructure",
+              "category": "Infrastructure · United States",
+              "amount": 820000,
+              "currency": "USD",
+              "dueHours": 26,
+              "priority": "HIGH",
+              "synthetic": true
+            },
+            "cost": 820000,
+            "action": "PAY_NOW",
+            "reserveAfter": 2382813,
+            "approvalRequired": false,
+            "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+            "dependencies": [
+              "obligation:cloud",
+              "rate:USD",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":false,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          },
+          {
+            "id": "contractor",
+            "obligation": {
+              "id": "contractor",
+              "title": "UK contractor",
+              "category": "Professional services · United Kingdom",
+              "amount": 750000,
+              "currency": "GBP",
+              "dueHours": 38,
+              "priority": "MEDIUM",
+              "synthetic": true
+            },
+            "cost": 983101,
+            "action": "DEFER",
+            "reserveAfter": 1399712,
+            "approvalRequired": false,
+            "reason": "Await the expected receipt, then re-evaluate. Forecast cash is not available cash and cannot authorize execution.",
+            "dependencies": [
+              "obligation:contractor",
+              "rate:GBP",
+              "allocation",
+              "reserve",
+              "forecast"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"DEFER\",\"reserveAfter\":1399712,\"approvalRequired\":false,\"reason\":\"Await the expected receipt, then re-evaluate. Forecast cash is not available cash and cannot authorize execution.\",\"forecast\":{\"confidence\":0.92,\"amount\":2000000,\"dueHours\":24,\"delayed\":false,\"received\":false}}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          },
+          {
+            "id": "insurance",
+            "obligation": {
+              "id": "insurance",
+              "title": "Insurance / compliance",
+              "category": "Business continuity · United States",
+              "amount": 500000,
+              "currency": "USD",
+              "dueHours": 60,
+              "priority": "MEDIUM",
+              "synthetic": true
+            },
+            "cost": 500000,
+            "action": "PAY_NOW",
+            "reserveAfter": 1882813,
+            "approvalRequired": false,
+            "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+            "dependencies": [
+              "obligation:insurance",
+              "rate:USD",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":false,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          },
+          {
+            "id": "marketing",
+            "obligation": {
+              "id": "marketing",
+              "title": "Marketing vendor",
+              "category": "Growth · United States",
+              "amount": 600000,
+              "currency": "USD",
+              "dueHours": 70,
+              "priority": "LOW",
+              "synthetic": true
+            },
+            "cost": 600000,
+            "action": "DEFER",
+            "reserveAfter": 4800000,
+            "approvalRequired": false,
+            "reason": "Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.",
+            "dependencies": [
+              "obligation:marketing",
+              "rate:USD"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          }
+        ],
+        "allocation": 4800000,
+        "receiptCredit": 0,
+        "reserve": 1500000,
+        "autonomy": 1000000,
+        "spendable": 3300000,
+        "committed": 2917187,
+        "remaining": 1882813,
+        "forecast": {
+          "confidence": 0.92,
+          "amount": 2000000,
+          "dueHours": 24,
+          "delayed": false,
+          "received": false
+        },
+        "reopened": [],
+        "unchanged": [],
+        "timeline": [
+          {
+            "hour": 0,
+            "cash": 48000,
+            "expected": 48000
+          },
+          {
+            "hour": 13,
+            "cash": 32028.13,
+            "expected": 32028.13
+          },
+          {
+            "hour": 24,
+            "cash": 32028.13,
+            "expected": 52028.13
+          },
+          {
+            "hour": 26,
+            "cash": 23828.13,
+            "expected": 43828.13
+          },
+          {
+            "hour": 60,
+            "cash": 18828.13,
+            "expected": 38828.13
+          },
+          {
+            "hour": 72,
+            "cash": 18828.13,
+            "expected": 38828.13
+          }
+        ]
+      }
+    },
+    {
+      "id": "plan-002",
+      "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+      "createdAt": "2026-10-06T08:48:06.719Z",
+      "state": "SUPERSEDED",
+      "cause": "accept_context",
+      "plan": {
+        "decisions": [
+          {
+            "id": "logistics",
+            "obligation": {
+              "id": "logistics",
+              "title": "Critical logistics supplier",
+              "category": "Supply chain · Germany",
+              "amount": 1400000,
+              "currency": "EUR",
+              "dueHours": 13,
+              "priority": "CRITICAL",
+              "synthetic": true
+            },
+            "cost": 1597187,
+            "action": "CONVERT_AND_PAY",
+            "reserveAfter": 3202813,
+            "approvalRequired": true,
+            "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
+            "dependencies": [
+              "obligation:logistics",
+              "rate:EUR",
+              "allocation",
+              "reserve"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          },
+          {
+            "id": "cloud",
+            "obligation": {
+              "id": "cloud",
+              "title": "Cloud infrastructure",
+              "category": "Infrastructure · United States",
+              "amount": 820000,
+              "currency": "USD",
+              "dueHours": 26,
+              "priority": "HIGH",
+              "synthetic": true
+            },
+            "cost": 820000,
+            "action": "PAY_NOW",
+            "reserveAfter": 2382813,
+            "approvalRequired": true,
+            "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+            "dependencies": [
+              "obligation:cloud",
+              "rate:USD",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "revision": 2
+          },
+          {
+            "id": "contractor",
+            "obligation": {
+              "id": "contractor",
+              "title": "UK contractor",
+              "category": "Professional services · United Kingdom",
+              "amount": 750000,
+              "currency": "GBP",
+              "dueHours": 38,
+              "priority": "MEDIUM",
+              "synthetic": true
+            },
+            "cost": 983101,
+            "action": "ESCALATE",
+            "reserveAfter": 1399712,
+            "approvalRequired": false,
+            "reason": "Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.",
+            "dependencies": [
+              "obligation:contractor",
+              "rate:GBP",
+              "allocation",
+              "reserve",
+              "forecast"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"ESCALATE\",\"reserveAfter\":1399712,\"approvalRequired\":false,\"reason\":\"Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.\"}",
+            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "revision": 2
+          },
+          {
+            "id": "insurance",
+            "obligation": {
+              "id": "insurance",
+              "title": "Insurance / compliance",
+              "category": "Business continuity · United States",
+              "amount": 500000,
+              "currency": "USD",
+              "dueHours": 60,
+              "priority": "MEDIUM",
+              "synthetic": true
+            },
+            "cost": 500000,
+            "action": "PAY_NOW",
+            "reserveAfter": 1882813,
+            "approvalRequired": true,
+            "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+            "dependencies": [
+              "obligation:insurance",
+              "rate:USD",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "revision": 2
+          },
+          {
+            "id": "marketing",
+            "obligation": {
+              "id": "marketing",
+              "title": "Marketing vendor",
+              "category": "Growth · United States",
+              "amount": 600000,
+              "currency": "USD",
+              "dueHours": 70,
+              "priority": "LOW",
+              "synthetic": true
+            },
+            "cost": 600000,
+            "action": "DEFER",
+            "reserveAfter": 4800000,
+            "approvalRequired": false,
+            "reason": "Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.",
+            "dependencies": [
+              "obligation:marketing",
+              "rate:USD"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          }
+        ],
+        "allocation": 4800000,
+        "receiptCredit": 0,
+        "reserve": 1500000,
+        "autonomy": 250000,
+        "spendable": 3300000,
+        "committed": 2917187,
+        "remaining": 1882813,
+        "forecast": {
+          "confidence": 0.31,
+          "amount": 2000000,
+          "dueHours": 144,
+          "delayed": true,
+          "received": false
+        },
+        "reopened": [
+          "cloud",
+          "contractor",
+          "insurance"
+        ],
+        "unchanged": [
+          "logistics",
+          "marketing"
+        ],
+        "timeline": [
+          {
+            "hour": 0,
+            "cash": 48000,
+            "expected": 48000
+          },
+          {
+            "hour": 13,
+            "cash": 32028.13,
+            "expected": 32028.13
+          },
+          {
+            "hour": 26,
+            "cash": 23828.13,
+            "expected": 23828.13
+          },
+          {
+            "hour": 60,
+            "cash": 18828.13,
+            "expected": 18828.13
+          },
+          {
+            "hour": 72,
+            "cash": 18828.13,
+            "expected": 18828.13
+          }
+        ]
+      }
+    },
+    {
+      "id": "plan-003",
+      "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+      "createdAt": "2026-10-06T08:48:08.895Z",
+      "state": "CURRENT",
+      "cause": "allocate_receipt",
+      "plan": {
+        "decisions": [
+          {
+            "id": "logistics",
+            "obligation": {
+              "id": "logistics",
+              "title": "Critical logistics supplier",
+              "category": "Supply chain · Germany",
+              "amount": 1400000,
+              "currency": "EUR",
+              "dueHours": 13,
+              "priority": "CRITICAL",
+              "synthetic": true
+            },
+            "cost": 1597187,
+            "action": "CONVERT_AND_PAY",
+            "reserveAfter": 3202813,
+            "approvalRequired": true,
+            "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
+            "dependencies": [
+              "obligation:logistics",
+              "rate:EUR",
+              "allocation",
+              "reserve"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          },
+          {
+            "id": "cloud",
+            "obligation": {
+              "id": "cloud",
+              "title": "Cloud infrastructure",
+              "category": "Infrastructure · United States",
+              "amount": 820000,
+              "currency": "USD",
+              "dueHours": 26,
+              "priority": "HIGH",
+              "synthetic": true
+            },
+            "cost": 820000,
+            "action": "PAY_NOW",
+            "reserveAfter": 2382813,
+            "approvalRequired": true,
+            "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+            "dependencies": [
+              "obligation:cloud",
+              "rate:USD",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "revision": 2
+          },
+          {
+            "id": "contractor",
+            "obligation": {
+              "id": "contractor",
+              "title": "UK contractor",
+              "category": "Professional services · United Kingdom",
+              "amount": 750000,
+              "currency": "GBP",
+              "dueHours": 38,
+              "priority": "MEDIUM",
+              "synthetic": true
+            },
+            "cost": 983101,
+            "action": "CONVERT_AND_PAY",
+            "reserveAfter": 1699712,
+            "approvalRequired": true,
+            "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
+            "dependencies": [
+              "obligation:contractor",
+              "rate:GBP",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":1699712,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+            "evaluatedAt": "2026-10-06T08:48:08.894Z",
+            "revision": 3
+          },
+          {
+            "id": "insurance",
+            "obligation": {
+              "id": "insurance",
+              "title": "Insurance / compliance",
+              "category": "Business continuity · United States",
+              "amount": 500000,
+              "currency": "USD",
+              "dueHours": 60,
+              "priority": "MEDIUM",
+              "synthetic": true
+            },
+            "cost": 500000,
+            "action": "PAY_NOW",
+            "reserveAfter": 1882813,
+            "approvalRequired": true,
+            "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+            "dependencies": [
+              "obligation:insurance",
+              "rate:USD",
+              "allocation",
+              "reserve",
+              "autonomy"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "revision": 2
+          },
+          {
+            "id": "marketing",
+            "obligation": {
+              "id": "marketing",
+              "title": "Marketing vendor",
+              "category": "Growth · United States",
+              "amount": 600000,
+              "currency": "USD",
+              "dueHours": 70,
+              "priority": "LOW",
+              "synthetic": true
+            },
+            "cost": 600000,
+            "action": "DEFER",
+            "reserveAfter": 4800000,
+            "approvalRequired": false,
+            "reason": "Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.",
+            "dependencies": [
+              "obligation:marketing",
+              "rate:USD"
+            ],
+            "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
+            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "revision": 1
+          }
+        ],
+        "allocation": 5600000,
+        "receiptCredit": 800000,
+        "reserve": 1500000,
+        "autonomy": 250000,
+        "spendable": 4100000,
+        "committed": 3900288,
+        "remaining": 1699712,
+        "forecast": {
+          "confidence": 0.31,
+          "amount": 2000000,
+          "dueHours": 144,
+          "delayed": true,
+          "received": false
+        },
+        "reopened": [
+          "contractor"
+        ],
+        "unchanged": [
+          "logistics",
+          "cloud",
+          "insurance",
+          "marketing"
+        ],
+        "timeline": [
+          {
+            "hour": 0,
+            "cash": 56000,
+            "expected": 56000
+          },
+          {
+            "hour": 13,
+            "cash": 40028.13,
+            "expected": 40028.13
+          },
+          {
+            "hour": 26,
+            "cash": 31828.13,
+            "expected": 31828.13
+          },
+          {
+            "hour": 38,
+            "cash": 21997.12,
+            "expected": 21997.12
+          },
+          {
+            "hour": 60,
+            "cash": 16997.12,
+            "expected": 16997.12
+          },
+          {
+            "hour": 72,
+            "cash": 16997.12,
+            "expected": 16997.12
+          }
+        ]
+      }
+    }
+  ],
+  "contexts": [
+    {
+      "id": "2c9bbd78-8b6a-41a7-ac08-3038cced9213",
+      "text": "Customer update · INV-4092\n\nThe expected USD 20,000 payment is delayed by 5 days. We expect to send it next week.",
+      "interpretation": {
+        "summary": "Customer update indicates that the expected USD 20,000 payment (INV-4092) is delayed by 5 days and will be sent next week.",
+        "forecastDelayDays": 5,
+        "invoice": null,
+        "rejectedInstructions": false,
+        "provider": "OPENROUTER",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free"
+      },
+      "acceptedAt": "2026-10-06T08:48:06.718Z"
+    }
+  ],
+  "approvals": [],
+  "operations": [
+    {
+      "id": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "kind": "FX_CONVERSION",
+      "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+      "status": "SETTLED",
+      "observedAt": "2026-10-06T08:48:08.894Z",
+      "provenance": "PRE_EXISTING_V1"
+    },
+    {
+      "id": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "kind": "TRANSFER",
+      "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+      "status": "PAID",
+      "observedAt": "2026-10-06T08:48:08.894Z",
+      "provenance": "PRE_EXISTING_V1"
+    },
+    {
+      "id": "TPKIT1-2026-ONE",
+      "requestId": "statement_ref:TPKIT1-2026-ONE",
+      "kind": "DEPOSIT",
+      "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "status": "SETTLED",
+      "provenance": "PRE_EXISTING_V1",
+      "observedAt": "2026-10-06T08:48:00.552Z"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "actionId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+      "kind": "FX_CONVERSION",
+      "expected": [
+        {
+          "currency": "USD",
+          "amount": -1597187
+        },
+        {
+          "currency": "EUR",
+          "amount": 1400000
+        }
+      ],
+      "observed": [
+        {
+          "currency": "USD",
+          "amount": -1597187
+        },
+        {
+          "currency": "EUR",
+          "amount": 1400000
+        }
+      ],
+      "difference": [
+        {
+          "currency": "USD",
+          "amount": 0
+        },
+        {
+          "currency": "EUR",
+          "amount": 0
+        }
+      ],
+      "expectedStatus": "SETTLED",
+      "observedStatus": "SETTLED",
+      "status": "MATCHED",
+      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "basis": "LIVE_RESOURCE",
+      "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
+    },
+    {
+      "id": "rec-de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "actionId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+      "kind": "TRANSFER",
+      "expected": [
+        {
+          "currency": "EUR",
+          "amount": -1400000
+        }
+      ],
+      "observed": [
+        {
+          "currency": "EUR",
+          "amount": -1400000
+        }
+      ],
+      "difference": [
+        {
+          "currency": "EUR",
+          "amount": 0
+        }
+      ],
+      "expectedStatus": "PAID",
+      "observedStatus": "PAID",
+      "status": "MATCHED",
+      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "basis": "LIVE_RESOURCE",
+      "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
+    },
+    {
+      "id": "rec-TPKIT1-2026-ONE",
+      "actionId": "TPKIT1-2026-ONE",
+      "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "kind": "DEPOSIT",
+      "expected": [
+        {
+          "currency": "EUR",
+          "amount": 800000
+        }
+      ],
+      "observed": [
+        {
+          "currency": "EUR",
+          "amount": 800000
+        }
+      ],
+      "difference": [
+        {
+          "currency": "EUR",
+          "amount": 0
+        }
+      ],
+      "expectedStatus": "SETTLED",
+      "observedStatus": "SETTLED",
+      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "status": "MATCHED",
+      "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
+      "detail": "Exact historical before/after EUR wallet delta plus current provider deposit readback. Subsequent unrelated wallet movements do not rewrite this receipt."
+    },
+    {
+      "id": "rec-campaign-wallet",
+      "actionId": "campaign-wallet",
+      "kind": "WALLET",
+      "expected": [
+        {
+          "currency": "CNY",
+          "amount": 1000000000
+        },
+        {
+          "currency": "EUR",
+          "amount": 1000800000
+        },
+        {
+          "currency": "GBP",
+          "amount": 1000000000
+        },
+        {
+          "currency": "USD",
+          "amount": 998402813
+        }
+      ],
+      "observed": [
+        {
+          "currency": "CNY",
+          "amount": 1000000000
+        },
+        {
+          "currency": "EUR",
+          "amount": 1000800000
+        },
+        {
+          "currency": "GBP",
+          "amount": 1000000000
+        },
+        {
+          "currency": "USD",
+          "amount": 998402813
+        }
+      ],
+      "difference": [
+        {
+          "currency": "CNY",
+          "amount": 0
+        },
+        {
+          "currency": "EUR",
+          "amount": 0
+        },
+        {
+          "currency": "GBP",
+          "amount": 0
+        },
+        {
+          "currency": "USD",
+          "amount": 0
+        }
+      ],
+      "expectedStatus": "CURRENT_BALANCES",
+      "observedStatus": "CURRENT_BALANCES",
+      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "status": "MATCHED",
+      "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
+      "detail": "Current available wallets compared with the recorded campaign ending balances. A variance may be newer external activity and requires investigation; it never proves an original payment failed."
+    }
+  ],
+  "incidents": [],
+  "events": [
+    {
+      "id": "31f42779-818f-4d88-b40e-3a98458cc5fc",
+      "at": "2026-10-06T08:48:00.552Z",
+      "actor": "AIRWALLEX",
+      "title": "BALANCES_OBSERVED",
+      "detail": "Live Sandbox wallet, rates, Global Account and beneficiary corridors observed.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": ""
+      }
+    },
+    {
+      "id": "7ea470f7-2c51-45af-b311-3627b607c683",
+      "at": "2026-10-06T08:48:00.552Z",
+      "actor": "AIRWALLEX",
+      "title": "HISTORICAL_ACTION_VERIFIED",
+      "detail": "FX_CONVERSION SETTLED; original campaign action read back, never re-executed.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "",
+        "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+        "providerResourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d"
+      }
+    },
+    {
+      "id": "0df95fcc-4a50-4f61-a61e-9508e278e7a4",
+      "at": "2026-10-06T08:48:00.552Z",
+      "actor": "AIRWALLEX",
+      "title": "HISTORICAL_ACTION_VERIFIED",
+      "detail": "TRANSFER PAID; original campaign action read back, never re-executed.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "",
+        "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+        "providerResourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049"
+      }
+    },
+    {
+      "id": "ee7b6686-558d-48f6-8f11-b51fadc99699",
+      "at": "2026-10-06T08:48:00.552Z",
+      "actor": "AIRWALLEX",
+      "title": "HISTORICAL_DEPOSIT_VERIFIED",
+      "detail": "Original EUR 8,000 Sandbox receipt and its historical exact wallet delta verified; no simulation repeated.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "",
+        "requestId": "statement_ref:TPKIT1-2026-ONE",
+        "providerResourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa"
+      }
+    },
+    {
+      "id": "4ab83dee-663c-42dd-80ae-fd38d4d4eead",
+      "at": "2026-10-06T08:48:00.553Z",
+      "actor": "POLICY_ENGINE",
+      "title": "POLICY_CHECKED",
+      "detail": "Confidence 92%; authority USD 10000; reserve protected.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "planId": "plan-001"
+      }
+    },
+    {
+      "id": "da6bcbb8-5f12-448f-aab0-67b386ec2a28",
+      "at": "2026-10-06T08:48:00.553Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "PLAN_RECALCULATED",
+      "detail": "plan-001; 0 reopened, 0 unchanged; remaining reserve USD 18828.13.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "planId": "plan-001"
+      }
+    },
+    {
+      "id": "187e4bdf-4981-40e9-a0e9-ad627a4daa66",
+      "at": "2026-10-06T08:48:00.553Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "RECONCILIATION_CHECKED",
+      "detail": "4 matched; 0 exceptions; 0 pending.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "planId": "plan-001",
+        "reconciliationIds": [
+          "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
+          "rec-de5b666d-b246-5bd0-abd6-21adc50ab756",
+          "rec-TPKIT1-2026-ONE",
+          "rec-campaign-wallet"
+        ]
+      }
+    },
+    {
+      "id": "59e7f89e-3966-45e7-bdb0-4be71390c054",
+      "at": "2026-10-06T08:48:05.944Z",
+      "actor": "AGENT",
+      "title": "CONTEXT_INTERPRETED",
+      "detail": "OPENROUTER; Customer update indicates that the expected USD 20,000 payment (INV-4092) is delayed by 5 days and will be sent next week. Facts require review before changing policy context.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "planId": "plan-001"
+      }
+    },
+    {
+      "id": "00ef84b7-102c-42a8-9ca8-597c60684268",
+      "at": "2026-10-06T08:48:06.718Z",
+      "actor": "USER",
+      "title": "CONTEXT_ACCEPTED",
+      "detail": "Reviewed 5-day delay; deterministic confidence and authority will change.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "planId": "plan-001"
+      }
+    },
+    {
+      "id": "6baa6714-67e1-4f22-870d-a85dc54989ea",
+      "at": "2026-10-06T08:48:06.719Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "PLAN_SUPERSEDED",
+      "detail": "plan-001; 3 decisions reopened, 2 identities retained.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "planId": "plan-001"
+      }
+    },
+    {
+      "id": "11542764-c6e0-4ae2-88ef-bff3072095dd",
+      "at": "2026-10-06T08:48:06.719Z",
+      "actor": "POLICY_ENGINE",
+      "title": "POLICY_CHECKED",
+      "detail": "Confidence 31%; authority USD 2500; reserve protected.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "planId": "plan-002"
+      }
+    },
+    {
+      "id": "9eefec41-bb7b-4529-9613-2beafcba5dd4",
+      "at": "2026-10-06T08:48:06.719Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "PLAN_RECALCULATED",
+      "detail": "plan-002; 3 reopened, 2 unchanged; remaining reserve USD 18828.13.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "planId": "plan-002"
+      }
+    },
+    {
+      "id": "fe3ded53-9ef1-48d2-9c2b-316d781398ae",
+      "at": "2026-10-06T08:48:08.894Z",
+      "actor": "AIRWALLEX",
+      "title": "BALANCES_REFRESHED",
+      "detail": "Fresh provider reads; no financial mutation.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "planId": "plan-002"
+      }
+    },
+    {
+      "id": "758846b0-7e19-48db-bc60-1cd2dcff8126",
+      "at": "2026-10-06T08:48:08.894Z",
+      "actor": "USER",
+      "title": "RECEIPT_AUTHORITY_ALLOCATED",
+      "detail": "Previously settled Sandbox receipt assigned to this operating plan once. No new deposit POST.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "planId": "plan-002"
+      }
+    },
+    {
+      "id": "48729359-9395-4393-8401-946b7e15eae9",
+      "at": "2026-10-06T08:48:08.895Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "PLAN_SUPERSEDED",
+      "detail": "plan-002; 1 decisions reopened, 4 identities retained.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "planId": "plan-002"
+      }
+    },
+    {
+      "id": "467bb25b-bc84-45b5-aba3-db13b1ca516f",
+      "at": "2026-10-06T08:48:08.895Z",
+      "actor": "POLICY_ENGINE",
+      "title": "POLICY_CHECKED",
+      "detail": "Confidence 31%; authority USD 2500; reserve protected.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "planId": "plan-003"
+      }
+    },
+    {
+      "id": "61759f5d-7112-4f83-9c33-7b0e7573967d",
+      "at": "2026-10-06T08:48:08.895Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "PLAN_RECALCULATED",
+      "detail": "plan-003; 1 reopened, 4 unchanged; remaining reserve USD 16997.12.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "planId": "plan-003"
+      }
+    },
+    {
+      "id": "02dbc88b-9366-4232-8bf6-2d646b1f287f",
+      "at": "2026-10-06T08:48:08.895Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "RECONCILIATION_CHECKED",
+      "detail": "4 matched; 0 exceptions; 0 pending.",
+      "correlation": {
+        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "planId": "plan-003",
+        "reconciliationIds": [
+          "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
+          "rec-de5b666d-b246-5bd0-abd6-21adc50ab756",
+          "rec-TPKIT1-2026-ONE",
+          "rec-campaign-wallet"
+        ]
+      }
+    }
+  ],
+  "placement": {
+    "positions": [
+      {
+        "currency": "USD",
+        "wallet": 998402813,
+        "current": 3202813,
+        "target": 2820000,
+        "gap": -382813,
+        "why": "Reserve plus funded USD obligations; existing FX funding already deducted."
+      },
+      {
+        "currency": "EUR",
+        "wallet": 1000800000,
+        "current": 718749,
+        "target": 0,
+        "gap": -718749,
+        "why": "Funded EUR obligations due within 72h, excluding the previously paid supplier."
+      },
+      {
+        "currency": "GBP",
+        "wallet": 1000000000,
+        "current": 0,
+        "target": 750000,
+        "gap": 750000,
+        "why": "Funded GBP obligations due within 72h, excluding the previously paid supplier."
+      }
+    ],
+    "proposals": [
+      {
+        "sellCurrency": "USD",
+        "buyCurrency": "GBP",
+        "sellAmount": 382813,
+        "buyAmount": 292045,
+        "valueUsd": 382813
+      },
+      {
+        "sellCurrency": "EUR",
+        "buyCurrency": "GBP",
+        "sellAmount": 539321,
+        "buyAmount": 457955,
+        "valueUsd": 600289
+      }
+    ],
+    "conserved": true,
+    "reserveAfter": 1699711,
+    "reason": "Minimum indicated movements to place funded cash by currency. Indicative rates; exact quotes and fees are required before execution."
+  },
+  "nextStep": "MONITOR",
+  "persistence": "PRIVATE_BLOB"
+}

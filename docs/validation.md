@@ -1,26 +1,31 @@
-# Validation evidence
+# Validation — v2, 6 October 2026
 
-Verified 3 October 2026, Windows Node 24.13.1, Next.js 16.3.8, React 19.3.0.
+Windows, Node 24.13.1, Next.js 16.3.8 and React 19.3.0.
 
-| Check                         | Outcome                                                                                                                  |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Vitest                        | 19 tests pass across money/policy, authorization, REST adapters and origin handling                                      |
-| ESLint                        | Pass, zero warnings                                                                                                      |
-| TypeScript                    | Pass                                                                                                                     |
-| Production build              | Pass locally and on Vercel                                                                                               |
-| Playwright fixture suite      | 9 tests pass, 1440 / 1024 / 390 viewport widths                                                                          |
-| Live browser                  | Real balances/plan/reserve guard, actual quote and exact approval, real conversion and payout; zero page errors          |
-| Live financial reconciliation | Exactly one fixed campaign conversion and one fixed campaign transfer, confirmed by fresh reads                          |
-| Transfer simulation           | SENT then PAID verified through GET; explicitly simulated                                                                |
-| OpenRouter live inference     | Real `nvidia/nemotron-3-super-120b-a12b:free` returned validated delay evidence; saved in `docs/evidence/live-read.json` |
-| Deployment live reads         | Public HTTP 200, actual provider financial evidence                                                                      |
-| Deployment false approval     | Forged approval rejected with HTTP 400, no mutation                                                                      |
-| Deployment evidence/replan    | Works; free-model HTTP 429 activated the explicitly labelled deterministic fallback                                      |
-| Client/source secret scan     | Zero full credential matches in source and built public chunks                                                           |
-| Runtime dependency audit      | `npm audit --omit=dev`: zero vulnerabilities                                                                             |
+| Check                                       | Result                                                                             |
+| ------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Baseline v1                                 | 21 unit tests / 12 Playwright cases passed before refactor                         |
+| Current Vitest                              | 50 tests across 9 files pass                                                       |
+| Current Playwright                          | 24 cases pass; v1 retained and new cockpit covered                                 |
+| Lint                                        | Pass, zero warnings                                                                |
+| TypeScript                                  | Pass                                                                               |
+| Local production build                      | Pass                                                                               |
+| Runtime dependency audit                    | Zero vulnerabilities, npm audit --omit=dev                                         |
+| Secret scan                                 | Zero known credential matches in source/evidence and built client files            |
+| Actual local world                          | Private Blob persistence, refresh survival and conditional write verified          |
+| Actual provider reconciliation              | FX / transfer / deposit / ending wallets all MATCHED                               |
+| Selective replan                            | Delay 3 reopened; historical receipt allocation 1 reopened / 4 identities retained |
+| Replay / forged command                     | Stale revision HTTP 409; extra execution amount HTTP 400; no write                 |
+| Actual responsive captures                  | 375, 390, 768, 1024, 1280, 1440, 1920; no horizontal overflow                      |
+| Actual browser                              | No page/console errors recorded                                                    |
+| New financial operations in v2 verification | Zero                                                                               |
 
-The existing OpenRouter account subsequently returned HTTP 429 for both approved free model IDs. This is a current free inference availability limitation, not a fabricated successful deployed LLM call. The genuine earlier response remains preserved. No paid fallback was attempted. The public interface continues through a labelled deterministic fact parser and the same deterministic treasury policy. Retry after the provider's free quota becomes available; changing to a paid model is deliberately rejected.
+The actual live walkthrough records the current provider/fallback. Free inference may fail or be throttled; labelled deterministic extraction preserves review and treasury controls. A prior real free model response remains in original live-read evidence. No paid fallback is enabled.
 
-Fixtures are used only in the browser test suite. Public/live screenshot captures and deployed checks do not intercept or fabricate Airwallex/OpenRouter responses.
+Fixture tests are explicit and isolated from real provider evidence. HTTP failures, response loss, partial/uncertain operation claims, storage absence, strong-version refusal, quote/approval expiry, tampering, policy injection, stale context and nonterminal payment cases are tested.
 
-Five development-only npm advisory paths remain in the linter's `braces` dependency graph; no compatible patched registry release was available. See security limitations. This is disclosed separately from the passing runtime audit.
+Real storage validation detected compressed weak ETags that mocked tests missed. Identity-encoded downloads plus strong-version checks fixed conditional writes; a regression test now refuses weak versions. No concurrency protection was removed to make the demo pass.
+
+Original financial operations are dated 3 October. The v2 script blocks banking mutations, compares unchanged real wallets and never resets IDs. Current calculated reserves use observed indicative rates; historical deposit reserve is separate.
+
+Five development-only linter advisory paths remain disclosed in security-and-limitations.md. Final deployment readback and production screenshots are recorded in docs/evidence/v2/deployed-verification.json and docs/screenshots/v2/deployed.

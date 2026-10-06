@@ -1,0 +1,47 @@
+{
+  "positions": [
+    {
+      "currency": "USD",
+      "wallet": 998402813,
+      "current": 3202813,
+      "target": 2820000,
+      "gap": -382813,
+      "why": "Reserve plus funded USD obligations; existing FX funding already deducted."
+    },
+    {
+      "currency": "EUR",
+      "wallet": 1000800000,
+      "current": 718749,
+      "target": 0,
+      "gap": -718749,
+      "why": "Funded EUR obligations due within 72h, excluding the previously paid supplier."
+    },
+    {
+      "currency": "GBP",
+      "wallet": 1000000000,
+      "current": 0,
+      "target": 750000,
+      "gap": 750000,
+      "why": "Funded GBP obligations due within 72h, excluding the previously paid supplier."
+    }
+  ],
+  "proposals": [
+    {
+      "sellCurrency": "USD",
+      "buyCurrency": "GBP",
+      "sellAmount": 382813,
+      "buyAmount": 292045,
+      "valueUsd": 382813
+    },
+    {
+      "sellCurrency": "EUR",
+      "buyCurrency": "GBP",
+      "sellAmount": 539321,
+      "buyAmount": 457955,
+      "valueUsd": 600289
+    }
+  ],
+  "conserved": true,
+  "reserveAfter": 1699711,
+  "reason": "Minimum indicated movements to place funded cash by currency. Indicative rates; exact quotes and fees are required before execution."
+}

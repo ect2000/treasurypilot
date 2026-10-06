@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:live": "tsx --env-file=.env.local scripts/live-check.ts",
+    "verify:governor": "tsx scripts/verify-governor.ts",
     "validate:financial": "tsx --env-file=.env.local scripts/financial-check.ts",
     "format": "prettier --write app components lib scripts tests docs *.ts *.mjs *.json *.md --ignore-path .gitignore"
   },

@@ -1,0 +1,197 @@
+{
+  "id": "plan-002",
+  "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+  "createdAt": "2026-10-06T08:48:06.719Z",
+  "state": "CURRENT",
+  "cause": "accept_context",
+  "plan": {
+    "decisions": [
+      {
+        "id": "logistics",
+        "obligation": {
+          "id": "logistics",
+          "title": "Critical logistics supplier",
+          "category": "Supply chain · Germany",
+          "amount": 1400000,
+          "currency": "EUR",
+          "dueHours": 13,
+          "priority": "CRITICAL",
+          "synthetic": true
+        },
+        "cost": 1597187,
+        "action": "CONVERT_AND_PAY",
+        "reserveAfter": 3202813,
+        "approvalRequired": true,
+        "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
+        "dependencies": [
+          "obligation:logistics",
+          "rate:EUR",
+          "allocation",
+          "reserve"
+        ],
+        "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+        "evaluatedAt": "2026-10-06T08:48:00.553Z",
+        "revision": 1
+      },
+      {
+        "id": "cloud",
+        "obligation": {
+          "id": "cloud",
+          "title": "Cloud infrastructure",
+          "category": "Infrastructure · United States",
+          "amount": 820000,
+          "currency": "USD",
+          "dueHours": 26,
+          "priority": "HIGH",
+          "synthetic": true
+        },
+        "cost": 820000,
+        "action": "PAY_NOW",
+        "reserveAfter": 2382813,
+        "approvalRequired": true,
+        "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+        "dependencies": [
+          "obligation:cloud",
+          "rate:USD",
+          "allocation",
+          "reserve",
+          "autonomy"
+        ],
+        "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+        "evaluatedAt": "2026-10-06T08:48:06.718Z",
+        "revision": 2
+      },
+      {
+        "id": "contractor",
+        "obligation": {
+          "id": "contractor",
+          "title": "UK contractor",
+          "category": "Professional services · United Kingdom",
+          "amount": 750000,
+          "currency": "GBP",
+          "dueHours": 38,
+          "priority": "MEDIUM",
+          "synthetic": true
+        },
+        "cost": 983101,
+        "action": "ESCALATE",
+        "reserveAfter": 1399712,
+        "approvalRequired": false,
+        "reason": "Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.",
+        "dependencies": [
+          "obligation:contractor",
+          "rate:GBP",
+          "allocation",
+          "reserve",
+          "forecast"
+        ],
+        "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"ESCALATE\",\"reserveAfter\":1399712,\"approvalRequired\":false,\"reason\":\"Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.\"}",
+        "evaluatedAt": "2026-10-06T08:48:06.718Z",
+        "revision": 2
+      },
+      {
+        "id": "insurance",
+        "obligation": {
+          "id": "insurance",
+          "title": "Insurance / compliance",
+          "category": "Business continuity · United States",
+          "amount": 500000,
+          "currency": "USD",
+          "dueHours": 60,
+          "priority": "MEDIUM",
+          "synthetic": true
+        },
+        "cost": 500000,
+        "action": "PAY_NOW",
+        "reserveAfter": 1882813,
+        "approvalRequired": true,
+        "reason": "Fund from the authorized USD allocation while preserving the reserve.",
+        "dependencies": [
+          "obligation:insurance",
+          "rate:USD",
+          "allocation",
+          "reserve",
+          "autonomy"
+        ],
+        "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
+        "evaluatedAt": "2026-10-06T08:48:06.718Z",
+        "revision": 2
+      },
+      {
+        "id": "marketing",
+        "obligation": {
+          "id": "marketing",
+          "title": "Marketing vendor",
+          "category": "Growth · United States",
+          "amount": 600000,
+          "currency": "USD",
+          "dueHours": 70,
+          "priority": "LOW",
+          "synthetic": true
+        },
+        "cost": 600000,
+        "action": "DEFER",
+        "reserveAfter": 4800000,
+        "approvalRequired": false,
+        "reason": "Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.",
+        "dependencies": [
+          "obligation:marketing",
+          "rate:USD"
+        ],
+        "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
+        "evaluatedAt": "2026-10-06T08:48:00.553Z",
+        "revision": 1
+      }
+    ],
+    "allocation": 4800000,
+    "receiptCredit": 0,
+    "reserve": 1500000,
+    "autonomy": 250000,
+    "spendable": 3300000,
+    "committed": 2917187,
+    "remaining": 1882813,
+    "forecast": {
+      "confidence": 0.31,
+      "amount": 2000000,
+      "dueHours": 144,
+      "delayed": true,
+      "received": false
+    },
+    "reopened": [
+      "cloud",
+      "contractor",
+      "insurance"
+    ],
+    "unchanged": [
+      "logistics",
+      "marketing"
+    ],
+    "timeline": [
+      {
+        "hour": 0,
+        "cash": 48000,
+        "expected": 48000
+      },
+      {
+        "hour": 13,
+        "cash": 32028.13,
+        "expected": 32028.13
+      },
+      {
+        "hour": 26,
+        "cash": 23828.13,
+        "expected": 23828.13
+      },
+      {
+        "hour": 60,
+        "cash": 18828.13,
+        "expected": 18828.13
+      },
+      {
+        "hour": 72,
+        "cash": 18828.13,
+        "expected": 18828.13
+      }
+    ]
+  }
+}
