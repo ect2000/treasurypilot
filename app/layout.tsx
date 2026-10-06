@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./governor.css";
 export const metadata: Metadata = {
-  title: "TreasuryPilot — Adaptive Treasury",
+  title: "TreasuryPilot — Autonomous Cash Governor",
   description:
     "AI interprets the situation. Policy protects liquidity. Airwallex Sandbox executes.",
   robots: { index: true, follow: true },

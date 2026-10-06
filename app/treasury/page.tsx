@@ -1,4 +1,4 @@
-import { TreasuryWorkspace } from "@/components/treasury-workspace";
+import { CashGovernor } from "@/components/governor";
 export default function TreasuryPage() {
-  return <TreasuryWorkspace />;
+  return <CashGovernor />;
 }

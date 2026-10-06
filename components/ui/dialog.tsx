@@ -7,18 +7,22 @@ export function Inspector({
   title,
   description,
   children,
+  variant,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   description: string;
   children: React.ReactNode;
+  variant?: "governor";
 }) {
   return (
     <Primitive.Root open={open} onOpenChange={onOpenChange}>
       <Primitive.Portal>
         <Primitive.Overlay className="dialog-overlay" />
-        <Primitive.Content className="inspector">
+        <Primitive.Content
+          className={`inspector ${variant === "governor" ? "g-inspector" : ""}`}
+        >
           <Primitive.Close
             className="icon-button inspector-close"
             aria-label="Close inspector"

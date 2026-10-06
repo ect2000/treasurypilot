@@ -142,7 +142,7 @@ export default function Landing() {
         <motion.div className="hero-copy" initial={false}>
           <div className="eyebrow">
             <span />
-            THE ADAPTIVE TREASURY CONTROLLER
+            AUTONOMOUS CASH GOVERNOR
           </div>
           <h1>
             Treasury
@@ -150,12 +150,13 @@ export default function Landing() {
             Pilot<span>.</span>
           </h1>
           <h2>
-            Every obligation.
-            <br />A deliberate decision.
+            Treasury that acts.
+            <br />
+            And knows when to stop.
           </h2>
           <p>
-            Adaptive treasury that knows what to pay, convert, defer or
-            escalate.
+            Autonomous cash management with bounded authority. Observe, plan,
+            act and reconcile through Airwallex Sandbox.
           </p>
           <Link className="button primary hero-cta" href="/treasury">
             Enter the treasury <ArrowRight size={18} />

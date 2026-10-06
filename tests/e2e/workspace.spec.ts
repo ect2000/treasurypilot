@@ -85,7 +85,7 @@ test("one explicit Sandbox receipt refreshes the real-balance fixture and only r
       json: { deposit: { status: "SETTLED", delta: minor("8000", "EUR") } },
     });
   });
-  await page.goto("/treasury");
+  await page.goto("/treasury/v1");
   await page.getByRole("button", { name: "Build treasury plan" }).click();
   await expect(
     page.getByRole("button", { name: "SIMULATE CUSTOMER DEPOSIT" }),
@@ -134,7 +134,7 @@ test("plan, explanation, exact approval and reserve block", async ({
       },
     }),
   );
-  await page.goto("/treasury");
+  await page.goto("/treasury/v1");
   await page.getByRole("button", { name: "Build treasury plan" }).click();
   await expect(page.getByRole("table")).toContainText(
     "Critical logistics supplier",
@@ -185,7 +185,7 @@ test("reviewed delay evidence reduces autonomy and replans incrementally", async
       },
     }),
   );
-  await page.goto("/treasury");
+  await page.goto("/treasury/v1");
   await page.getByRole("button", { name: "Build treasury plan" }).click();
   await page.getByRole("button", { name: "Review customer update" }).click();
   await page.getByRole("button", { name: "Interpret evidence" }).click();
@@ -209,7 +209,7 @@ test("landing and workspace fit the viewport with keyboard access", async ({
 }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await page.getByRole("link", { name: "Enter the treasury" }).click();
+  await page.goto("/treasury/v1");
   await expect(
     page.getByRole("heading", { name: "Treasury, under control." }),
   ).toBeVisible();
