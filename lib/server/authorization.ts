@@ -373,6 +373,9 @@ export async function executeApproved(token: string, stateVersion: string) {
     expired: Date.parse(c.quote.validUntil) < Date.now(),
     campaignCap: POLICY.executionCap,
   });
+  // Persist a shared claim across browsers/cold starts before money leaves.
+  // A lost response remains claimed: only provider readback can resolve it.
+  await (await import("./governor-store")).claimOperation(c.requestId, fingerprint(c));
   return c.operation === "CONVERT"
     ? client.convert(rawQuote!, ids.conversion)
     : client.transfer(beneficiary.id, ids.transfer);

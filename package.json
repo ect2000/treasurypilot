@@ -19,6 +19,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@vercel/blob": "^2.8.0",
     "decimal.js": "^10.6.0",
     "lucide-react": "^0.577.0",
     "motion": "^12.35.0",

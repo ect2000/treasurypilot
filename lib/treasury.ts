@@ -6,6 +6,11 @@ export const POLICY = Object.freeze({
   executionCap: minor("18000"),
   maxCampaignBuy: minor("14000", "EUR"),
   receiptCreditCap: minor("8000"),
+  authorityTiers: [
+    { confidence: 0.85, fx: minor("10000"), transfer: minor("10000") },
+    { confidence: 0.6, fx: minor("5000"), transfer: minor("5000") },
+    { confidence: 0, fx: minor("2500"), transfer: minor("2500") },
+  ],
 });
 export const obligations: Obligation[] = [
   {
@@ -69,11 +74,7 @@ export const initialForecast: Forecast = {
 export function autonomyLimit(confidence: number) {
   if (!Number.isFinite(confidence) || confidence < 0 || confidence > 1)
     throw new Error("Invalid confidence");
-  return confidence >= 0.85
-    ? minor("10000")
-    : confidence >= 0.6
-      ? minor("5000")
-      : minor("2500");
+  return POLICY.authorityTiers.find((t) => confidence >= t.confidence)!.fx;
 }
 export function updateForecast(
   forecast: Forecast,
@@ -167,7 +168,7 @@ export function buildPlan(
       action = obligation.currency === "USD" ? "PAY_NOW" : "CONVERT_AND_PAY";
       approvalRequired = cost > autonomy;
       // Above the maximum tier always requires approval, so confidence alone cannot change that decision.
-      if (cost <= minor("10000")) dependencies.push("autonomy");
+      if (cost <= POLICY.authorityTiers[0].fx) dependencies.push("autonomy");
       reason =
         obligation.currency === "USD"
           ? "Fund from the authorized USD allocation while preserving the reserve."
@@ -265,34 +266,192 @@ export function replanAfterDeposit(
 ): Plan {
   if (!forecast.delayed || previous.receiptCredit !== 0 || receiptCredit <= 0)
     throw new Error("Deposit replan requires the delayed pre-deposit plan");
-  const next = buildPlan(
-    rates,
-    forecast,
-    previous,
-    custom,
-    now,
-    settledSupplierCost,
-    receiptCredit,
-  );
+  if (
+    JSON.stringify(previous.forecast) !== JSON.stringify(forecast) ||
+    custom.length > 0 ||
+    previous.decisions.some(
+      (d) =>
+        d.cost !==
+        (d.id === "logistics" && settledSupplierCost !== undefined
+          ? settledSupplierCost
+          : usdCost(d.obligation.amount, rates[d.obligation.currency])),
+    )
+  ) {
+    throw new Error(
+      "Deposit-only replan requires unchanged forecast, obligations and costs",
+    );
+  }
+  if (
+    !Number.isSafeInteger(receiptCredit) ||
+    receiptCredit > POLICY.receiptCreditCap
+  )
+    throw new Error("Unverified receipt credit exceeds the fixed campaign cap");
+  // Preserve prior funded commitments. Only reserve-blocked obligations depend
+  // on this new liquidity; discretionary deferrals and funded decisions survive.
+  const allocation = POLICY.allocation + receiptCredit;
+  let remaining = previous.remaining + receiptCredit;
   const reopened: string[] = [];
   const unchanged: string[] = [];
-  next.decisions = next.decisions.map((decision) => {
-    const old = previous.decisions.find((item) => item.id === decision.id);
+  const decisions = previous.decisions.map((old) => {
     if (
-      old &&
-      old.action === decision.action &&
-      old.cost === decision.cost &&
-      old.approvalRequired === decision.approvalRequired &&
-      old.reason === decision.reason &&
-      JSON.stringify(old.obligation) === JSON.stringify(decision.obligation)
+      !["DEFER", "ESCALATE"].includes(old.action) ||
+      old.obligation.priority === "LOW"
     ) {
-      unchanged.push(decision.id);
+      unchanged.push(old.id);
       return old;
     }
-    if (old) reopened.push(decision.id);
-    return decision;
+    const check = reserveCheck(remaining, old.cost, POLICY.reserve, allocation);
+    if (!check.pass) {
+      unchanged.push(old.id);
+      return old;
+    }
+    remaining = check.after;
+    const action: Decision["action"] =
+      old.obligation.currency === "USD" ? "PAY_NOW" : "CONVERT_AND_PAY";
+    const reason =
+      old.obligation.currency === "USD"
+        ? "Fund from the authorized USD allocation while preserving the reserve."
+        : "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.";
+    const approvalRequired = old.cost > previous.autonomy;
+    const dependency = [
+      `obligation:${old.id}`,
+      `rate:${old.obligation.currency}`,
+      "allocation",
+      "reserve",
+      ...(old.cost <= POLICY.authorityTiers[0].fx ? ["autonomy"] : []),
+    ];
+    reopened.push(old.id);
+    return {
+      ...old,
+      action,
+      reason,
+      approvalRequired,
+      reserveAfter: check.after,
+      dependencies: dependency,
+      signature: JSON.stringify({
+        obligation: old.obligation,
+        cost: old.cost,
+        action,
+        reserveAfter: check.after,
+        approvalRequired,
+        reason,
+      }),
+      revision: old.revision + 1,
+      evaluatedAt: now,
+    };
   });
-  next.reopened = reopened;
-  next.unchanged = unchanged;
-  return next;
+  return {
+    ...previous,
+    decisions,
+    allocation,
+    receiptCredit,
+    spendable: allocation - POLICY.reserve,
+    committed: allocation - remaining,
+    remaining,
+    reopened,
+    unchanged,
+    timeline: cashTimeline(decisions, allocation, forecast),
+  };
+}
+
+export function cashTimeline(
+  decisions: Decision[],
+  allocation: number,
+  forecast: Forecast,
+) {
+  let cash = allocation;
+  const timeline = [{ hour: 0, cash: cash / 100, expected: cash / 100 }];
+  const funded = decisions
+    .filter((d) => ["PAY_NOW", "CONVERT_AND_PAY"].includes(d.action))
+    .toSorted((a, b) => a.obligation.dueHours - b.obligation.dueHours);
+  const hours = [
+    ...new Set([
+      ...funded.map((d) => d.obligation.dueHours),
+      ...(!forecast.delayed && forecast.dueHours <= 72
+        ? [forecast.dueHours]
+        : []),
+      72,
+    ]),
+  ].sort((a, b) => a - b);
+  for (const hour of hours) {
+    cash -= funded
+      .filter((d) => d.obligation.dueHours === hour)
+      .reduce((sum, d) => sum + d.cost, 0);
+    timeline.push({
+      hour,
+      cash: cash / 100,
+      expected:
+        (cash +
+          (!forecast.delayed && hour >= forecast.dueHours
+            ? forecast.amount
+            : 0)) /
+        100,
+    });
+  }
+  return timeline;
+}
+
+export function replanForecastOnly(
+  previous: Plan,
+  forecast: Forecast,
+  now = new Date().toISOString(),
+): Plan {
+  const autonomy = autonomyLimit(forecast.confidence),
+    reopened: string[] = [],
+    unchanged: string[] = [];
+  const decisions = previous.decisions.map((old) => {
+    if (!old.dependencies.some((d) => d === "forecast" || d === "autonomy")) {
+      unchanged.push(old.id);
+      return old;
+    }
+    let action = old.action,
+      reason = old.reason,
+      approvalRequired = old.approvalRequired;
+    if (old.dependencies.includes("autonomy"))
+      approvalRequired = old.cost > autonomy;
+    if (old.dependencies.includes("forecast")) {
+      const future =
+        forecast.confidence >= 0.85 &&
+        forecast.dueHours < old.obligation.dueHours &&
+        !forecast.delayed;
+      action = future ? "DEFER" : "ESCALATE";
+      reason = future
+        ? "Await the expected receipt, then re-evaluate. Forecast cash is not available cash and cannot authorize execution."
+        : "Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.";
+    }
+    if (
+      action === old.action &&
+      reason === old.reason &&
+      approvalRequired === old.approvalRequired
+    ) {
+      unchanged.push(old.id);
+      return old;
+    }
+    reopened.push(old.id);
+    return {
+      ...old,
+      action,
+      reason,
+      approvalRequired,
+      signature: JSON.stringify({
+        obligation: old.obligation,
+        cost: old.cost,
+        action,
+        reserveAfter: old.reserveAfter,
+        approvalRequired,
+        reason,
+      }),
+      revision: old.revision + 1,
+      evaluatedAt: now,
+    };
+  });
+  return {
+    ...previous,
+    forecast,
+    autonomy,
+    decisions,
+    reopened,
+    unchanged,
+    timeline: cashTimeline(decisions, previous.allocation, forecast),
+  };
 }
