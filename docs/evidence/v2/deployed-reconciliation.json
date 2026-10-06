@@ -37,7 +37,7 @@
     "expectedStatus": "SETTLED",
     "observedStatus": "SETTLED",
     "status": "MATCHED",
-    "checkedAt": "2026-10-06T08:55:34.741Z",
+    "checkedAt": "2026-10-06T14:18:14.358Z",
     "basis": "LIVE_RESOURCE",
     "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
   },
@@ -67,7 +67,7 @@
     "expectedStatus": "PAID",
     "observedStatus": "PAID",
     "status": "MATCHED",
-    "checkedAt": "2026-10-06T08:55:34.741Z",
+    "checkedAt": "2026-10-06T14:18:14.358Z",
     "basis": "LIVE_RESOURCE",
     "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
   },
@@ -96,7 +96,7 @@
     ],
     "expectedStatus": "SETTLED",
     "observedStatus": "SETTLED",
-    "checkedAt": "2026-10-06T08:55:34.741Z",
+    "checkedAt": "2026-10-06T14:18:14.358Z",
     "status": "MATCHED",
     "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
     "detail": "Exact historical before/after EUR wallet delta plus current provider deposit readback. Subsequent unrelated wallet movements do not rewrite this receipt."
@@ -161,7 +161,7 @@
     ],
     "expectedStatus": "CURRENT_BALANCES",
     "observedStatus": "CURRENT_BALANCES",
-    "checkedAt": "2026-10-06T08:55:34.741Z",
+    "checkedAt": "2026-10-06T14:18:14.358Z",
     "status": "MATCHED",
     "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
     "detail": "Current available wallets compared with the recorded campaign ending balances. A variance may be newer external activity and requires investigation; it never proves an original payment failed."

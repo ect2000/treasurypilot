@@ -1,36 +1,150 @@
 {
-  "sourceCommit": "f5b154e46cd01810d23f835a43f5cb9142eb626e",
-  "deploymentId": "dpl_4hgy9CV28ptN6m8BgdcX3TuXK98f",
+  "sourceCommit": "5b7befe86a355c2444edc54fd41ba7cd0471f209",
+  "branch": "agentic-banking-2026",
+  "deploymentId": "dpl_J3nRiKx2A1GxPPCYjLveWQqeQcaq",
   "deploymentStatus": "READY",
   "publicUrl": "https://treasurypilot-sooty.vercel.app",
-  "immutableUrl": "https://treasurypilot-2w14oiyp7-3eemiliocastejon-gmailcoms-projects.vercel.app",
+  "immutableUrl": "https://treasurypilot-1gijgsnni-3eemiliocastejon-gmailcoms-projects.vercel.app",
   "hostingEnvironment": "Vercel Production",
   "bankingEnvironment": "AIRWALLEX_SANDBOX_ONLY",
-  "deployedWalkthroughCheckedAt": "2026-10-06T08:55:39.985Z",
-  "localWalkthroughCheckedAt": "2026-10-06T08:55:51.389Z",
+  "versionReadback": {
+    "commit": "5b7befe86a355c2444edc54fd41ba7cd0471f209",
+    "financialEnvironment": "AIRWALLEX_SANDBOX_ONLY",
+    "schema": 2
+  },
+  "checkedAt": "2026-10-06T14:19:26.670Z",
+  "deployedWalkthroughCheckedAt": "2026-10-06T14:18:19.283Z",
+  "localWalkthroughCheckedAt": "2026-10-06T14:09:42.378Z",
   "durableApplicationStorage": "PRIVATE_BLOB",
   "validation": {
-    "unitTestsPassed": 50,
-    "playwrightCasesPassed": 24,
+    "unitTestsPassed": 68,
+    "unitTestFiles": 11,
+    "playwrightCasesPassed": 30,
     "lint": "PASS_ZERO_WARNINGS",
     "typecheck": "PASS",
     "localProductionBuild": "PASS",
     "hostedProductionBuild": "PASS",
     "runtimeDependencyVulnerabilities": 0,
-    "responsiveWidthsWithoutOverflow": [375, 390, 768, 1024, 1280, 1440, 1920],
+    "developmentAdvisoryPaths": 5,
+    "publicAssetsSecretScanned": 15,
+    "credentialMatches": 0,
+    "responsive": [
+      {
+        "width": 375,
+        "height": 812,
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "overflow": false
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "overflow": false
+      },
+      {
+        "width": 1024,
+        "height": 768,
+        "overflow": false
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "overflow": false
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "overflow": false
+      }
+    ],
     "newFinancialMutations": 0
   },
   "verifiedPlan": {
     "reopened": ["contractor"],
     "unchanged": ["logistics", "cloud", "insurance", "marketing"],
-    "reserveAfterMinorUsd": 1699953,
-    "placementReserveAfterMinorUsd": 1699952,
+    "reserveAfterMinorUsd": 1697764,
+    "placementReserveAfterMinorUsd": 1697762,
     "reconciliationMatches": 4
+  },
+  "model": {
+    "publicProvider": "DETERMINISTIC_FALLBACK",
+    "publicModel": "Local evidence parser",
+    "localProvider": "OPENROUTER",
+    "localModel": "nvidia/nemotron-3-super-120b-a12b:free"
+  },
+  "performance": {
+    "firstUsefulMs": 1743,
+    "publicScriptBytes": 903864,
+    "apiRequests": [
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 1160
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 178
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 9881
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 185
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 267
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 213
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 1004
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 272
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 988
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 184
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 235
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 174
+      }
+    ]
   },
   "originalFinancialIdentities": {
     "fxRequestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
     "transferRequestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
     "depositStatementRef": "TPKIT1-2026-ONE"
   },
-  "disclosure": "Runtime source is the immutable deployed commit. Later documentation/evidence commits do not imply a new runtime deployment. All financial resources are pre-existing v1; v2 validation does not replay them. Amounts explicitly marked MinorUsd are integer cents; provider requests use major units."
+  "disclosure": "Runtime source is the immutable deployed commit. Later documentation/evidence/script-only commits do not imply another application deployment. Actual provider/fallback labels retained. No financial operations replayed. MinorUsd values are integer cents; REST requests use major units."
 }

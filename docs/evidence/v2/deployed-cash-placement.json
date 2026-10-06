@@ -11,9 +11,9 @@
     {
       "currency": "EUR",
       "wallet": 1000800000,
-      "current": 719076,
+      "current": 718349,
       "target": 0,
-      "gap": -719076,
+      "gap": -718349,
       "why": "Funded EUR obligations due within 72h, excluding the previously paid supplier."
     },
     {
@@ -29,19 +29,19 @@
     {
       "sellCurrency": "USD",
       "buyCurrency": "GBP",
-      "sellAmount": 382812,
-      "buyAmount": 292116,
-      "valueUsd": 382812
+      "sellAmount": 382813,
+      "buyAmount": 291467,
+      "valueUsd": 382813
     },
     {
       "sellCurrency": "EUR",
       "buyCurrency": "GBP",
-      "sellAmount": 539350,
-      "buyAmount": 457884,
-      "valueUsd": 600048
+      "sellAmount": 540771,
+      "buyAmount": 458533,
+      "valueUsd": 602238
     }
   ],
   "conserved": true,
-  "reserveAfter": 1699952,
+  "reserveAfter": 1697762,
   "reason": "Minimum indicated movements to place funded cash by currency. Indicative rates; exact quotes and fees are required before execution."
 }

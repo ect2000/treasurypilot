@@ -12,7 +12,7 @@ Windows, Node 24.13.1, Next.js 16.3.8, React 19.3.0. Fixture tests and actual fi
 | Runtime dependencies     | npm audit --omit=dev: zero vulnerabilities                                                                                                                 |
 | Development dependencies | Five advisory paths rooted in unpatched braces development/linter graph; disclosed                                                                         |
 | Secrets                  | Known values/patterns: source/evidence, built client, practical Git history, actual public HTML/JS; zero matches                                           |
-| Real local/public hero   | Actual free-provider interpretation, confidence 92%→31%, autonomy USD 10k→2.5k, receipt 1 reopened/4 retained, four reconciliations MATCHED                |
+| Real local/public hero   | Local real free model; latest public run uses labelled fallback. Both verify 92%→31%, USD 10k→2.5k, 1 reopened/4 retained, four MATCHED rows               |
 | Financial mutations      | Zero new deposit, FX, transfer or transfer-state simulation; zero new wallet delta                                                                         |
 | Persistence              | Actual Blob, browser refresh/new request and [local production process restart](evidence/v2/persistence-restart.json); no forced Vercel cold start claimed |
 | Rejection behavior       | Stale revision 409, forged command 400, resource limit 429; no success invented                                                                            |

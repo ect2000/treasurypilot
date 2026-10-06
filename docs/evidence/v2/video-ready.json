@@ -1,4 +1,95 @@
 {
+  "checkedAt": "2026-10-06T14:15:08.546Z",
+  "url": "https://treasurypilot-sooty.vercel.app",
+  "version": {
+    "commit": "5b7befe86a355c2444edc54fd41ba7cd0471f209",
+    "financialEnvironment": "AIRWALLEX_SANDBOX_ONLY",
+    "schema": 2
+  },
+  "workspaceId": "525896b7-e4e3-45c9-8941-21f08276a2ca",
+  "contextVersion": "0141ac1f420848603aea4b51345f0e67b7e7e33d6b896e2bc391cf3387cf88a2",
+  "planId": "plan-001",
+  "revision": 1,
+  "forecast": {
+    "confidence": 0.92,
+    "amount": 2000000,
+    "dueHours": 24,
+    "delayed": false,
+    "received": false
+  },
+  "receiptApplied": false,
+  "obligations": [
+    {
+      "id": "logistics",
+      "vendor": "Critical logistics supplier",
+      "amount": 1400000,
+      "currency": "EUR",
+      "dueAt": "2026-10-07T03:15:07.531Z",
+      "priority": "CRITICAL",
+      "criticality": "OPERATIONS_STOP",
+      "lateCostPerDay": 70000,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PAID_SANDBOX",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "cloud",
+      "vendor": "Cloud infrastructure",
+      "amount": 820000,
+      "currency": "USD",
+      "dueAt": "2026-10-07T16:15:07.531Z",
+      "priority": "HIGH",
+      "criticality": "CONTRACTUAL",
+      "lateCostPerDay": 30000,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "contractor",
+      "vendor": "UK contractor",
+      "amount": 750000,
+      "currency": "GBP",
+      "dueAt": "2026-10-08T04:15:07.531Z",
+      "priority": "MEDIUM",
+      "criticality": "CONTRACTUAL",
+      "lateCostPerDay": 7500,
+      "transferMethod": "SWIFT",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "insurance",
+      "vendor": "Insurance / compliance",
+      "amount": 500000,
+      "currency": "USD",
+      "dueAt": "2026-10-09T02:15:07.531Z",
+      "priority": "MEDIUM",
+      "criticality": "CONTRACTUAL",
+      "lateCostPerDay": 50000,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    },
+    {
+      "id": "marketing",
+      "vendor": "Marketing vendor",
+      "amount": 600000,
+      "currency": "USD",
+      "dueAt": "2026-10-09T12:15:07.531Z",
+      "priority": "LOW",
+      "criticality": "DISCRETIONARY",
+      "lateCostPerDay": 0,
+      "transferMethod": "LOCAL",
+      "beneficiaryStatus": "EXISTING_CORRIDOR",
+      "status": "PLANNED",
+      "source": "SYNTHETIC"
+    }
+  ],
   "balances": [
     {
       "currency": "AED",
@@ -323,106 +414,40 @@
       "total": 0
     }
   ],
-  "rates": {
-    "USD": "1",
-    "EUR": "1.113664",
-    "GBP": "1.313398",
-    "CNY": "0.1476870800240966239767316052"
-  },
-  "globalAccounts": [
+  "reserve": 1882813,
+  "floor": 1500000,
+  "executionAvailable": true,
+  "operations": [
     {
-      "currency": "EUR",
-      "country": "NL",
-      "status": "ACTIVE"
-    }
-  ],
-  "beneficiaries": [
-    {
-      "currency": "EUR",
-      "country": "DE",
-      "method": "LOCAL"
-    },
-    {
-      "currency": "EUR",
-      "country": "DE",
-      "method": "SWIFT"
-    },
-    {
-      "currency": "CNY",
-      "country": "CN",
-      "method": "LOCAL"
-    },
-    {
-      "currency": "CNY",
-      "country": "CN",
-      "method": "SWIFT"
-    },
-    {
-      "currency": "GBP",
-      "country": "GB",
-      "method": "SWIFT"
-    },
-    {
-      "currency": "USD",
-      "country": "US",
-      "method": "LOCAL"
-    },
-    {
-      "currency": "USD",
-      "country": "US",
-      "method": "SWIFT"
-    }
-  ],
-  "evidence": [
-    {
-      "kind": "FX_CONVERSION",
-      "id": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+      "id": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
       "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "kind": "FX_CONVERSION",
+      "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
       "status": "SETTLED",
-      "buyCurrency": "EUR",
-      "sellCurrency": "USD",
-      "buyAmount": 1400000,
-      "sellAmount": 1597187,
-      "createdAt": "2026-10-03T16:51:21+0000"
+      "observedAt": "2026-10-06T14:15:07.531Z",
+      "provenance": "PRE_EXISTING_V1"
     },
     {
-      "kind": "TRANSFER",
-      "id": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+      "id": "de5b666d-b246-5bd0-abd6-21adc50ab756",
       "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "kind": "TRANSFER",
+      "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
       "status": "PAID",
-      "amount": 1400000,
-      "currency": "EUR",
-      "createdAt": "2026-10-03T16:55:10+0000"
+      "observedAt": "2026-10-06T14:15:07.531Z",
+      "provenance": "PRE_EXISTING_V1"
+    },
+    {
+      "id": "TPKIT1-2026-ONE",
+      "requestId": "statement_ref:TPKIT1-2026-ONE",
+      "kind": "DEPOSIT",
+      "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+      "status": "SETTLED",
+      "provenance": "PRE_EXISTING_V1",
+      "observedAt": "2026-10-06T14:15:07.531Z"
     }
   ],
-  "deposit": {
-    "state": "RECEIVED",
-    "operatorAvailable": false,
-    "amount": 800000,
-    "currency": "EUR",
-    "id": "7bee857c-9151-43ac-adde-0d4310fe87fa",
-    "status": "SETTLED",
-    "beforeAvailable": 1000000000,
-    "afterAvailable": 1000800000,
-    "delta": 800000,
-    "credit": 800000,
-    "receivedAt": "2026-10-03T18:22:18.526Z",
-    "decisionBefore": "ESCALATE",
-    "decisionAfter": "CONVERT_AND_PAY",
-    "reserveBefore": 1882813,
-    "reserveAfter": 1702512,
-    "reopened": [
-      "contractor"
-    ],
-    "unchanged": [
-      "logistics",
-      "cloud",
-      "insurance",
-      "marketing"
-    ]
-  },
-  "fetchedAt": "2026-10-06T14:18:14.358Z",
-  "source": "AIRWALLEX_REST_SANDBOX",
-  "rateSource": "Airwallex indicative rates · normalized to USD per unit",
-  "executionAvailable": true
+  "persistence": "PRIVATE_BLOB",
+  "financialMutations": 0,
+  "privateCookieFile": "Ignored .operator file; never publish or share",
+  "disclosure": "Fresh planning context only. Historical FX, transfer and deposit remain completed; no financial reset."
 }

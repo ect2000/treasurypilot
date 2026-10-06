@@ -1,9 +1,9 @@
 {
   "schema": 2,
   "id": "ba2e7381-801a-4e65-8e69-c2a883eaa325",
-  "revision": 4,
+  "revision": 5,
   "createdAt": "2026-10-06T14:18:01.474Z",
-  "updatedAt": "2026-10-06T14:18:14.359Z",
+  "updatedAt": "2026-10-06T14:18:16.299Z",
   "contextVersion": "9e41e29831f268a45f45cb76ff5f02f685183e492a0f424cdc2bc10003790dd0",
   "snapshot": {
     "balances": [
@@ -428,7 +428,7 @@
         "marketing"
       ]
     },
-    "fetchedAt": "2026-10-06T14:18:14.358Z",
+    "fetchedAt": "2026-10-06T14:18:16.299Z",
     "source": "AIRWALLEX_REST_SANDBOX",
     "rateSource": "Airwallex indicative rates · normalized to USD per unit",
     "executionAvailable": true
@@ -1173,7 +1173,7 @@
       "kind": "FX_CONVERSION",
       "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
       "status": "SETTLED",
-      "observedAt": "2026-10-06T14:18:14.358Z",
+      "observedAt": "2026-10-06T14:18:16.299Z",
       "provenance": "PRE_EXISTING_V1"
     },
     {
@@ -1182,7 +1182,7 @@
       "kind": "TRANSFER",
       "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
       "status": "PAID",
-      "observedAt": "2026-10-06T14:18:14.358Z",
+      "observedAt": "2026-10-06T14:18:16.299Z",
       "provenance": "PRE_EXISTING_V1"
     },
     {
@@ -1234,7 +1234,7 @@
       "expectedStatus": "SETTLED",
       "observedStatus": "SETTLED",
       "status": "MATCHED",
-      "checkedAt": "2026-10-06T14:18:14.358Z",
+      "checkedAt": "2026-10-06T14:18:16.299Z",
       "basis": "LIVE_RESOURCE",
       "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
     },
@@ -1264,7 +1264,7 @@
       "expectedStatus": "PAID",
       "observedStatus": "PAID",
       "status": "MATCHED",
-      "checkedAt": "2026-10-06T14:18:14.358Z",
+      "checkedAt": "2026-10-06T14:18:16.299Z",
       "basis": "LIVE_RESOURCE",
       "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
     },
@@ -1293,7 +1293,7 @@
       ],
       "expectedStatus": "SETTLED",
       "observedStatus": "SETTLED",
-      "checkedAt": "2026-10-06T14:18:14.358Z",
+      "checkedAt": "2026-10-06T14:18:16.299Z",
       "status": "MATCHED",
       "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
       "detail": "Exact historical before/after EUR wallet delta plus current provider deposit readback. Subsequent unrelated wallet movements do not rewrite this receipt."
@@ -1358,13 +1358,33 @@
       ],
       "expectedStatus": "CURRENT_BALANCES",
       "observedStatus": "CURRENT_BALANCES",
-      "checkedAt": "2026-10-06T14:18:14.358Z",
+      "checkedAt": "2026-10-06T14:18:16.299Z",
       "status": "MATCHED",
       "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
       "detail": "Current available wallets compared with the recorded campaign ending balances. A variance may be newer external activity and requires investigation; it never proves an original payment failed."
     }
   ],
-  "incidents": [],
+  "incidents": [
+    {
+      "id": "7f54b6c7-7c12-4278-b356-840c65d1457b",
+      "actionId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "complaint": "Supplier reports that the payment has not arrived. Please investigate the original transfer.",
+      "openedAt": "2026-10-06T14:18:16.299Z",
+      "updatedAt": "2026-10-06T14:18:16.299Z",
+      "state": "OPEN",
+      "providerStatus": "PAID",
+      "decision": "INVESTIGATE",
+      "replacementAllowed": false,
+      "reason": "Provider reports PAID in Sandbox. Investigate beneficiary receipt; do not pay again.",
+      "history": [
+        {
+          "at": "2026-10-06T14:18:16.299Z",
+          "status": "PAID",
+          "source": "AIRWALLEX"
+        }
+      ]
+    }
+  ],
   "events": [
     {
       "id": "599485ba-3cfe-4a71-baf0-42432e8bd048",
@@ -1597,6 +1617,49 @@
           "rec-TPKIT1-2026-ONE",
           "rec-campaign-wallet"
         ]
+      }
+    },
+    {
+      "id": "8085dc70-17f4-4b4f-a771-7a9a0669606f",
+      "at": "2026-10-06T14:18:16.299Z",
+      "actor": "AIRWALLEX",
+      "title": "BALANCES_REFRESHED",
+      "detail": "Fresh provider reads; no financial mutation.",
+      "correlation": {
+        "workspaceId": "ba2e7381-801a-4e65-8e69-c2a883eaa325",
+        "contextVersion": "9e41e29831f268a45f45cb76ff5f02f685183e492a0f424cdc2bc10003790dd0",
+        "planId": "plan-003"
+      }
+    },
+    {
+      "id": "1114a15e-ac25-4842-b49b-c625cc547140",
+      "at": "2026-10-06T14:18:16.299Z",
+      "actor": "TREASURY_ENGINE",
+      "title": "RECONCILIATION_CHECKED",
+      "detail": "4 matched; 0 exceptions; 0 pending.",
+      "correlation": {
+        "workspaceId": "ba2e7381-801a-4e65-8e69-c2a883eaa325",
+        "contextVersion": "9e41e29831f268a45f45cb76ff5f02f685183e492a0f424cdc2bc10003790dd0",
+        "planId": "plan-003",
+        "reconciliationIds": [
+          "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
+          "rec-de5b666d-b246-5bd0-abd6-21adc50ab756",
+          "rec-TPKIT1-2026-ONE",
+          "rec-campaign-wallet"
+        ]
+      }
+    },
+    {
+      "id": "c4990013-0f64-4bee-b7eb-504f37b3b4e1",
+      "at": "2026-10-06T14:18:16.299Z",
+      "actor": "AGENT",
+      "title": "INCIDENT_OPENED",
+      "detail": "Supplier receipt complaint recorded; original payment investigated, replacement blocked.",
+      "correlation": {
+        "workspaceId": "ba2e7381-801a-4e65-8e69-c2a883eaa325",
+        "contextVersion": "9e41e29831f268a45f45cb76ff5f02f685183e492a0f424cdc2bc10003790dd0",
+        "planId": "plan-003",
+        "incidentId": "7f54b6c7-7c12-4278-b356-840c65d1457b"
       }
     }
   ],

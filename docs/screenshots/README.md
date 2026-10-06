@@ -22,6 +22,6 @@ v2/local and v2/deployed are actual browser captures against real provider reads
 | 13-policies                              | Source-controlled policy and tiers                                       |
 | 14-receipt-evidence                      | Truthful model/fallback plus historical exact deposit proof              |
 | 15-landing-1440 / 15-landing-390         | Public landing page at desktop and mobile widths                         |
-| overview-375/390/768/1024/1280/1440/1920 | Seven real viewport captures                                             |
+| overview-375/390/768/1024/1280/1440/1920 | Latest six exact viewports; 1280 remains an earlier capture              |
 
 No credential or raw bank/Global Account identifier is shown. The screenshot timestamp and evidence JSON identify point-in-time values. A historical receipt allocation changes application authority, not actual wallet funds.

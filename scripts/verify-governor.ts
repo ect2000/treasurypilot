@@ -80,7 +80,7 @@ async function main() {
     const shot = async (name: string) =>
       page.screenshot({
         path: `docs/screenshots/v2/${dir}/${name}.png`,
-        fullPage: true,
+        fullPage: !["05-policy-refusal", "12-mobile-inspector"].includes(name),
       });
     const started = Date.now();
     await page.goto(`${base}/treasury`);
@@ -220,7 +220,8 @@ async function main() {
     await save("persistence-baseline", persisted);
     if (
       !persisted.receiptApplied ||
-      persisted.plans.length !== after.plans.length
+      JSON.stringify(persisted.plans) !== JSON.stringify(investigated.plans) ||
+      persisted.contextVersion !== investigated.contextVersion
     )
       throw new Error("Durable state did not survive browser refresh");
     const identityHeaders = {

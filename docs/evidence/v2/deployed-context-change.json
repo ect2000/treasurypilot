@@ -1,12 +1,18 @@
 {
-  "id": "9aa5c211-5c84-49db-a07a-fd9bd052154a",
+  "id": "1c7caadd-9c05-42c8-bb72-479e475633f0",
   "text": "Customer update · INV-4092\n\nThe expected USD 20,000 payment is delayed by 5 days. We expect to send it next week.",
   "interpretation": {
-    "summary": "Customer update indicates that the expected USD 20,000 payment (INV-4092) is delayed by 5 days.",
+    "provider": "DETERMINISTIC_FALLBACK",
+    "model": "Local evidence parser",
+    "summary": "The document reports a 5-day payment delay. Review this evidence before updating the forecast.",
     "forecastDelayDays": 5,
-    "invoice": null,
+    "invoice": {
+      "title": "Imported demo invoice",
+      "amountMajor": "20000",
+      "currency": "USD",
+      "dueHours": 48
+    },
     "rejectedInstructions": false,
-    "provider": "OPENROUTER",
-    "model": "nvidia/nemotron-3-super-120b-a12b:free"
+    "warning": "Free OpenRouter inference was unavailable or failed validation. Local deterministic fallback is active."
   }
 }
