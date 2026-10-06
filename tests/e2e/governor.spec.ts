@@ -123,8 +123,15 @@ test("all requested widths fit the cockpit, currency placement and approval view
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  for (const width of [375, 390, 768, 1024, 1280, 1440, 1920]) {
-    await page.setViewportSize({ width, height: 1000 });
+  for (const [width, height] of [
+    [375, 812],
+    [390, 844],
+    [768, 1024],
+    [1024, 768],
+    [1440, 900],
+    [1920, 1080],
+  ]) {
+    await page.setViewportSize({ width, height });
     await page.goto("/treasury");
     await expect(
       page.getByRole("heading", { name: "Current plan", exact: true }),
@@ -175,4 +182,61 @@ test("a duplicate click issues one command and a failed read never appears as fi
     page.getByRole("alert").filter({ hasText: "Provider read unavailable" }),
   ).toContainText("Provider read unavailable");
   expect(posts).toBe(1);
+});
+test("the inspector traps keyboard focus and restores the invoking action after Escape", async ({
+  page,
+}) => {
+  await page.goto("/treasury");
+  const trigger = page.getByRole("button", {
+    name: "Inspect Cloud infrastructure",
+  });
+  await trigger.click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  for (let i = 0; i < 8; i++) {
+    await page.keyboard.press("Tab");
+    expect(
+      await page.evaluate(
+        () => !!document.activeElement?.closest('[role="dialog"]'),
+      ),
+    ).toBe(true);
+  }
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(trigger).toBeFocused();
+});
+test("shows exact plan reserve and an expired approval cannot show an executable action", async ({
+  page,
+}) => {
+  const state = initializeWorld("expired-approval-fixture", verifiedSnapshot());
+  state.approvals.push({
+    id: "c8c9ad64-f5bb-4b4f-90fb-47e798f1db61",
+    actionType: "CONVERT",
+    obligation: "logistics",
+    planId: state.plans[0].id,
+    contextVersion: state.contextVersion,
+    fingerprint: "fixture-fingerprint",
+    amount: 1400000,
+    currency: "EUR",
+    counterparty: "Fixture supplier",
+    quoteId: "fixture-quote",
+    quoteExpiresAt: new Date(Date.now() + 900000).toISOString(),
+    requestId: "fixture-request",
+    reserveAfter: 3202813,
+    createdAt: new Date().toISOString(),
+    expiresAt: new Date(Date.now() - 1000).toISOString(),
+    status: "APPROVED",
+    sealedProposal: "fixture-sealed",
+  });
+  await page.route("**/api/governor", (route) =>
+    route.fulfill({ json: governorView(state) }),
+  );
+  await page.goto("/treasury");
+  await expect(
+    page.getByText("$18,828.13", { exact: true }).first(),
+  ).toBeVisible();
+  await navigate(page, "Approvals");
+  await expect(page.getByText("EXPIRED", { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Execute exact Sandbox action" }),
+  ).toHaveCount(0);
 });

@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { campaignIds } from "@/lib/server/authorization";
+import { campaignIds, fingerprint } from "@/lib/server/authorization";
+import { claimOperation } from "@/lib/server/governor-store";
 import {
   airwallex,
   executionOpen,
   transferEvidence,
 } from "@/lib/server/airwallex";
 import { body, errorResponse } from "@/lib/server/http";
+import { admitDemoWork } from "@/lib/server/demo-limits";
 export async function POST(req: NextRequest) {
   try {
     const data = await body(
@@ -19,6 +21,7 @@ export async function POST(req: NextRequest) {
         .strict(),
     );
     if (!executionOpen()) throw new Error("Sandbox execution window is closed");
+    await admitDemoWork("transition");
     const client = airwallex(),
       ids = campaignIds();
     const t = (await client.transfers()).find(
@@ -30,11 +33,12 @@ export async function POST(req: NextRequest) {
         evidence: transferEvidence(t),
         simulated: true,
       });
-    await client.transition(
-      t.id,
-      data.nextStatus,
-      data.nextStatus === "SENT" ? ids.sent : ids.paid,
+    const requestId = data.nextStatus === "SENT" ? ids.sent : ids.paid;
+    await claimOperation(
+      requestId,
+      fingerprint({ transferId: t.id, nextStatus: data.nextStatus }),
     );
+    await client.transition(t.id, data.nextStatus);
     const fresh = await client.request(
       `/api/v1/transfers/${encodeURIComponent(t.id)}`,
     );

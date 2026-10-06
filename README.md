@@ -2,7 +2,7 @@
 
 **Treasury that acts, and knows when to stop.**
 
-[Live cockpit](https://treasurypilot-sooty.vercel.app/treasury) · [Preserved v1](https://treasurypilot-sooty.vercel.app/treasury/v1) · [Source](https://github.com/ect2000/treasurypilot/tree/agentic-banking-2026) · [Demo script](docs/demo-script.md)
+[Live cockpit](https://treasurypilot-sooty.vercel.app/treasury) · [Preserved v1](https://treasurypilot-sooty.vercel.app/treasury/v1) · [Source](https://github.com/ect2000/treasurypilot/tree/agentic-banking-2026) · [Recording runbook](docs/demo/DEMO_RUNBOOK.md) · [Evidence index](docs/evidence/INDEX.md)
 
 ![Treasury cockpit](docs/screenshots/v2/deployed/01-overview.png)
 
@@ -50,7 +50,7 @@ Private Vercel Blob stores the aggregate with strong ETag conditional writes. Co
 
 Additional obligations remain planning-only. The contractor proposal still needs approval and cannot execute through the completed supplier campaign. Current reserve uses current indicative rates; the historical USD 17,025.12 valuation is not presented as today's calculation.
 
-The final public verification on 6 October at 08:55 UTC recorded **USD 16,999.53** remaining planned reserve, one reopened decision, four unchanged decisions and four reconciliation matches, with zero new banking mutations. The forward forecast already deducts the paid supplier from opening cash. [Deployment and validation evidence](docs/evidence/v2/deployment.json).
+The [latest public verification](docs/evidence/v2/deployed-verification.json) records the exact timestamp, indicative rates and receipt-plan reserve. Initial **USD 18,828.13** and receipt-plan reserve belong to different plan revisions; overview shows cents and plan identity. Receipt allocation reopens one decision, retains four evaluations and verifies four reconciliation matches with zero new banking mutations. The forward forecast already deducts the paid supplier from opening cash. [Deployment evidence](docs/evidence/v2/deployment.json).
 
 The [4:40 recording plan](docs/demo-script.md) reuses clearly dated original approval/financial footage. Free inference or deterministic fallback is labelled truthfully.
 
@@ -77,7 +77,7 @@ Create ignored .env.local from .env.example using a local secret manager. Never 
 | EXECUTION_ENABLED_UNTIL                 | Explicit short cutoff; missing/expired disables writes   |
 | DEPOSIT_OPERATOR_ENABLED                | Local operator only; never enable on Vercel              |
 
-Link the existing Vercel project, provision private Blob, configure server variables and deploy with `vercel deploy --prod --yes`. CLI deployment does not depend on GitHub automatic deployments. The hosting environment called Production still connects exclusively to **Airwallex Sandbox**.
+Link the existing Vercel project, provision private Blob, configure server variables and deploy with `vercel deploy --prod --yes --env TREASURY_BUILD_SHA=<source-sha>`. `/api/version` exposes only that public commit and Sandbox label. CLI deployment does not depend on GitHub automatic deployments. The hosting environment called Production still connects exclusively to **Airwallex Sandbox**.
 
 ## Validation and limits
 
@@ -90,7 +90,9 @@ npm run build
 npm run verify:governor
 ```
 
-For deployed verification set VERIFY_URL to the live site. The script blocks financial execution commands and checks actual reads, persistence, unchanged decisions, reserve, reconciliation, seven widths, console errors and rejected stale/forged commands. Fixture tests are separate from live evidence. Do not rerun financial/deposit scripts or reset IDs to test deployment.
+For deployed verification set VERIFY_URL to the live site. The script blocks financial execution commands and checks actual reads, persistence, unchanged decisions, reserve, reconciliation, six exact viewports, timings, console errors and rejected stale/forged commands. **68 unit tests, 30 Playwright cases**, lint, typecheck and production build pass. Fixture tests are separate from live evidence. Do not rerun financial/deposit scripts or reset IDs to test deployment.
+
+The [final audit](docs/hackathon/FINAL_TECHNICAL_AUDIT.md) documents the resource-admission correction, expiry/reconciliation repairs, practical history/public-bundle secret scan and remaining limits. Shared durable quotas and retained-state caps bound demo growth; they do not replace authenticated operators or edge abuse controls. [Prepare the exact video start](docs/demo/DEMO_RUNBOOK.md) with the private operator script.
 
 [Validation](docs/validation.md) · [Security and limits](docs/security-and-limitations.md) · [Design](docs/design-system.md) · [UX rationale](docs/ux-rationale.md).
 

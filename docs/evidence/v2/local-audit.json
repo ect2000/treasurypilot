@@ -1,23 +1,23 @@
 [
   {
-    "id": "bcb7e576-e29e-47ac-a707-c4d86f6fe266",
-    "at": "2026-10-06T08:55:30.545Z",
+    "id": "d57bb5a1-ad0c-4ef9-b1e5-19ebfbf74bd3",
+    "at": "2026-10-06T14:09:26.353Z",
     "actor": "AIRWALLEX",
     "title": "BALANCES_OBSERVED",
     "detail": "Live Sandbox wallet, rates, Global Account and beneficiary corridors observed.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
       "contextVersion": ""
     }
   },
   {
-    "id": "f30aaa40-30b9-46af-836b-d0528c9a30a5",
-    "at": "2026-10-06T08:55:30.545Z",
+    "id": "12d998d3-44c9-4939-9569-b73d80bfecc2",
+    "at": "2026-10-06T14:09:26.353Z",
     "actor": "AIRWALLEX",
     "title": "HISTORICAL_ACTION_VERIFIED",
     "detail": "FX_CONVERSION SETTLED; original campaign action read back, never re-executed.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
       "contextVersion": "",
       "actionId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
       "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
@@ -25,13 +25,13 @@
     }
   },
   {
-    "id": "ddb0e768-971c-493a-adfa-41b8618b18cc",
-    "at": "2026-10-06T08:55:30.545Z",
+    "id": "75ab7940-53a8-44f5-8921-f2ad556464e4",
+    "at": "2026-10-06T14:09:26.353Z",
     "actor": "AIRWALLEX",
     "title": "HISTORICAL_ACTION_VERIFIED",
     "detail": "TRANSFER PAID; original campaign action read back, never re-executed.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
       "contextVersion": "",
       "actionId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
       "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
@@ -39,13 +39,13 @@
     }
   },
   {
-    "id": "bd9dcf4c-112d-4baa-a58b-fe0b1025473b",
-    "at": "2026-10-06T08:55:30.545Z",
+    "id": "531d2856-1b36-4f66-ba57-2020d144a743",
+    "at": "2026-10-06T14:09:26.354Z",
     "actor": "AIRWALLEX",
     "title": "HISTORICAL_DEPOSIT_VERIFIED",
     "detail": "Original EUR 8,000 Sandbox receipt and its historical exact wallet delta verified; no simulation repeated.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
       "contextVersion": "",
       "actionId": "TPKIT1-2026-ONE",
       "requestId": "statement_ref:TPKIT1-2026-ONE",
@@ -53,38 +53,38 @@
     }
   },
   {
-    "id": "32b68ca1-968d-4b95-b55d-41a88ef57784",
-    "at": "2026-10-06T08:55:30.546Z",
+    "id": "f89c07a0-bc01-4c79-922e-fc28a09e0b0a",
+    "at": "2026-10-06T14:09:26.355Z",
     "actor": "POLICY_ENGINE",
     "title": "POLICY_CHECKED",
     "detail": "Confidence 92%; authority USD 10000; reserve protected.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "b50be7d31e6b6b5e5f03bf37e853e869d53f6b90cfa89117185ceb0feb7af812",
       "planId": "plan-001"
     }
   },
   {
-    "id": "5942cca2-9b4b-4a19-9d3b-fcde2de03302",
-    "at": "2026-10-06T08:55:30.546Z",
+    "id": "f49266e2-2ddc-493a-8c37-83b74a75cc62",
+    "at": "2026-10-06T14:09:26.355Z",
     "actor": "TREASURY_ENGINE",
     "title": "PLAN_RECALCULATED",
     "detail": "plan-001; 0 reopened, 0 unchanged; remaining reserve USD 18828.13.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "b50be7d31e6b6b5e5f03bf37e853e869d53f6b90cfa89117185ceb0feb7af812",
       "planId": "plan-001"
     }
   },
   {
-    "id": "044ee556-b861-438d-82a7-80ed3d7a67b9",
-    "at": "2026-10-06T08:55:30.547Z",
+    "id": "06c4df19-31a5-4eed-abe9-b7d07cc2f810",
+    "at": "2026-10-06T14:09:26.355Z",
     "actor": "TREASURY_ENGINE",
     "title": "RECONCILIATION_CHECKED",
     "detail": "4 matched; 0 exceptions; 0 pending.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "b50be7d31e6b6b5e5f03bf37e853e869d53f6b90cfa89117185ceb0feb7af812",
       "planId": "plan-001",
       "reconciliationIds": [
         "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
@@ -95,134 +95,134 @@
     }
   },
   {
-    "id": "ba6f3593-76ad-4b1e-92c8-9ae954ff46d0",
-    "at": "2026-10-06T08:55:43.696Z",
+    "id": "23290d55-5200-4eec-adc0-95b484eed275",
+    "at": "2026-10-06T14:09:33.690Z",
     "actor": "AGENT",
     "title": "CONTEXT_INTERPRETED",
-    "detail": "OPENROUTER; Customer update for invoice INV-4092 indicates a USD 20,000 payment is delayed by 5 days and expected to be sent next week. Facts require review before changing policy context.",
+    "detail": "OPENROUTER; Invoice INV-4092: USD 20,000 payment delayed by 5 days, expected next week. Facts require review before changing policy context.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "b50be7d31e6b6b5e5f03bf37e853e869d53f6b90cfa89117185ceb0feb7af812",
       "planId": "plan-001"
     }
   },
   {
-    "id": "b165428f-d489-4d0e-a96a-bc23c942250d",
-    "at": "2026-10-06T08:55:44.963Z",
+    "id": "224753ba-47c2-475c-9b31-4767897c173e",
+    "at": "2026-10-06T14:09:34.907Z",
     "actor": "USER",
     "title": "CONTEXT_ACCEPTED",
     "detail": "Reviewed 5-day delay; deterministic confidence and authority will change.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "b50be7d31e6b6b5e5f03bf37e853e869d53f6b90cfa89117185ceb0feb7af812",
       "planId": "plan-001"
     }
   },
   {
-    "id": "bab273cc-0f32-449a-b32c-fd9cf9c37a9c",
-    "at": "2026-10-06T08:55:44.964Z",
+    "id": "973ab128-0c3a-4a35-ae47-317818230187",
+    "at": "2026-10-06T14:09:34.908Z",
     "actor": "TREASURY_ENGINE",
     "title": "PLAN_SUPERSEDED",
     "detail": "plan-001; 3 decisions reopened, 2 identities retained.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "7cfec9d897462c98102f601f541fa62049eafaa57df7cc65eba5e23ae3beaca3",
       "planId": "plan-001"
     }
   },
   {
-    "id": "b3d8366d-4262-408c-b234-140d34379897",
-    "at": "2026-10-06T08:55:44.964Z",
+    "id": "76a8664c-2cf2-4ba7-a68d-77cb9781e462",
+    "at": "2026-10-06T14:09:34.908Z",
     "actor": "POLICY_ENGINE",
     "title": "POLICY_CHECKED",
     "detail": "Confidence 31%; authority USD 2500; reserve protected.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "7cfec9d897462c98102f601f541fa62049eafaa57df7cc65eba5e23ae3beaca3",
       "planId": "plan-002"
     }
   },
   {
-    "id": "f5c3c60e-71cd-4c3e-9c22-e6dffbf71492",
-    "at": "2026-10-06T08:55:44.964Z",
+    "id": "a5350853-b1b8-43e9-8d9b-1d50c52129ed",
+    "at": "2026-10-06T14:09:34.908Z",
     "actor": "TREASURY_ENGINE",
     "title": "PLAN_RECALCULATED",
     "detail": "plan-002; 3 reopened, 2 unchanged; remaining reserve USD 18828.13.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "7cfec9d897462c98102f601f541fa62049eafaa57df7cc65eba5e23ae3beaca3",
       "planId": "plan-002"
     }
   },
   {
-    "id": "49705e3d-e6ef-41ca-a531-ff87f166d82b",
-    "at": "2026-10-06T08:55:47.204Z",
+    "id": "786579c2-5273-4fea-bfb8-8c7e601bec6e",
+    "at": "2026-10-06T14:09:37.567Z",
     "actor": "AIRWALLEX",
     "title": "BALANCES_REFRESHED",
     "detail": "Fresh provider reads; no financial mutation.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "7cfec9d897462c98102f601f541fa62049eafaa57df7cc65eba5e23ae3beaca3",
       "planId": "plan-002"
     }
   },
   {
-    "id": "39fc252e-d722-4212-a14b-2d68a8e903ac",
-    "at": "2026-10-06T08:55:47.204Z",
+    "id": "88afbadc-db97-4f8c-a061-927b222f0580",
+    "at": "2026-10-06T14:09:37.567Z",
     "actor": "USER",
     "title": "RECEIPT_AUTHORITY_ALLOCATED",
     "detail": "Previously settled Sandbox receipt assigned to this operating plan once. No new deposit POST.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "7cfec9d897462c98102f601f541fa62049eafaa57df7cc65eba5e23ae3beaca3",
       "planId": "plan-002"
     }
   },
   {
-    "id": "2c6d85ef-ead8-4459-88ff-f8d8ec5400de",
-    "at": "2026-10-06T08:55:47.205Z",
+    "id": "e47dab99-3bc4-49d4-8da2-3c499a5c80b5",
+    "at": "2026-10-06T14:09:37.568Z",
     "actor": "TREASURY_ENGINE",
     "title": "PLAN_SUPERSEDED",
     "detail": "plan-002; 1 decisions reopened, 4 identities retained.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-002"
     }
   },
   {
-    "id": "82e277d0-cbf7-4a8f-9101-d06bd319ef6d",
-    "at": "2026-10-06T08:55:47.205Z",
+    "id": "915b9737-e01e-4418-97c9-423ed91f2f03",
+    "at": "2026-10-06T14:09:37.568Z",
     "actor": "POLICY_ENGINE",
     "title": "POLICY_CHECKED",
     "detail": "Confidence 31%; authority USD 2500; reserve protected.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-003"
     }
   },
   {
-    "id": "0afbc5bb-d7d5-4508-b25c-f60b26b52a66",
-    "at": "2026-10-06T08:55:47.205Z",
+    "id": "1657668b-3a82-4374-be72-93784707dd17",
+    "at": "2026-10-06T14:09:37.568Z",
     "actor": "TREASURY_ENGINE",
     "title": "PLAN_RECALCULATED",
-    "detail": "plan-003; 1 reopened, 4 unchanged; remaining reserve USD 16999.53.",
+    "detail": "plan-003; 1 reopened, 4 unchanged; remaining reserve USD 16976.5.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-003"
     }
   },
   {
-    "id": "501fa43e-cf29-48bc-aa71-b2999fc710ed",
-    "at": "2026-10-06T08:55:47.206Z",
+    "id": "2b172fa1-04bb-4748-b550-adbc1aed022b",
+    "at": "2026-10-06T14:09:37.569Z",
     "actor": "TREASURY_ENGINE",
     "title": "RECONCILIATION_CHECKED",
     "detail": "4 matched; 0 exceptions; 0 pending.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-003",
       "reconciliationIds": [
         "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
@@ -233,26 +233,26 @@
     }
   },
   {
-    "id": "4d5b10fc-21ba-4267-a1ea-7f1ad1bb1a9c",
-    "at": "2026-10-06T08:55:48.948Z",
+    "id": "ed2a257e-3c7e-4c5b-8977-a54b296ceb56",
+    "at": "2026-10-06T14:09:39.895Z",
     "actor": "AIRWALLEX",
     "title": "BALANCES_REFRESHED",
     "detail": "Fresh provider reads; no financial mutation.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-003"
     }
   },
   {
-    "id": "891a4cf6-4afd-4629-97f1-18bbaa87a807",
-    "at": "2026-10-06T08:55:48.949Z",
+    "id": "18b29e53-ca95-4349-8746-e274d43c4f2c",
+    "at": "2026-10-06T14:09:39.896Z",
     "actor": "TREASURY_ENGINE",
     "title": "RECONCILIATION_CHECKED",
     "detail": "4 matched; 0 exceptions; 0 pending.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-003",
       "reconciliationIds": [
         "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
@@ -263,16 +263,16 @@
     }
   },
   {
-    "id": "ffdb8f03-2702-4db1-810b-dfcf0655b2f7",
-    "at": "2026-10-06T08:55:48.949Z",
+    "id": "5b095157-43bb-456d-b969-8efd1b0694f3",
+    "at": "2026-10-06T14:09:39.896Z",
     "actor": "AGENT",
     "title": "INCIDENT_OPENED",
     "detail": "Supplier receipt complaint recorded; original payment investigated, replacement blocked.",
     "correlation": {
-      "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
-      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+      "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
       "planId": "plan-003",
-      "incidentId": "16d6fd38-2b0b-4da2-9d61-1fb8f02f68f4"
+      "incidentId": "a69cdf5f-f8a0-42e9-a9d0-98f0048aec4a"
     }
   }
 ]

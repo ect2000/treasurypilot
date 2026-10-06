@@ -136,3 +136,46 @@ it("does not report success or commit a new revision on a provider timeout", asy
   ).rejects.toThrow(/timed out/);
   expect(memory.state!.revision).toBe(1);
 });
+it("refuses a full workspace before provider work and keeps its retained revision", async () => {
+  const { readSnapshot } = await import("../lib/server/airwallex");
+  vi.mocked(readSnapshot).mockClear();
+  memory.state!.revision = 120;
+  await expect(
+    runTool("tool-workspace", { tool: "run_cycle", revision: 120 }),
+  ).rejects.toThrow(/retained-state limit/);
+  expect(readSnapshot).not.toHaveBeenCalled();
+  expect(memory.state!.revision).toBe(120);
+});
+it("keeps manual escalation after reconciliation without authorizing replacement", async () => {
+  let state = await runTool("tool-workspace", {
+    tool: "open_incident",
+    revision: 1,
+    complaint: "Supplier reports missing payment.",
+  });
+  state = await runTool(state.id, {
+    tool: "escalate_incident",
+    revision: state.revision,
+    incidentId: state.incidents[0].id,
+  });
+  state = await runTool(state.id, {
+    tool: "run_cycle",
+    revision: state.revision,
+  });
+  expect(state.incidents[0].state).toBe("ESCALATED");
+  expect(state.incidents[0].decision).toBe("ESCALATE");
+  expect(state.incidents[0].replacementAllowed).toBe(false);
+});
+it("does not clear an execution lock on terminal status with mismatched amounts", async () => {
+  const { readSnapshot } = await import("../lib/server/airwallex");
+  const snapshot = verifiedSnapshot();
+  snapshot.evidence[1].amount!++;
+  memory.state!.executionLock = snapshot.evidence[1].requestId;
+  vi.mocked(readSnapshot).mockResolvedValueOnce(snapshot);
+  const state = await runTool("tool-workspace", {
+    tool: "run_cycle",
+    revision: 1,
+  });
+  expect(state.executionLock).toBe(snapshot.evidence[1].requestId);
+  expect(state.reconciliations[1].status).toBe("MISMATCH");
+  expect(state.plans).toHaveLength(1);
+});

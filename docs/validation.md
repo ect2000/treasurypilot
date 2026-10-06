@@ -1,34 +1,29 @@
-# Validation — v2, 6 October 2026
+# Validation — final hardening, 6 October 2026
 
-Windows, Node 24.13.1, Next.js 16.3.8 and React 19.3.0.
+Windows, Node 24.13.1, Next.js 16.3.8, React 19.3.0. Fixture tests and actual financial observations are separate evidence.
 
-| Check                                       | Result                                                                             |
-| ------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Baseline v1                                 | 21 unit tests / 12 Playwright cases passed before refactor                         |
-| Current Vitest                              | 50 tests across 9 files pass                                                       |
-| Current Playwright                          | 24 cases pass; v1 retained and new cockpit covered                                 |
-| Lint                                        | Pass, zero warnings                                                                |
-| TypeScript                                  | Pass                                                                               |
-| Local production build                      | Pass                                                                               |
-| Vercel production hosting build             | Pass; source f5b154e, deployment READY, banking remains Sandbox only               |
-| Runtime dependency audit                    | Zero vulnerabilities, npm audit --omit=dev                                         |
-| Secret scan                                 | Zero known credential matches in source/evidence and built client files            |
-| Actual local world                          | Private Blob persistence, refresh survival and conditional write verified          |
-| Actual provider reconciliation              | FX / transfer / deposit / ending wallets all MATCHED                               |
-| Selective replan                            | Delay 3 reopened; historical receipt allocation 1 reopened / 4 identities retained |
-| Replay / forged command                     | Stale revision HTTP 409; extra execution amount HTTP 400; no write                 |
-| Actual responsive captures                  | 375, 390, 768, 1024, 1280, 1440, 1920; no horizontal overflow                      |
-| Actual browser                              | No page/console errors recorded                                                    |
-| New financial operations in v2 verification | Zero                                                                               |
+| Check                    | Result                                                                                                                                                     |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Vitest                   | 68 tests / 11 files pass                                                                                                                                   |
+| Playwright               | 30 cases pass, desktop/tablet/mobile; v1 preserved                                                                                                         |
+| Lint / typecheck         | Pass                                                                                                                                                       |
+| Local production build   | Pass                                                                                                                                                       |
+| Hosted release           | Commit/version/build status recorded in [deployment.json](evidence/v2/deployment.json)                                                                     |
+| Runtime dependencies     | npm audit --omit=dev: zero vulnerabilities                                                                                                                 |
+| Development dependencies | Five advisory paths rooted in unpatched braces development/linter graph; disclosed                                                                         |
+| Secrets                  | Known values/patterns: source/evidence, built client, practical Git history, actual public HTML/JS; zero matches                                           |
+| Real local/public hero   | Actual free-provider interpretation, confidence 92%→31%, autonomy USD 10k→2.5k, receipt 1 reopened/4 retained, four reconciliations MATCHED                |
+| Financial mutations      | Zero new deposit, FX, transfer or transfer-state simulation; zero new wallet delta                                                                         |
+| Persistence              | Actual Blob, browser refresh/new request and [local production process restart](evidence/v2/persistence-restart.json); no forced Vercel cold start claimed |
+| Rejection behavior       | Stale revision 409, forged command 400, resource limit 429; no success invented                                                                            |
+| Responsive captures      | 375×812, 390×844, 768×1024, 1024×768, 1440×900, 1920×1080; no overflow                                                                                     |
+| Accessibility            | Semantics/labels/chart summaries/reduced motion, keyboard focus trap and restore, expired approval control tested; not exhaustive WCAG certification       |
+| Browser/performance      | Actual first useful view and API timing captured; no recorded page/console errors                                                                          |
 
-The final public walkthrough passed at 2026-10-06T08:55:39.985Z, and the local production walkthrough passed at 08:55:51.389Z. Both used successful, schema-validated free OpenRouter inference with nvidia/nemotron-3-super-120b-a12b:free. Confidence changed from 92% to 31%; the autonomous limit changed from USD 10,000 to USD 2,500. Free inference may fail or be throttled; labelled deterministic extraction preserves review and treasury controls. No paid fallback is enabled.
+Current timestamps, exact models, rates, reserve cents and timing measurements are in [local](evidence/v2/local-verification.json) and [public](evidence/v2/deployed-verification.json) summaries. Original financial mutations are dated 3 October and never rerun. Current indicative GBP rates can change the receipt-plan reserve; initial USD 18,828.13 belongs to plan-001, not the receipt plan. The original historical USD 17,025.12 remains explicitly historical.
 
-The verified receipt allocation reopened only contractor, from ESCALATE to CONVERT_AND_PAY, still subject to approval and planning-only. Logistics, cloud, insurance and marketing retained their decision identities and evaluation timestamps. Remaining planned reserve was USD 16,999.53; conservatively rounded indicative currency placement left USD 16,999.52. Four provider reconciliation checks matched. New wallet delta and banking mutation count were zero. The historical EUR 8,000 deposit was read back without replay. The 72-hour forward forecast deducts the already-paid supplier from opening cash and does not project that payment a second time.
+Meaningful added regressions cover singleton resource admission/CAS/daily rollover/lifetime retention; exhausted admission before networking/fallback; tier boundaries; received/out-of-horizon forecast consistency; concurrent FX/transfer and claims after lost response; changed plan/wallet/beneficiary/quote/expiry; cutoff closing during authentication; mismatch cannot clear execution lock; manual escalation persists; unparsable quote expiry; UI cents/approval expiry; keyboard focus. An actual provider GBP move during receipt readback exposed excessive replanning: a new regression retains four independent decisions while updating contractor cost. Subsequent rate-only refresh also retains unaffected decisions.
 
-Fixture tests are explicit and isolated from real provider evidence. HTTP failures, response loss, partial/uncertain operation claims, storage absence, strong-version refusal, quote/approval expiry, tampering, policy injection, stale context and nonterminal payment cases are tested.
+Actual storage testing previously detected weak compressed ETags that mocks missed. Identity encoding plus strong-version refusal preserve CAS. Process testing distinguishes immutable identity from refreshed observation timestamps. No financial boundary was weakened to make a test green.
 
-Real storage validation detected compressed weak ETags that mocked tests missed. Identity-encoded downloads plus strong-version checks fixed conditional writes; a regression test now refuses weak versions. No concurrency protection was removed to make the demo pass.
-
-Original financial operations are dated 3 October. The v2 script blocks banking mutations, compares unchanged real wallets and never resets IDs. Current calculated reserves use observed indicative rates; historical deposit reserve is separate.
-
-Five development-only linter advisory paths remain disclosed in security-and-limitations.md. Final deployment readback and production screenshots are recorded in docs/evidence/v2/deployed-verification.json and docs/screenshots/v2/deployed.
+The [final audit](hackathon/FINAL_TECHNICAL_AUDIT.md), [fix report](security/FIX_REPORT.md), [evidence index](evidence/INDEX.md) and [runbook](demo/DEMO_RUNBOOK.md) disclose coverage, public-demo limits and recovery. No offensive public load test, exhaustive penetration test, production banking certification or new supplier authorization is claimed.

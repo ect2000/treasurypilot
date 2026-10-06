@@ -102,6 +102,39 @@ describe("Autonomous cash governor invariants", () => {
         .allocation,
     ).toBe(POLICY.allocation);
   });
+  it("reopens only the blocked contractor when GBP moves during receipt readback, then preserves other decisions on rate refresh", () => {
+    const snapshot = verifiedSnapshot(),
+      forecast = updateForecast(initialForecast, 5);
+    const before = calculatePlan(snapshot, forecast);
+    snapshot.rates.GBP = String(Number(snapshot.rates.GBP) + 0.0001);
+    const after = calculatePlan(
+      snapshot,
+      forecast,
+      before,
+      "2026-10-06T00:02:00Z",
+      true,
+    );
+    expect(after.reopened).toEqual(["contractor"]);
+    expect(after.unchanged).toHaveLength(4);
+    for (const id of after.unchanged)
+      expect(after.decisions.find((d) => d.id === id)).toBe(
+        before.decisions.find((d) => d.id === id),
+      );
+    expect(after.timeline.at(-1)!.cash).toBe(after.remaining / 100);
+    snapshot.rates.GBP = String(Number(snapshot.rates.GBP) + 0.0001);
+    const refreshed = calculatePlan(
+      snapshot,
+      forecast,
+      after,
+      "2026-10-06T00:03:00Z",
+      true,
+    );
+    expect(refreshed.reopened).toEqual(["contractor"]);
+    expect(refreshed.decisions.find((d) => d.id === "insurance")).toBe(
+      after.decisions.find((d) => d.id === "insurance"),
+    );
+    expect(refreshed.remaining).toBeGreaterThanOrEqual(POLICY.reserve);
+  });
   it("matches real-recorded resources and wallets then detects amount, corridor, balance and status divergence", () => {
     const snapshot = verifiedSnapshot();
     expect(reconcile(snapshot).every((r) => r.status === "MATCHED")).toBe(true);

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-06T08:55:51.389Z",
+  "checkedAt": "2026-10-06T14:09:42.378Z",
   "url": "http://127.0.0.1:3000",
   "environment": "AIRWALLEX_SANDBOX_ONLY",
   "financialMutationsDuringValidation": 0,
@@ -21,7 +21,7 @@
     "insurance",
     "marketing"
   ],
-  "reserveAfter": 1699953,
+  "reserveAfter": 1697650,
   "reconciliation": [
     {
       "kind": "FX_CONVERSION",
@@ -43,34 +43,102 @@
   "responsive": [
     {
       "width": 375,
+      "height": 812,
       "overflow": false
     },
     {
       "width": 390,
+      "height": 844,
       "overflow": false
     },
     {
       "width": 768,
+      "height": 1024,
       "overflow": false
     },
     {
       "width": 1024,
-      "overflow": false
-    },
-    {
-      "width": 1280,
+      "height": 768,
       "overflow": false
     },
     {
       "width": 1440,
+      "height": 900,
       "overflow": false
     },
     {
       "width": 1920,
+      "height": 1080,
       "overflow": false
     }
   ],
   "browserErrors": [],
+  "performance": {
+    "firstUsefulMs": 3476,
+    "publicScriptBytes": 877924,
+    "apiRequests": [
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 2968
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 180
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 6617
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 286
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 393
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 199
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 1607
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 188
+      },
+      {
+        "path": "/api/governor",
+        "method": "POST",
+        "durationMs": 1453
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 184
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 189
+      },
+      {
+        "path": "/api/governor",
+        "method": "GET",
+        "durationMs": 206
+      }
+    ]
+  },
   "staleRevisionHttp": 409,
   "forgedOperationHttp": 400,
   "priorActions": [
@@ -80,7 +148,7 @@
       "kind": "FX_CONVERSION",
       "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
       "status": "SETTLED",
-      "observedAt": "2026-10-06T08:55:47.204Z",
+      "observedAt": "2026-10-06T14:09:37.567Z",
       "provenance": "PRE_EXISTING_V1"
     },
     {
@@ -89,7 +157,7 @@
       "kind": "TRANSFER",
       "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
       "status": "PAID",
-      "observedAt": "2026-10-06T08:55:47.204Z",
+      "observedAt": "2026-10-06T14:09:37.567Z",
       "provenance": "PRE_EXISTING_V1"
     },
     {
@@ -99,7 +167,7 @@
       "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
       "status": "SETTLED",
       "provenance": "PRE_EXISTING_V1",
-      "observedAt": "2026-10-06T08:55:30.545Z"
+      "observedAt": "2026-10-06T14:09:26.353Z"
     }
   ],
   "disclosure": "Provider FX/transfer/deposit are pre-existing v1 financial operations. This v2 validation only reads/reconciles them and mutates application planning context."

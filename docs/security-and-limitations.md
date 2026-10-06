@@ -8,6 +8,10 @@ Public views strip sealed proposal/approval payloads, banking credentials, auth 
 
 Deployment requires private Blob and strong conditional-write versions. Missing storage/weak ETags stops actions. Local immutable revisions publish complete JSON atomically. Uncertain claims remain claimed. There is no financial identity reset endpoint.
 
+Shared private admission ledger bounds new contexts (64/day, 128 new lifetime), observations (600/day), interpretations/proposals/executions (80/day each) and transitions (40/day). UTC rollover cannot move backwards. A world retains at most 120 revisions, 8 contexts, 32 plans, 16 approvals, 512 events and 128KiB; commands reserve execution/readback capacity. This bounds newly retained growth and provider work, not incoming traffic/Blob-read costs. Older worlds are not deleted/count-migrated. Existing reads remain available at limits. Financial claims never expire with the resource budget. See [fix report](security/FIX_REPORT.md).
+
+Secret checking now includes practical Git patch history and actual public HTML/JS, plus current known credential values and high-confidence key patterns. Cookies remain in ignored operator storage. No exhaustive unknown-key/screenshot OCR certification is claimed.
+
 The tools-free model returns validated facts for review. Deterministic instruction detection rejects policy/credential/payment overrides even if the model misses them. Only zero-priced allowlisted models can run; unavailable inference is visibly deterministic.
 
 All visitors read one Sandbox account. Sealed cookies isolate application context, not authenticated bank operators. Only the completed fixed supplier campaign can execute; additional obligations/placement are planning-only. No general replacement transfer, signed webhooks, verified invoices or ERP is implemented.

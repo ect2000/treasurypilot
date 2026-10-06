@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { minor } from "../money";
 import type { Balance, FinancialEvidence, Rates, Snapshot } from "../types";
+import { admitDemoWork } from "./demo-limits";
 export const SANDBOX_BASE = "https://api.sandbox.airwallex.com";
 export function assertSandbox(base: string) {
   if (base !== SANDBOX_BASE)
@@ -35,7 +36,12 @@ export const QuoteSchema = z.object({
   buy_currency: z.string(),
   sell_currency: z.string(),
   client_rate: z.union([z.number(), z.string()]),
-  valid_to_at: z.string(),
+  valid_to_at: z
+    .string()
+    .refine(
+      (value) => Number.isFinite(Date.parse(value)),
+      "Invalid quote expiry",
+    ),
 });
 export type RawQuote = z.infer<typeof QuoteSchema>;
 const BeneficiarySchema = z
@@ -185,6 +191,7 @@ export class AirwallexClient {
     path: string,
     method = "GET",
     body?: unknown,
+    beforeSubmission?: () => void,
   ): Promise<unknown> {
     assertSandbox(this.config.base);
     if (
@@ -194,6 +201,17 @@ export class AirwallexClient {
     )
       throw new Error("Invalid API path");
     const token = await this.authenticate();
+    if (
+      method === "POST" &&
+      (path === "/api/v1/fx/conversions/create" ||
+        path === "/api/v1/transfers/create" ||
+        /^\/api\/v1\/simulation\/transfers\/[^/]+\/transition$/.test(path)) &&
+      !executionOpen()
+    )
+      throw new Error(
+        "Sandbox execution window closed before provider submission",
+      );
+    beforeSubmission?.();
     const response = await this.transport(this.config.base + path, {
       method,
       headers: {
@@ -336,13 +354,24 @@ export class AirwallexClient {
   }
   async convert(quote: RawQuote, requestId: string) {
     return conversionEvidence(
-      await this.request("/api/v1/fx/conversions/create", "POST", {
-        request_id: requestId,
-        quote_id: quote.quote_id,
-        buy_currency: "EUR",
-        sell_currency: "USD",
-        buy_amount: 14000,
-      }),
+      await this.request(
+        "/api/v1/fx/conversions/create",
+        "POST",
+        {
+          request_id: requestId,
+          quote_id: quote.quote_id,
+          buy_currency: "EUR",
+          sell_currency: "USD",
+          buy_amount: 14000,
+        },
+        () => {
+          if (
+            !Number.isFinite(Date.parse(quote.valid_to_at)) ||
+            Date.parse(quote.valid_to_at) <= Date.now()
+          )
+            throw new Error("Quote expired before provider submission");
+        },
+      ),
     );
   }
   async validateTransfer(beneficiaryId: string, requestId: string) {
@@ -374,15 +403,11 @@ export class AirwallexClient {
       ),
     );
   }
-  async transition(
-    transferId: string,
-    nextStatus: "SENT" | "PAID",
-    requestId: string,
-  ) {
+  async transition(transferId: string, nextStatus: "SENT" | "PAID") {
     return this.request(
       `/api/v1/simulation/transfers/${encodeURIComponent(transferId)}/transition`,
       "POST",
-      { next_status: nextStatus, request_id: requestId },
+      { next_status: nextStatus },
     );
   }
 }
@@ -397,6 +422,7 @@ export function executionOpen() {
   return Number.isFinite(until) && Date.now() < until;
 }
 export async function readSnapshot(): Promise<Snapshot> {
+  await admitDemoWork("observation");
   const client = airwallex();
   const [
     balances,

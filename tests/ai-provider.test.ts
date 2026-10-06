@@ -1,5 +1,10 @@
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { interpretEvidence } from "../lib/server/ai";
+import { admitDemoWork, DemoLimit } from "../lib/server/demo-limits";
+vi.mock("../lib/server/demo-limits", async (original) => ({
+  ...(await original<typeof import("../lib/server/demo-limits")>()),
+  admitDemoWork: vi.fn(async () => {}),
+}));
 const candidate = {
   summary: "The receipt is five days late.",
   forecastDelayDays: 5,
@@ -7,9 +12,20 @@ const candidate = {
   rejectedInstructions: false,
 };
 beforeEach(() => {
+  vi.mocked(admitDemoWork).mockReset().mockResolvedValue(undefined);
   vi.stubEnv("OPENROUTER_API_KEY", "unit-provider-key");
   vi.stubEnv("LLM_MODEL", "nvidia/nemotron-3-super-120b-a12b:free");
   vi.stubEnv("LLM_FALLBACK_MODEL", "openrouter/free");
+});
+it("stops at exhausted admission before networking or presenting a fallback", async () => {
+  const mock = transport(200);
+  vi.mocked(admitDemoWork).mockRejectedValueOnce(
+    new DemoLimit("Budget reached"),
+  );
+  await expect(interpretEvidence("Receipt delayed by 5 days.")).rejects.toThrow(
+    "Budget reached",
+  );
+  expect(mock).not.toHaveBeenCalled();
 });
 afterEach(() => {
   vi.unstubAllEnvs();

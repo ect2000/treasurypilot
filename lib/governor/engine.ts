@@ -123,7 +123,22 @@ export function calculatePlan(
     previous?.receiptCredit === 0 &&
     credit > 0 &&
     forecast.delayed &&
-    stableCosts &&
+    previous.decisions
+      .filter(
+        (d) =>
+          !["DEFER", "ESCALATE"].includes(d.action) ||
+          d.obligation.priority === "LOW",
+      )
+      .every(
+        (d) =>
+          d.cost ===
+          (d.id === "logistics" && settled !== undefined
+            ? settled
+            : usdCost(
+                d.obligation.amount,
+                snapshot.rates[d.obligation.currency],
+              )),
+      ) &&
     JSON.stringify(previous.forecast) === JSON.stringify(forecast)
   )
     return project(
@@ -292,9 +307,11 @@ export function reconcile(
       status: mismatch ? "MISMATCH" : terminal ? "MATCHED" : "PENDING",
       checkedAt: now,
       basis: "LIVE_RESOURCE",
-      detail: terminal
-        ? "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
-        : "Creation or a nonterminal status is not proof of completion. Read and investigate before retrying.",
+      detail: mismatch
+        ? "Live provider amount, corridor or status differs from the recorded instruction. Investigate the variance; no replacement is authorized."
+        : terminal
+          ? "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
+          : "Creation or a nonterminal status is not proof of completion. Read and investigate before retrying.",
     });
   }
   if (snapshot.deposit.state === "RECEIVED") {

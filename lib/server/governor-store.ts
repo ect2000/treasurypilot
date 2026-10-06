@@ -15,6 +15,7 @@ import {
 import { randomUUID } from "node:crypto";
 import { join } from "node:path";
 import type { GovernorState } from "../governor/types";
+import { assertWorldCapacity } from "./demo-limits";
 
 export class StateConflict extends Error {
   constructor() {
@@ -81,6 +82,7 @@ export async function loadWorld(id: string): Promise<Stored | undefined> {
 }
 export async function saveWorld(state: GovernorState, previous?: Stored) {
   validateId(state.id);
+  assertWorldCapacity(state);
   if (state.revision !== (previous?.state.revision ?? 0) + 1)
     throw new StateConflict();
   const payload = JSON.stringify(state);

@@ -5,8 +5,22 @@ import {
   conversionEvidence,
   transferEvidence,
   SANDBOX_BASE,
+  QuoteSchema,
 } from "../lib/server/airwallex";
 describe("Airwallex REST adapters", () => {
+  it("rejects an unparsable quote expiry rather than treating it as a valid window", () => {
+    expect(() =>
+      QuoteSchema.parse({
+        quote_id: "fixture",
+        buy_amount: 14000,
+        sell_amount: 15971.87,
+        buy_currency: "EUR",
+        sell_currency: "USD",
+        client_rate: "0.876",
+        valid_to_at: "invalid",
+      }),
+    ).toThrow(/Invalid quote expiry/);
+  });
   it("maps major-unit balances to integer minor units", () => {
     expect(
       mapBalances([

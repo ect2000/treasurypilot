@@ -12,6 +12,8 @@ import {
   reserveCheck,
 } from "../treasury";
 import type { Balance, Forecast, QuoteView } from "../types";
+import { admitDemoWork } from "./demo-limits";
+import { claimOperation } from "./governor-store";
 import {
   airwallex,
   assertSandbox,
@@ -66,7 +68,7 @@ export function unseal<T>(token: string): T {
         decipher.final(),
       ]).toString("utf8"),
     );
-    if (!Number.isFinite(payload.expires) || payload.expires < Date.now())
+    if (!Number.isFinite(payload.expires) || payload.expires <= Date.now())
       throw new Error();
     return payload.value as T;
   } catch {
@@ -186,6 +188,7 @@ export async function prepareProposal(
       "The bounded Sandbox execution window is closed. Live reads and planning remain available.",
     );
   const client = airwallex();
+  await admitDemoWork("proposal");
   const ids = campaignIds();
   const [balances, beneficiaries, existingConversions, existingTransfers] =
     await Promise.all([
@@ -259,7 +262,7 @@ export async function prepareProposal(
     fingerprint: print,
     approvedFingerprint: print,
     walletAvailable: balances.find((b) => b.currency === "USD")?.available ?? 0,
-    expired: Date.parse(quote.validUntil) < Date.now(),
+    expired: Date.parse(quote.validUntil) <= Date.now(),
     campaignCap: POLICY.executionCap,
   });
   if (operation === "TRANSFER")
@@ -315,6 +318,7 @@ export async function executeApproved(token: string, stateVersion: string) {
   if (c.stateVersion !== stateVersion)
     throw new Error("State changed. Approval invalidated.");
   if (!executionOpen()) throw new Error("Sandbox execution window is closed");
+  await admitDemoWork("execution");
   const client = airwallex(),
     ids = campaignIds();
   const existing =
@@ -370,12 +374,16 @@ export async function executeApproved(token: string, stateVersion: string) {
     fingerprint: fingerprint(c),
     approvedFingerprint: approval.fingerprint,
     walletAvailable: balances.find((b) => b.currency === "USD")?.available ?? 0,
-    expired: Date.parse(c.quote.validUntil) < Date.now(),
+    expired: Date.parse(c.quote.validUntil) <= Date.now(),
     campaignCap: POLICY.executionCap,
   });
   // Persist a shared claim across browsers/cold starts before money leaves.
   // A lost response remains claimed: only provider readback can resolve it.
-  await (await import("./governor-store")).claimOperation(c.requestId, fingerprint(c));
+  await claimOperation(c.requestId, fingerprint(c));
+  if (!executionOpen())
+    throw new Error(
+      "Sandbox execution window closed before submission; no financial POST was sent",
+    );
   return c.operation === "CONVERT"
     ? client.convert(rawQuote!, ids.conversion)
     : client.transfer(beneficiary.id, ids.transfer);

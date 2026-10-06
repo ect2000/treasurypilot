@@ -127,11 +127,17 @@ function ReconciliationRow({ row }: { row: Reconciliation }) {
           <div className="g-rec-movement" key={m.currency}>
             <span>{m.currency}</span>
             <span>{formatMoney(m.amount, m.currency)}</span>
-            <span>{formatMoney(row.observed[i]?.amount ?? 0, m.currency)}</span>
+            <span>
+              {row.observedStatus === "NOT_OBSERVED"
+                ? "Not observed"
+                : formatMoney(row.observed[i]?.amount ?? 0, m.currency)}
+            </span>
             <span
               className={row.difference[i]?.amount ? "g-warning" : "g-muted"}
             >
-              {formatMoney(row.difference[i]?.amount ?? 0, m.currency)}
+              {row.observedStatus === "NOT_OBSERVED"
+                ? "Not established"
+                : formatMoney(row.difference[i]?.amount ?? 0, m.currency)}
             </span>
           </div>
         ))}
@@ -165,6 +171,7 @@ export function CashGovernor() {
   );
   const [confirm, setConfirm] = useState(false);
   const [guard, setGuard] = useState(false);
+  const [now, setNow] = useState(0);
   const flight = useRef(false);
   const reload = useCallback(async () => {
     if (flight.current) return;
@@ -181,6 +188,10 @@ export function CashGovernor() {
       flight.current = false;
       setBusy(undefined);
     }
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
   }, []);
   useEffect(() => {
     let active = true;
@@ -498,12 +509,10 @@ export function CashGovernor() {
                       <span>
                         Reserve after plan <ShieldCheck size={12} />
                       </span>
-                      <strong>
-                        {formatMoney(plan.remaining, "USD", true)}
-                      </strong>
+                      <strong>{formatMoney(plan.remaining, "USD")}</strong>
                       <small>
                         Floor {formatMoney(plan.reserve, "USD", true)} ·
-                        protected
+                        protected · {latest?.id}
                       </small>
                     </div>
                     <div>
@@ -537,7 +546,8 @@ export function CashGovernor() {
                     <span>
                       Operating allocation is a synthetic mandate. Actual
                       Sandbox wallets are shown separately. Forecast receipts
-                      never authorize spending.
+                      never authorize spending. The reserve floor is a policy
+                      constraint, not a bank-held reserve.
                     </span>
                   </div>
                 </>
@@ -704,7 +714,7 @@ export function CashGovernor() {
                       </div>
                       <p>
                         {world.forecast.delayed
-                          ? "Customer receipt delayed five days. Authority reduced; the reserve floor stays fixed."
+                          ? `Customer receipt delayed ${(world.forecast.dueHours - 24) / 24} days. Authority reduced; the reserve floor stays fixed.`
                           : "Receipt expected in 24 hours. Evidence supports the higher autonomy tier."}
                       </p>
                       <dl>
@@ -1229,91 +1239,102 @@ export function CashGovernor() {
                       </button>
                     </section>
                   )}
-                  {world.approvals.map((a) => (
-                    <section className="g-section" key={a.id}>
-                      <SectionTitle
-                        title={`${a.actionType} · ${formatMoney(a.amount, a.currency)}`}
-                        action={
-                          <Status
-                            tone={a.status === "APPROVED" ? "safe" : "warning"}
-                          >
-                            {a.status}
-                          </Status>
-                        }
-                      />
-                      <dl className="g-summary-dl">
-                        <div>
-                          <dt>Counterparty</dt>
-                          <dd>{a.counterparty}</dd>
+                  {world.approvals.map((a) => {
+                    const expired =
+                      ["PENDING", "APPROVED"].includes(a.status) &&
+                      Math.min(
+                        Date.parse(a.quoteExpiresAt),
+                        Date.parse(a.expiresAt),
+                      ) <= now;
+                    const status = expired ? "EXPIRED" : a.status;
+                    return (
+                      <section className="g-section" key={a.id}>
+                        <SectionTitle
+                          title={`${a.actionType} · ${formatMoney(a.amount, a.currency)}`}
+                          action={
+                            <Status
+                              tone={status === "APPROVED" ? "safe" : "warning"}
+                            >
+                              {status}
+                            </Status>
+                          }
+                        />
+                        <dl className="g-summary-dl">
+                          <div>
+                            <dt>Counterparty</dt>
+                            <dd>{a.counterparty}</dd>
+                          </div>
+                          <div>
+                            <dt>Plan / context</dt>
+                            <dd>
+                              {a.planId} / {a.contextVersion.slice(0, 12)}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Reserve after action</dt>
+                            <dd>{formatMoney(a.reserveAfter)}</dd>
+                          </div>
+                          <div>
+                            <dt>Quote expiry</dt>
+                            <dd>
+                              {new Date(a.quoteExpiresAt).toLocaleString(
+                                "en-GB",
+                              )}
+                            </dd>
+                          </div>
+                        </dl>
+                        <div className="g-fingerprint">
+                          <Fingerprint size={16} />
+                          <code>{a.fingerprint}</code>
                         </div>
-                        <div>
-                          <dt>Plan / context</dt>
-                          <dd>
-                            {a.planId} / {a.contextVersion.slice(0, 12)}
-                          </dd>
-                        </div>
-                        <div>
-                          <dt>Reserve after action</dt>
-                          <dd>{formatMoney(a.reserveAfter)}</dd>
-                        </div>
-                        <div>
-                          <dt>Quote expiry</dt>
-                          <dd>
-                            {new Date(a.quoteExpiresAt).toLocaleString("en-GB")}
-                          </dd>
-                        </div>
-                      </dl>
-                      <div className="g-fingerprint">
-                        <Fingerprint size={16} />
-                        <code>{a.fingerprint}</code>
-                      </div>
-                      {a.status === "PENDING" && (
-                        <>
-                          <label className="confirmation">
-                            <input
-                              type="checkbox"
-                              checked={confirm}
-                              onChange={(e) => setConfirm(e.target.checked)}
-                            />
-                            <span>
-                              Authorize only this exact Sandbox action, amount
-                              and counterparty.
-                            </span>
-                          </label>
+                        {status === "PENDING" && (
+                          <>
+                            <label className="confirmation">
+                              <input
+                                type="checkbox"
+                                checked={confirm}
+                                onChange={(e) => setConfirm(e.target.checked)}
+                              />
+                              <span>
+                                Authorize only this exact Sandbox action, amount
+                                and counterparty.
+                              </span>
+                            </label>
+                            <button
+                              className="g-button"
+                              disabled={!confirm || !!busy}
+                              onClick={() =>
+                                void tool(
+                                  {
+                                    tool: "approve_action",
+                                    approvalId: a.id,
+                                    confirmed: true,
+                                  },
+                                  "Binding exact approval",
+                                )
+                              }
+                            >
+                              Approve exact action
+                            </button>
+                          </>
+                        )}
+                        {status === "APPROVED" && (
                           <button
                             className="g-button"
-                            disabled={!confirm || !!busy}
+                            disabled={!!busy}
                             onClick={() =>
                               void tool(
-                                {
-                                  tool: "approve_action",
-                                  approvalId: a.id,
-                                  confirmed: true,
-                                },
-                                "Binding exact approval",
+                                { tool: "execute_action", approvalId: a.id },
+                                "Executing approved Sandbox action",
                               )
                             }
                           >
-                            Approve exact action
+                            Execute exact Sandbox action
                           </button>
-                        </>
-                      )}
-                      {a.status === "APPROVED" && (
-                        <button
-                          className="g-button"
-                          disabled={!!busy}
-                          onClick={() =>
-                            void tool(
-                              { tool: "execute_action", approvalId: a.id },
-                              "Executing approved Sandbox action",
-                            )
-                          }
-                        >
-                          Execute exact Sandbox action
-                        </button>
-                      )}
-                    </section>
-                  ))}
+                        )}
+                      </section>
+                    );
+                  })}
                 </>
               )}
               {tab === "reconciliation" && (

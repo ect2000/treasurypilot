@@ -17,12 +17,27 @@ async function main() {
   const browser = await chromium.launch();
   try {
     const context = await browser.newContext({
-      viewport: { width: 1440, height: 1050 },
+      viewport: { width: 1440, height: 900 },
       reducedMotion: "reduce",
     });
     context.setDefaultTimeout(30000);
     const page = await context.newPage();
     const errors: string[] = [];
+    const timings: { path: string; method: string; durationMs: number }[] = [];
+    let publicScriptBytes = 0;
+    page.on("requestfinished", (request) => {
+      const timing = request.timing();
+      if (new URL(request.url()).pathname.startsWith("/api/"))
+        timings.push({
+          path: new URL(request.url()).pathname,
+          method: request.method(),
+          durationMs: Math.round(timing.responseEnd),
+        });
+      if (request.resourceType() === "script")
+        void request.sizes().then((size) => {
+          publicScriptBytes += size.responseBodySize;
+        });
+    });
     let financialMutationAttempts = 0;
     page.on("pageerror", (e) => errors.push(e.message));
     page.on("console", (m) => {
@@ -67,10 +82,12 @@ async function main() {
         path: `docs/screenshots/v2/${dir}/${name}.png`,
         fullPage: true,
       });
+    const started = Date.now();
     await page.goto(`${base}/treasury`);
     await expect(
       page.getByRole("heading", { name: "Current plan", exact: true }),
     ).toBeVisible({ timeout: 45000 });
+    const firstUsefulMs = Date.now() - started;
     const before = await read();
     await save("balances-before", before.snapshot);
     await save("plan-v1", before.plans.at(-1));
@@ -170,13 +187,20 @@ async function main() {
     await navigate(page, "Audit trail");
     await shot("10-audit");
     const responsive = [];
-    for (const width of [375, 390, 768, 1024, 1280, 1440, 1920]) {
-      await page.setViewportSize({ width, height: width < 768 ? 844 : 1050 });
+    for (const [width, height] of [
+      [375, 812],
+      [390, 844],
+      [768, 1024],
+      [1024, 768],
+      [1440, 900],
+      [1920, 1080],
+    ]) {
+      await page.setViewportSize({ width, height });
       await navigate(page, "Overview");
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth > innerWidth,
       );
-      responsive.push({ width, overflow });
+      responsive.push({ width, height, overflow });
       await shot(`overview-${width}`);
       if (overflow) throw new Error(`Horizontal overflow at ${width}`);
     }
@@ -193,6 +217,7 @@ async function main() {
       page.getByRole("heading", { name: "Current plan", exact: true }),
     ).toBeVisible();
     const persisted = await read();
+    await save("persistence-baseline", persisted);
     if (
       !persisted.receiptApplied ||
       persisted.plans.length !== after.plans.length
@@ -240,6 +265,7 @@ async function main() {
       })),
       responsive,
       browserErrors: errors,
+      performance: { firstUsefulMs, publicScriptBytes, apiRequests: timings },
       staleRevisionHttp: invalid.status(),
       forgedOperationHttp: forged.status(),
       priorActions: after.operations,
@@ -247,6 +273,10 @@ async function main() {
         "Provider FX/transfer/deposit are pre-existing v1 financial operations. This v2 validation only reads/reconciles them and mutates application planning context.",
     };
     await save("verification", summary);
+    await mkdir(".operator", { recursive: true });
+    await context.storageState({
+      path: `.operator/${dir}-validation-state.json`,
+    });
     console.log(JSON.stringify(summary, null, 2));
     if (
       errors.length ||

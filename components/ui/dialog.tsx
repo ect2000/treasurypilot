@@ -1,6 +1,7 @@
 "use client";
 import * as Primitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { useRef } from "react";
 export function Inspector({
   open,
   onOpenChange,
@@ -16,11 +17,21 @@ export function Inspector({
   children: React.ReactNode;
   variant?: "governor";
 }) {
+  const opener = useRef<HTMLElement | null>(null);
   return (
     <Primitive.Root open={open} onOpenChange={onOpenChange}>
       <Primitive.Portal>
         <Primitive.Overlay className="dialog-overlay" />
         <Primitive.Content
+          onOpenAutoFocus={() => {
+            opener.current = document.activeElement as HTMLElement | null;
+          }}
+          onCloseAutoFocus={(event) => {
+            if (opener.current?.isConnected) {
+              event.preventDefault();
+              opener.current.focus();
+            }
+          }}
           className={`inspector ${variant === "governor" ? "g-inspector" : ""}`}
         >
           <Primitive.Close

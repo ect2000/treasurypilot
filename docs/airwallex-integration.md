@@ -8,7 +8,9 @@ The original EUR 8,000 simulation used POST /api/v1/simulation/deposit/create wi
 
 FX/transfers retain stable campaign UUIDs and exact approval binding. An immutable global operation claim precedes authorized external writes. Uncertain responses block reuse pending original-resource reconciliation. New browser workspaces never create new financial identities.
 
-Authentication coalesces login and caches valid tokens. A 401 invalidates its token without automatic financial replay. Payload validation and sanitized provider error codes prevent raw response leakage.
+Authentication coalesces login and caches valid tokens. A 401 invalidates its token without automatic financial replay. Payload validation and sanitized provider error codes prevent raw response leakage. Quote and operator-window expiry are checked again immediately before financial transport, after asynchronous authentication.
+
+Official transfer-state simulation documents next_status, not provider request_id idempotency. Stable local transition identities now claim each operation permanently before submission; the request sends the documented next_status body. Original terminal status returns readback without another simulation. No transition was rerun during this hardening.
 
 Docs MCP was used for official guidance. Developer MCP is not an exposed callable integration here; HTTP 405 on plain GET confirms transport reachability only. Authenticated REST works. No additional Starter Kit 1 enablement was required for previously verified operations.
 

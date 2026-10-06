@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Interpretation } from "../types";
+import { admitDemoWork } from "./demo-limits";
 const ALLOWED = ["nvidia/nemotron-3-super-120b-a12b:free", "openrouter/free"];
 const Candidate = z
   .object({
@@ -108,10 +109,11 @@ export const freeEvidenceProvider: EvidenceProvider = {
   interpret: interpretFreeEvidence,
 };
 // A future hackathon-grant provider implements this contract; no paid provider is configured here.
-export function interpretEvidence(
+export async function interpretEvidence(
   text: string,
   provider: EvidenceProvider = freeEvidenceProvider,
 ) {
+  await admitDemoWork("interpretation");
   return provider.interpret(text);
 }
 async function interpretFreeEvidence(text: string): Promise<Interpretation> {

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { initialForecast } from "../treasury";
 import type { Forecast } from "../types";
 import { seal, unseal } from "./authorization";
+import { DemoLimit } from "./demo-limits";
 export type Session = { forecast: Forecast; version: string };
 export function getSession(req: NextRequest): Session {
   const cookie = req.cookies.get("tp_state")?.value;
@@ -63,6 +64,9 @@ export function errorResponse(error: unknown) {
       : message;
   return NextResponse.json(
     { error: safe },
-    { status: 400, headers: { "Cache-Control": "no-store" } },
+    {
+      status: error instanceof DemoLimit ? 429 : 400,
+      headers: { "Cache-Control": "no-store" },
+    },
   );
 }

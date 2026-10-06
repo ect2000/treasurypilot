@@ -130,9 +130,6 @@ export function buildPlan(
   );
   const reopened: string[] = [],
     unchanged: string[] = [];
-  const timeline = [
-    { hour: 0, cash: allocation / 100, expected: allocation / 100 },
-  ];
   const decisions = sorted.map((obligation): Decision => {
     const cost =
       obligation.id === "logistics" && settledSupplierCost !== undefined
@@ -150,7 +147,12 @@ export function buildPlan(
     let action: Decision["action"];
     let reason: string;
     let approvalRequired = false;
-    if (obligation.priority === "LOW") {
+    if (obligation.dueHours > 72) {
+      action = "DEFER";
+      reason =
+        "Outside the 72-hour planning horizon. Re-evaluate when due within the horizon.";
+      dependencies.splice(2);
+    } else if (obligation.priority === "LOW") {
       action = "DEFER";
       reason =
         "Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.";
@@ -174,16 +176,6 @@ export function buildPlan(
           ? "Fund from the authorized USD allocation while preserving the reserve."
           : "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.";
       remaining -= cost;
-      timeline.push({
-        hour: obligation.dueHours,
-        cash: remaining / 100,
-        expected:
-          (remaining +
-            (forecast.dueHours <= obligation.dueHours && !forecast.delayed
-              ? forecast.amount
-              : 0)) /
-          100,
-      });
     }
     const reserveAfter =
       obligation.priority === "LOW" ? allocation : check.after;
@@ -198,7 +190,14 @@ export function buildPlan(
       forecast: dependencies.includes("forecast") ? forecast : undefined,
     });
     const old = previous?.decisions.find((d) => d.id === obligation.id);
-    if (old?.signature === signature) {
+    if (
+      old &&
+      old.cost === cost &&
+      old.action === action &&
+      old.approvalRequired === approvalRequired &&
+      old.reason === reason &&
+      JSON.stringify(old.obligation) === JSON.stringify(obligation)
+    ) {
       unchanged.push(obligation.id);
       return old;
     }
@@ -217,26 +216,6 @@ export function buildPlan(
       revision: (old?.revision ?? 0) + 1,
     };
   });
-  timeline.push({
-    hour: 72,
-    cash: remaining / 100,
-    expected: (remaining + (!forecast.delayed ? forecast.amount : 0)) / 100,
-  });
-  if (
-    !forecast.delayed &&
-    forecast.dueHours <= 72 &&
-    !timeline.some((point) => point.hour === forecast.dueHours)
-  ) {
-    const cash = timeline
-      .filter((point) => point.hour <= forecast.dueHours)
-      .at(-1)!.cash;
-    timeline.push({
-      hour: forecast.dueHours,
-      cash,
-      expected: (minor(String(cash)) + forecast.amount) / 100,
-    });
-  }
-  timeline.sort((a, b) => a.hour - b.hour);
   return {
     decisions,
     allocation,
@@ -249,7 +228,7 @@ export function buildPlan(
     forecast,
     reopened,
     unchanged,
-    timeline,
+    timeline: cashTimeline(decisions, allocation, forecast),
   };
 }
 
@@ -269,16 +248,22 @@ export function replanAfterDeposit(
   if (
     JSON.stringify(previous.forecast) !== JSON.stringify(forecast) ||
     custom.length > 0 ||
-    previous.decisions.some(
-      (d) =>
-        d.cost !==
-        (d.id === "logistics" && settledSupplierCost !== undefined
-          ? settledSupplierCost
-          : usdCost(d.obligation.amount, rates[d.obligation.currency])),
-    )
+    previous.decisions
+      .filter(
+        (d) =>
+          !["DEFER", "ESCALATE"].includes(d.action) ||
+          d.obligation.priority === "LOW",
+      )
+      .some(
+        (d) =>
+          d.cost !==
+          (d.id === "logistics" && settledSupplierCost !== undefined
+            ? settledSupplierCost
+            : usdCost(d.obligation.amount, rates[d.obligation.currency])),
+      )
   ) {
     throw new Error(
-      "Deposit-only replan requires unchanged forecast, obligations and costs",
+      "Deposit replan requires unchanged forecast, obligations and funded costs",
     );
   }
   if (
@@ -300,8 +285,26 @@ export function replanAfterDeposit(
       unchanged.push(old.id);
       return old;
     }
-    const check = reserveCheck(remaining, old.cost, POLICY.reserve, allocation);
+    const cost = usdCost(old.obligation.amount, rates[old.obligation.currency]);
+    const check = reserveCheck(remaining, cost, POLICY.reserve, allocation);
     if (!check.pass) {
+      if (cost !== old.cost) {
+        reopened.push(old.id);
+        return {
+          ...old,
+          cost,
+          reserveAfter: check.after,
+          signature: JSON.stringify({
+            obligation: old.obligation,
+            cost,
+            action: old.action,
+            approvalRequired: old.approvalRequired,
+            reason: old.reason,
+          }),
+          revision: old.revision + 1,
+          evaluatedAt: now,
+        };
+      }
       unchanged.push(old.id);
       return old;
     }
@@ -312,17 +315,18 @@ export function replanAfterDeposit(
       old.obligation.currency === "USD"
         ? "Fund from the authorized USD allocation while preserving the reserve."
         : "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.";
-    const approvalRequired = old.cost > previous.autonomy;
+    const approvalRequired = cost > previous.autonomy;
     const dependency = [
       `obligation:${old.id}`,
       `rate:${old.obligation.currency}`,
       "allocation",
       "reserve",
-      ...(old.cost <= POLICY.authorityTiers[0].fx ? ["autonomy"] : []),
+      ...(cost <= POLICY.authorityTiers[0].fx ? ["autonomy"] : []),
     ];
     reopened.push(old.id);
     return {
       ...old,
+      cost,
       action,
       reason,
       approvalRequired,
@@ -330,7 +334,7 @@ export function replanAfterDeposit(
       dependencies: dependency,
       signature: JSON.stringify({
         obligation: old.obligation,
-        cost: old.cost,
+        cost,
         action,
         reserveAfter: check.after,
         approvalRequired,
@@ -362,12 +366,16 @@ export function cashTimeline(
   let cash = allocation;
   const timeline = [{ hour: 0, cash: cash / 100, expected: cash / 100 }];
   const funded = decisions
-    .filter((d) => ["PAY_NOW", "CONVERT_AND_PAY"].includes(d.action))
+    .filter(
+      (d) =>
+        ["PAY_NOW", "CONVERT_AND_PAY"].includes(d.action) &&
+        d.obligation.dueHours <= 72,
+    )
     .toSorted((a, b) => a.obligation.dueHours - b.obligation.dueHours);
   const hours = [
     ...new Set([
       ...funded.map((d) => d.obligation.dueHours),
-      ...(!forecast.delayed && forecast.dueHours <= 72
+      ...(!forecast.delayed && !forecast.received && forecast.dueHours <= 72
         ? [forecast.dueHours]
         : []),
       72,
@@ -382,7 +390,7 @@ export function cashTimeline(
       cash: cash / 100,
       expected:
         (cash +
-          (!forecast.delayed && hour >= forecast.dueHours
+          (!forecast.delayed && !forecast.received && hour >= forecast.dueHours
             ? forecast.amount
             : 0)) /
         100,

@@ -18,7 +18,8 @@ async function main() {
     if (msg.type() === "error") errors.push(msg.text());
   });
   await page.goto(base);
-  await page.getByRole("link", { name: "Enter the treasury" }).click();
+  // Legacy verifier exercises the preserved v1 UI; the primary verifier is verify-governor.ts.
+  await page.goto(`${base}/treasury/v1`);
   await expect(
     page.getByText("Airwallex connected", { exact: true }),
   ).toBeVisible({ timeout: 45000 });

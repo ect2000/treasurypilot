@@ -1,7 +1,7 @@
 {
   "id": "plan-003",
-  "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
-  "createdAt": "2026-10-06T08:55:47.205Z",
+  "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
+  "createdAt": "2026-10-06T14:09:37.568Z",
   "state": "CURRENT",
   "cause": "allocate_receipt",
   "plan": {
@@ -30,7 +30,7 @@
           "reserve"
         ],
         "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
-        "evaluatedAt": "2026-10-06T08:55:30.546Z",
+        "evaluatedAt": "2026-10-06T14:09:26.354Z",
         "revision": 1
       },
       {
@@ -58,7 +58,7 @@
           "autonomy"
         ],
         "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-        "evaluatedAt": "2026-10-06T08:55:44.963Z",
+        "evaluatedAt": "2026-10-06T14:09:34.907Z",
         "revision": 2
       },
       {
@@ -73,9 +73,9 @@
           "priority": "MEDIUM",
           "synthetic": true
         },
-        "cost": 982860,
+        "cost": 985163,
         "action": "CONVERT_AND_PAY",
-        "reserveAfter": 1699953,
+        "reserveAfter": 1697650,
         "approvalRequired": true,
         "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
         "dependencies": [
@@ -85,8 +85,8 @@
           "reserve",
           "autonomy"
         ],
-        "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":982860,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":1699953,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
-        "evaluatedAt": "2026-10-06T08:55:47.205Z",
+        "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":985163,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":1697650,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+        "evaluatedAt": "2026-10-06T14:09:37.568Z",
         "revision": 3
       },
       {
@@ -114,7 +114,7 @@
           "autonomy"
         ],
         "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-        "evaluatedAt": "2026-10-06T08:55:44.963Z",
+        "evaluatedAt": "2026-10-06T14:09:34.907Z",
         "revision": 2
       },
       {
@@ -139,7 +139,7 @@
           "rate:USD"
         ],
         "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
-        "evaluatedAt": "2026-10-06T08:55:30.546Z",
+        "evaluatedAt": "2026-10-06T14:09:26.354Z",
         "revision": 1
       }
     ],
@@ -148,8 +148,8 @@
     "reserve": 1500000,
     "autonomy": 250000,
     "spendable": 4100000,
-    "committed": 3900047,
-    "remaining": 1699953,
+    "committed": 3902350,
+    "remaining": 1697650,
     "forecast": {
       "confidence": 0.31,
       "amount": 2000000,
@@ -179,18 +179,18 @@
       },
       {
         "hour": 38,
-        "cash": 21999.53,
-        "expected": 21999.53
+        "cash": 21976.5,
+        "expected": 21976.5
       },
       {
         "hour": 60,
-        "cash": 16999.53,
-        "expected": 16999.53
+        "cash": 16976.5,
+        "expected": 16976.5
       },
       {
         "hour": 72,
-        "cash": 16999.53,
-        "expected": 16999.53
+        "cash": 16976.5,
+        "expected": 16976.5
       }
     ]
   }

@@ -14,6 +14,12 @@ import {
 import type { GovernorState, GovernorView } from "../governor/types";
 import type { AuditEvent, Snapshot } from "../types";
 import { updateForecast } from "../treasury";
+import {
+  admitDemoWork,
+  assertWorldCapacity,
+  DemoLimit,
+  WORLD_LIMITS,
+} from "./demo-limits";
 import { interpretEvidence } from "./ai";
 import { readSnapshot } from "./airwallex";
 import {
@@ -333,7 +339,8 @@ function reconciliation(s: GovernorState) {
         source: "AIRWALLEX",
       });
     incident.providerStatus = status;
-    Object.assign(incident, incidentDecision(status));
+    if (incident.state !== "ESCALATED")
+      Object.assign(incident, incidentDecision(status));
     incident.updatedAt = s.snapshot.fetchedAt;
   }
   event(
@@ -414,6 +421,7 @@ export async function getWorld(id: string) {
     }
     return stored.state;
   }
+  await admitDemoWork("workspace");
   const s = initializeWorld(id, await readSnapshot());
   await saveWorld(s);
   logCommittedEvents(s);
@@ -426,6 +434,22 @@ export async function runTool(
   const stored = await loadWorld(id);
   if (!stored || stored.state.revision !== command.revision)
     throw new StateConflict();
+  // Leave capacity for action readback/uncertainty and bounded reconciliation.
+  assertWorldCapacity(stored.state, stored.state.executionLock ? 1 : 20);
+  if (
+    command.tool === "interpret_context" &&
+    stored.state.contexts.length >= WORLD_LIMITS.contexts
+  )
+    throw new DemoLimit(
+      "This workspace already holds the maximum reviewed contexts. Export evidence before starting a fresh planning context.",
+    );
+  if (
+    command.tool === "request_human_approval" &&
+    stored.state.approvals.length >= WORLD_LIMITS.approvals
+  )
+    throw new DemoLimit(
+      "This workspace has reached its approval record limit.",
+    );
   if (stored.state.executionLock && command.tool !== "run_cycle")
     throw new Error(
       "A financial action is in flight or uncertain. Reconcile its original identity before changing context.",
@@ -450,7 +474,10 @@ export async function runTool(
           e.requestId === s.executionLock &&
           ["SETTLED", "PAID"].includes(e.status),
       );
-      if (observed) {
+      const matched = reconcile(s.snapshot).some(
+        (r) => r.actionId === s.executionLock && r.status === "MATCHED",
+      );
+      if (observed && matched) {
         const intent = s.approvals.find((a) => a.requestId === s.executionLock);
         if (intent) intent.status = "EXECUTED";
         s.executionLock = undefined;
@@ -510,7 +537,8 @@ export async function runTool(
       "Previously settled Sandbox receipt assigned to this operating plan once. No new deposit POST.",
     );
   }
-  replan(s, command.tool);
+  // Observation can reconcile an in-flight action, but cannot replace its authorization context.
+  if (!s.executionLock) replan(s, command.tool);
   normalizeContext(s);
   if (
     ["observe", "run_cycle", "allocate_receipt", "open_incident"].includes(

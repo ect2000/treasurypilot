@@ -5,6 +5,7 @@ import {
   buildPlan,
   initialForecast,
   POLICY,
+  obligations,
   reserveCheck,
   replanAfterDeposit,
   updateForecast,
@@ -41,6 +42,36 @@ describe("money and treasury policy", () => {
     expect(autonomyLimit(0.6)).toBe(minor("5000"));
     expect(autonomyLimit(0.31)).toBe(minor("2500"));
     expect(() => autonomyLimit(NaN)).toThrow();
+    expect(autonomyLimit(0.849999)).toBe(minor("5000"));
+    expect(autonomyLimit(0.85)).toBe(minor("10000"));
+    expect(autonomyLimit(0.599999)).toBe(minor("2500"));
+    for (const invalid of [-0.1, 1.01, Infinity])
+      expect(() => autonomyLimit(invalid)).toThrow();
+  });
+  it("does not double count a received receipt or include out-of-horizon cash in the trajectory", () => {
+    for (const forecast of [
+      { ...initialForecast, received: true },
+      { ...initialForecast, dueHours: 73 },
+    ]) {
+      const plan = buildPlan(rates, forecast);
+      expect(
+        plan.timeline.every((point) => point.cash === point.expected),
+      ).toBe(true);
+      expect(plan.timeline.at(-1)!.cash).toBe(plan.remaining / 100);
+      expect(plan.timeline.every((point) => point.hour <= 72)).toBe(true);
+    }
+    const plan = buildPlan(rates, initialForecast, undefined, [
+      {
+        ...obligations[0],
+        id: "next-week",
+        dueHours: 168,
+        amount: minor("100"),
+      },
+    ]);
+    expect(plan.decisions.find((d) => d.id === "next-week")!.action).toBe(
+      "DEFER",
+    );
+    expect(plan.timeline.at(-1)!.cash).toBe(plan.remaining / 100);
   });
   it("reconciles the settled supplier cost and includes the forecast at its actual horizon", () => {
     const p = buildPlan(

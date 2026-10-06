@@ -20,4 +20,6 @@ All dates are actual preparation dates, before the official 25 October build sta
 
 Original financial request IDs remain unchanged. Deployment verification is recorded after the hosted build, not claimed from fixture tests.
 
+The 6 October final hardening pass adds durable bounded demo admission/retention, monotonic budget rollover, transport-boundary expiry checks, exact reserve/plan labels, approval-expiry display, mismatch wording, persistent manual escalation, forecast horizon consistency, keyboard focus restoration, history/public-bundle scanning and safe recording preparation. Verification expands to 68 unit tests and 30 Playwright cases; runtime/source identity is recorded in the current deployment evidence and /api/version. These are preparation-day changes, not claimed as work inside the official build period.
+
 v2 verification creates application workspaces, reviewed context, receipt allocation and incident records. It sends no new deposit, conversion, supplier transfer or transfer-state simulation. Provider resources remain PRE_EXISTING_V1. Pre-existing-work eligibility requires organizer confirmation.

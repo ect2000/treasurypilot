@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-06T14:12:30.795Z",
+  "mode": "LOCAL_PRODUCTION_PROCESS_RESTART_WITH_PRIVATE_BLOB",
+  "persistence": "PRIVATE_BLOB",
+  "workspaceId": "c1d04654-8ff4-4e44-a9c7-a8d8f687fdaa",
+  "contextVersion": "366bbae3454e7f3e30f4e7e70c1a16c4052f80a1905803064c73ae3b1f755859",
+  "planIds": [
+    "plan-001",
+    "plan-002",
+    "plan-003"
+  ],
+  "actionIds": [
+    "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+    "de5b666d-b246-5bd0-abd6-21adc50ab756",
+    "statement_ref:TPKIT1-2026-ONE"
+  ],
+  "reconciliationIds": [
+    "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
+    "rec-de5b666d-b246-5bd0-abd6-21adc50ab756",
+    "rec-TPKIT1-2026-ONE",
+    "rec-campaign-wallet"
+  ],
+  "approvalIds": [],
+  "receiptApplied": true,
+  "revision": 5,
+  "identityPreserved": true,
+  "bankingMutations": 0,
+  "cookieDisclosure": "Private saved browser state reused; never published",
+  "limitation": "Actual local process restart, not a forced Vercel cold start. Vercel refresh/new requests separately verified."
+}
