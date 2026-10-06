@@ -1,10 +1,10 @@
 [
   {
-    "id": "651c5efc-e34c-4a0e-8e2f-de4b86edbd9c",
+    "id": "16d6fd38-2b0b-4da2-9d61-1fb8f02f68f4",
     "actionId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
     "complaint": "Supplier reports that the payment has not arrived. Please investigate the original transfer.",
-    "openedAt": "2026-10-06T08:48:10.737Z",
-    "updatedAt": "2026-10-06T08:48:10.737Z",
+    "openedAt": "2026-10-06T08:55:48.949Z",
+    "updatedAt": "2026-10-06T08:55:48.949Z",
     "state": "OPEN",
     "providerStatus": "PAID",
     "decision": "INVESTIGATE",
@@ -12,7 +12,7 @@
     "reason": "Provider reports PAID in Sandbox. Investigate beneficiary receipt; do not pay again.",
     "history": [
       {
-        "at": "2026-10-06T08:48:10.737Z",
+        "at": "2026-10-06T08:55:48.948Z",
         "status": "PAID",
         "source": "AIRWALLEX"
       }

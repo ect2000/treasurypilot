@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-06T09:02:19.961Z",
+  "url": "https://treasurypilot-sooty.vercel.app",
+  "landing": [
+    {
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    }
+  ],
+  "preservedV1Status": 200,
+  "browserErrors": [],
+  "bankingMutationAttempts": 0
+}

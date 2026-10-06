@@ -1,10 +1,10 @@
 {
   "schema": 2,
-  "id": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+  "id": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
   "revision": 4,
-  "createdAt": "2026-10-06T08:48:00.552Z",
-  "updatedAt": "2026-10-06T08:48:08.895Z",
-  "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+  "createdAt": "2026-10-06T08:55:30.545Z",
+  "updatedAt": "2026-10-06T08:55:47.206Z",
+  "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
   "snapshot": {
     "balances": [
       {
@@ -332,9 +332,9 @@
     ],
     "rates": {
       "USD": "1",
-      "EUR": "1.113044",
-      "GBP": "1.310801",
-      "CNY": "0.1477399481432782017093512"
+      "EUR": "1.112538",
+      "GBP": "1.310479",
+      "CNY": "0.1477424146458828547439424502"
     },
     "globalAccounts": [
       {
@@ -428,7 +428,7 @@
         "marketing"
       ]
     },
-    "fetchedAt": "2026-10-06T08:48:08.894Z",
+    "fetchedAt": "2026-10-06T08:55:47.204Z",
     "source": "AIRWALLEX_REST_SANDBOX",
     "rateSource": "Airwallex indicative rates · normalized to USD per unit",
     "executionAvailable": true
@@ -446,7 +446,7 @@
       "vendor": "Critical logistics supplier",
       "amount": 1400000,
       "currency": "EUR",
-      "dueAt": "2026-10-06T21:48:00.552Z",
+      "dueAt": "2026-10-06T21:55:30.545Z",
       "priority": "CRITICAL",
       "criticality": "OPERATIONS_STOP",
       "lateCostPerDay": 70000,
@@ -460,7 +460,7 @@
       "vendor": "Cloud infrastructure",
       "amount": 820000,
       "currency": "USD",
-      "dueAt": "2026-10-07T10:48:00.552Z",
+      "dueAt": "2026-10-07T10:55:30.545Z",
       "priority": "HIGH",
       "criticality": "CONTRACTUAL",
       "lateCostPerDay": 30000,
@@ -474,7 +474,7 @@
       "vendor": "UK contractor",
       "amount": 750000,
       "currency": "GBP",
-      "dueAt": "2026-10-07T22:48:00.552Z",
+      "dueAt": "2026-10-07T22:55:30.545Z",
       "priority": "MEDIUM",
       "criticality": "CONTRACTUAL",
       "lateCostPerDay": 7500,
@@ -488,7 +488,7 @@
       "vendor": "Insurance / compliance",
       "amount": 500000,
       "currency": "USD",
-      "dueAt": "2026-10-08T20:48:00.552Z",
+      "dueAt": "2026-10-08T20:55:30.545Z",
       "priority": "MEDIUM",
       "criticality": "CONTRACTUAL",
       "lateCostPerDay": 50000,
@@ -502,7 +502,7 @@
       "vendor": "Marketing vendor",
       "amount": 600000,
       "currency": "USD",
-      "dueAt": "2026-10-09T06:48:00.552Z",
+      "dueAt": "2026-10-09T06:55:30.545Z",
       "priority": "LOW",
       "criticality": "DISCRETIONARY",
       "lateCostPerDay": 0,
@@ -517,10 +517,10 @@
       "id": "INV-4092",
       "amount": 2000000,
       "currency": "USD",
-      "expectedAt": "2026-10-12T08:48:00.552Z",
+      "expectedAt": "2026-10-12T08:55:30.545Z",
       "confidence": 0.31,
       "evidenceIds": [
-        "2c9bbd78-8b6a-41a7-ac08-3038cced9213"
+        "8be3455d-9cb3-446f-bf9a-603883445401"
       ],
       "state": "DELAYED",
       "source": "SYNTHETIC"
@@ -566,8 +566,8 @@
   "plans": [
     {
       "id": "plan-001",
-      "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
-      "createdAt": "2026-10-06T08:48:00.553Z",
+      "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
+      "createdAt": "2026-10-06T08:55:30.546Z",
       "state": "SUPERSEDED",
       "cause": "Initial operating allocation; historical receipt awaits explicit allocation.",
       "plan": {
@@ -596,7 +596,7 @@
               "reserve"
             ],
             "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           },
           {
@@ -624,7 +624,7 @@
               "autonomy"
             ],
             "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":false,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           },
           {
@@ -639,9 +639,9 @@
               "priority": "MEDIUM",
               "synthetic": true
             },
-            "cost": 983101,
+            "cost": 982860,
             "action": "DEFER",
-            "reserveAfter": 1399712,
+            "reserveAfter": 1399953,
             "approvalRequired": false,
             "reason": "Await the expected receipt, then re-evaluate. Forecast cash is not available cash and cannot authorize execution.",
             "dependencies": [
@@ -651,8 +651,8 @@
               "reserve",
               "forecast"
             ],
-            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"DEFER\",\"reserveAfter\":1399712,\"approvalRequired\":false,\"reason\":\"Await the expected receipt, then re-evaluate. Forecast cash is not available cash and cannot authorize execution.\",\"forecast\":{\"confidence\":0.92,\"amount\":2000000,\"dueHours\":24,\"delayed\":false,\"received\":false}}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":982860,\"action\":\"DEFER\",\"reserveAfter\":1399953,\"approvalRequired\":false,\"reason\":\"Await the expected receipt, then re-evaluate. Forecast cash is not available cash and cannot authorize execution.\",\"forecast\":{\"confidence\":0.92,\"amount\":2000000,\"dueHours\":24,\"delayed\":false,\"received\":false}}",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           },
           {
@@ -680,7 +680,7 @@
               "autonomy"
             ],
             "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":false,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           },
           {
@@ -705,7 +705,7 @@
               "rate:USD"
             ],
             "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           }
         ],
@@ -728,11 +728,6 @@
         "timeline": [
           {
             "hour": 0,
-            "cash": 48000,
-            "expected": 48000
-          },
-          {
-            "hour": 13,
             "cash": 32028.13,
             "expected": 32028.13
           },
@@ -761,8 +756,8 @@
     },
     {
       "id": "plan-002",
-      "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
-      "createdAt": "2026-10-06T08:48:06.719Z",
+      "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
+      "createdAt": "2026-10-06T08:55:44.964Z",
       "state": "SUPERSEDED",
       "cause": "accept_context",
       "plan": {
@@ -791,7 +786,7 @@
               "reserve"
             ],
             "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           },
           {
@@ -819,7 +814,7 @@
               "autonomy"
             ],
             "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "evaluatedAt": "2026-10-06T08:55:44.963Z",
             "revision": 2
           },
           {
@@ -834,9 +829,9 @@
               "priority": "MEDIUM",
               "synthetic": true
             },
-            "cost": 983101,
+            "cost": 982860,
             "action": "ESCALATE",
-            "reserveAfter": 1399712,
+            "reserveAfter": 1399953,
             "approvalRequired": false,
             "reason": "Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.",
             "dependencies": [
@@ -846,8 +841,8 @@
               "reserve",
               "forecast"
             ],
-            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"ESCALATE\",\"reserveAfter\":1399712,\"approvalRequired\":false,\"reason\":\"Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.\"}",
-            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":982860,\"action\":\"ESCALATE\",\"reserveAfter\":1399953,\"approvalRequired\":false,\"reason\":\"Current allocation cannot fund this obligation above the reserve floor. The delayed forecast cannot close the gap; human resolution is required.\"}",
+            "evaluatedAt": "2026-10-06T08:55:44.963Z",
             "revision": 2
           },
           {
@@ -875,7 +870,7 @@
               "autonomy"
             ],
             "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "evaluatedAt": "2026-10-06T08:55:44.963Z",
             "revision": 2
           },
           {
@@ -900,7 +895,7 @@
               "rate:USD"
             ],
             "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           }
         ],
@@ -930,11 +925,6 @@
         "timeline": [
           {
             "hour": 0,
-            "cash": 48000,
-            "expected": 48000
-          },
-          {
-            "hour": 13,
             "cash": 32028.13,
             "expected": 32028.13
           },
@@ -958,8 +948,8 @@
     },
     {
       "id": "plan-003",
-      "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
-      "createdAt": "2026-10-06T08:48:08.895Z",
+      "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
+      "createdAt": "2026-10-06T08:55:47.205Z",
       "state": "CURRENT",
       "cause": "allocate_receipt",
       "plan": {
@@ -988,7 +978,7 @@
               "reserve"
             ],
             "signature": "{\"obligation\":{\"id\":\"logistics\",\"title\":\"Critical logistics supplier\",\"category\":\"Supply chain · Germany\",\"amount\":1400000,\"currency\":\"EUR\",\"dueHours\":13,\"priority\":\"CRITICAL\",\"synthetic\":true},\"cost\":1597187,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":3202813,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           },
           {
@@ -1016,7 +1006,7 @@
               "autonomy"
             ],
             "signature": "{\"obligation\":{\"id\":\"cloud\",\"title\":\"Cloud infrastructure\",\"category\":\"Infrastructure · United States\",\"amount\":820000,\"currency\":\"USD\",\"dueHours\":26,\"priority\":\"HIGH\",\"synthetic\":true},\"cost\":820000,\"action\":\"PAY_NOW\",\"reserveAfter\":2382813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "evaluatedAt": "2026-10-06T08:55:44.963Z",
             "revision": 2
           },
           {
@@ -1031,9 +1021,9 @@
               "priority": "MEDIUM",
               "synthetic": true
             },
-            "cost": 983101,
+            "cost": 982860,
             "action": "CONVERT_AND_PAY",
-            "reserveAfter": 1699712,
+            "reserveAfter": 1699953,
             "approvalRequired": true,
             "reason": "The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.",
             "dependencies": [
@@ -1043,8 +1033,8 @@
               "reserve",
               "autonomy"
             ],
-            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":983101,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":1699712,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
-            "evaluatedAt": "2026-10-06T08:48:08.894Z",
+            "signature": "{\"obligation\":{\"id\":\"contractor\",\"title\":\"UK contractor\",\"category\":\"Professional services · United Kingdom\",\"amount\":750000,\"currency\":\"GBP\",\"dueHours\":38,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":982860,\"action\":\"CONVERT_AND_PAY\",\"reserveAfter\":1699953,\"approvalRequired\":true,\"reason\":\"The operating allocation is denominated in USD. Acquire only the foreign currency required for this obligation; the unallocated wallet is not agent spending authority.\"}",
+            "evaluatedAt": "2026-10-06T08:55:47.205Z",
             "revision": 3
           },
           {
@@ -1072,7 +1062,7 @@
               "autonomy"
             ],
             "signature": "{\"obligation\":{\"id\":\"insurance\",\"title\":\"Insurance / compliance\",\"category\":\"Business continuity · United States\",\"amount\":500000,\"currency\":\"USD\",\"dueHours\":60,\"priority\":\"MEDIUM\",\"synthetic\":true},\"cost\":500000,\"action\":\"PAY_NOW\",\"reserveAfter\":1882813,\"approvalRequired\":true,\"reason\":\"Fund from the authorized USD allocation while preserving the reserve.\"}",
-            "evaluatedAt": "2026-10-06T08:48:06.718Z",
+            "evaluatedAt": "2026-10-06T08:55:44.963Z",
             "revision": 2
           },
           {
@@ -1097,7 +1087,7 @@
               "rate:USD"
             ],
             "signature": "{\"obligation\":{\"id\":\"marketing\",\"title\":\"Marketing vendor\",\"category\":\"Growth · United States\",\"amount\":600000,\"currency\":\"USD\",\"dueHours\":70,\"priority\":\"LOW\",\"synthetic\":true},\"cost\":600000,\"action\":\"DEFER\",\"reserveAfter\":4800000,\"approvalRequired\":false,\"reason\":\"Discretionary spend. Protect liquidity for critical and contractual obligations; revisit after a confirmed receipt.\"}",
-            "evaluatedAt": "2026-10-06T08:48:00.553Z",
+            "evaluatedAt": "2026-10-06T08:55:30.546Z",
             "revision": 1
           }
         ],
@@ -1106,8 +1096,8 @@
         "reserve": 1500000,
         "autonomy": 250000,
         "spendable": 4100000,
-        "committed": 3900288,
-        "remaining": 1699712,
+        "committed": 3900047,
+        "remaining": 1699953,
         "forecast": {
           "confidence": 0.31,
           "amount": 2000000,
@@ -1127,11 +1117,6 @@
         "timeline": [
           {
             "hour": 0,
-            "cash": 56000,
-            "expected": 56000
-          },
-          {
-            "hour": 13,
             "cash": 40028.13,
             "expected": 40028.13
           },
@@ -1142,18 +1127,18 @@
           },
           {
             "hour": 38,
-            "cash": 21997.12,
-            "expected": 21997.12
+            "cash": 21999.53,
+            "expected": 21999.53
           },
           {
             "hour": 60,
-            "cash": 16997.12,
-            "expected": 16997.12
+            "cash": 16999.53,
+            "expected": 16999.53
           },
           {
             "hour": 72,
-            "cash": 16997.12,
-            "expected": 16997.12
+            "cash": 16999.53,
+            "expected": 16999.53
           }
         ]
       }
@@ -1161,17 +1146,17 @@
   ],
   "contexts": [
     {
-      "id": "2c9bbd78-8b6a-41a7-ac08-3038cced9213",
+      "id": "8be3455d-9cb3-446f-bf9a-603883445401",
       "text": "Customer update · INV-4092\n\nThe expected USD 20,000 payment is delayed by 5 days. We expect to send it next week.",
       "interpretation": {
-        "summary": "Customer update indicates that the expected USD 20,000 payment (INV-4092) is delayed by 5 days and will be sent next week.",
+        "summary": "Customer update for invoice INV-4092 indicates a USD 20,000 payment is delayed by 5 days and expected to be sent next week.",
         "forecastDelayDays": 5,
         "invoice": null,
         "rejectedInstructions": false,
         "provider": "OPENROUTER",
         "model": "nvidia/nemotron-3-super-120b-a12b:free"
       },
-      "acceptedAt": "2026-10-06T08:48:06.718Z"
+      "acceptedAt": "2026-10-06T08:55:44.962Z"
     }
   ],
   "approvals": [],
@@ -1182,7 +1167,7 @@
       "kind": "FX_CONVERSION",
       "resourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
       "status": "SETTLED",
-      "observedAt": "2026-10-06T08:48:08.894Z",
+      "observedAt": "2026-10-06T08:55:47.204Z",
       "provenance": "PRE_EXISTING_V1"
     },
     {
@@ -1191,7 +1176,7 @@
       "kind": "TRANSFER",
       "resourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
       "status": "PAID",
-      "observedAt": "2026-10-06T08:48:08.894Z",
+      "observedAt": "2026-10-06T08:55:47.204Z",
       "provenance": "PRE_EXISTING_V1"
     },
     {
@@ -1201,7 +1186,7 @@
       "resourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa",
       "status": "SETTLED",
       "provenance": "PRE_EXISTING_V1",
-      "observedAt": "2026-10-06T08:48:00.552Z"
+      "observedAt": "2026-10-06T08:55:30.545Z"
     }
   ],
   "reconciliations": [
@@ -1243,7 +1228,7 @@
       "expectedStatus": "SETTLED",
       "observedStatus": "SETTLED",
       "status": "MATCHED",
-      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "checkedAt": "2026-10-06T08:55:47.204Z",
       "basis": "LIVE_RESOURCE",
       "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
     },
@@ -1273,7 +1258,7 @@
       "expectedStatus": "PAID",
       "observedStatus": "PAID",
       "status": "MATCHED",
-      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "checkedAt": "2026-10-06T08:55:47.204Z",
       "basis": "LIVE_RESOURCE",
       "detail": "Live provider resource matches the original recorded amount, corridor and terminal Sandbox status."
     },
@@ -1302,7 +1287,7 @@
       ],
       "expectedStatus": "SETTLED",
       "observedStatus": "SETTLED",
-      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "checkedAt": "2026-10-06T08:55:47.204Z",
       "status": "MATCHED",
       "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
       "detail": "Exact historical before/after EUR wallet delta plus current provider deposit readback. Subsequent unrelated wallet movements do not rewrite this receipt."
@@ -1367,7 +1352,7 @@
       ],
       "expectedStatus": "CURRENT_BALANCES",
       "observedStatus": "CURRENT_BALANCES",
-      "checkedAt": "2026-10-06T08:48:08.894Z",
+      "checkedAt": "2026-10-06T08:55:47.204Z",
       "status": "MATCHED",
       "basis": "HISTORICAL_BALANCES_AND_LIVE_RESOURCE",
       "detail": "Current available wallets compared with the recorded campaign ending balances. A variance may be newer external activity and requires investigation; it never proves an original payment failed."
@@ -1376,88 +1361,91 @@
   "incidents": [],
   "events": [
     {
-      "id": "31f42779-818f-4d88-b40e-3a98458cc5fc",
-      "at": "2026-10-06T08:48:00.552Z",
+      "id": "bcb7e576-e29e-47ac-a707-c4d86f6fe266",
+      "at": "2026-10-06T08:55:30.545Z",
       "actor": "AIRWALLEX",
       "title": "BALANCES_OBSERVED",
       "detail": "Live Sandbox wallet, rates, Global Account and beneficiary corridors observed.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
         "contextVersion": ""
       }
     },
     {
-      "id": "7ea470f7-2c51-45af-b311-3627b607c683",
-      "at": "2026-10-06T08:48:00.552Z",
+      "id": "f30aaa40-30b9-46af-836b-d0528c9a30a5",
+      "at": "2026-10-06T08:55:30.545Z",
       "actor": "AIRWALLEX",
       "title": "HISTORICAL_ACTION_VERIFIED",
       "detail": "FX_CONVERSION SETTLED; original campaign action read back, never re-executed.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
         "contextVersion": "",
+        "actionId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
         "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
         "providerResourceId": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d"
       }
     },
     {
-      "id": "0df95fcc-4a50-4f61-a61e-9508e278e7a4",
-      "at": "2026-10-06T08:48:00.552Z",
+      "id": "ddb0e768-971c-493a-adfa-41b8618b18cc",
+      "at": "2026-10-06T08:55:30.545Z",
       "actor": "AIRWALLEX",
       "title": "HISTORICAL_ACTION_VERIFIED",
       "detail": "TRANSFER PAID; original campaign action read back, never re-executed.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
         "contextVersion": "",
+        "actionId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
         "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
         "providerResourceId": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049"
       }
     },
     {
-      "id": "ee7b6686-558d-48f6-8f11-b51fadc99699",
-      "at": "2026-10-06T08:48:00.552Z",
+      "id": "bd9dcf4c-112d-4baa-a58b-fe0b1025473b",
+      "at": "2026-10-06T08:55:30.545Z",
       "actor": "AIRWALLEX",
       "title": "HISTORICAL_DEPOSIT_VERIFIED",
       "detail": "Original EUR 8,000 Sandbox receipt and its historical exact wallet delta verified; no simulation repeated.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
         "contextVersion": "",
+        "actionId": "TPKIT1-2026-ONE",
         "requestId": "statement_ref:TPKIT1-2026-ONE",
         "providerResourceId": "7bee857c-9151-43ac-adde-0d4310fe87fa"
       }
     },
     {
-      "id": "4ab83dee-663c-42dd-80ae-fd38d4d4eead",
-      "at": "2026-10-06T08:48:00.553Z",
+      "id": "32b68ca1-968d-4b95-b55d-41a88ef57784",
+      "at": "2026-10-06T08:55:30.546Z",
       "actor": "POLICY_ENGINE",
       "title": "POLICY_CHECKED",
       "detail": "Confidence 92%; authority USD 10000; reserve protected.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
         "planId": "plan-001"
       }
     },
     {
-      "id": "da6bcbb8-5f12-448f-aab0-67b386ec2a28",
-      "at": "2026-10-06T08:48:00.553Z",
+      "id": "5942cca2-9b4b-4a19-9d3b-fcde2de03302",
+      "at": "2026-10-06T08:55:30.546Z",
       "actor": "TREASURY_ENGINE",
       "title": "PLAN_RECALCULATED",
       "detail": "plan-001; 0 reopened, 0 unchanged; remaining reserve USD 18828.13.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
         "planId": "plan-001"
       }
     },
     {
-      "id": "187e4bdf-4981-40e9-a0e9-ad627a4daa66",
-      "at": "2026-10-06T08:48:00.553Z",
+      "id": "044ee556-b861-438d-82a7-80ed3d7a67b9",
+      "at": "2026-10-06T08:55:30.547Z",
       "actor": "TREASURY_ENGINE",
       "title": "RECONCILIATION_CHECKED",
       "detail": "4 matched; 0 exceptions; 0 pending.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
         "planId": "plan-001",
         "reconciliationIds": [
           "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
@@ -1468,134 +1456,134 @@
       }
     },
     {
-      "id": "59e7f89e-3966-45e7-bdb0-4be71390c054",
-      "at": "2026-10-06T08:48:05.944Z",
+      "id": "ba6f3593-76ad-4b1e-92c8-9ae954ff46d0",
+      "at": "2026-10-06T08:55:43.696Z",
       "actor": "AGENT",
       "title": "CONTEXT_INTERPRETED",
-      "detail": "OPENROUTER; Customer update indicates that the expected USD 20,000 payment (INV-4092) is delayed by 5 days and will be sent next week. Facts require review before changing policy context.",
+      "detail": "OPENROUTER; Customer update for invoice INV-4092 indicates a USD 20,000 payment is delayed by 5 days and expected to be sent next week. Facts require review before changing policy context.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
         "planId": "plan-001"
       }
     },
     {
-      "id": "00ef84b7-102c-42a8-9ca8-597c60684268",
-      "at": "2026-10-06T08:48:06.718Z",
+      "id": "b165428f-d489-4d0e-a96a-bc23c942250d",
+      "at": "2026-10-06T08:55:44.963Z",
       "actor": "USER",
       "title": "CONTEXT_ACCEPTED",
       "detail": "Reviewed 5-day delay; deterministic confidence and authority will change.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "9153a22925369bdb651457d461481e2c62e8d8a6abbbdf15449ac92423962a12",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "71e2edb45d0883b9b61cc119a5832692db2e9093d7f1ff7d694051992e2577f7",
         "planId": "plan-001"
       }
     },
     {
-      "id": "6baa6714-67e1-4f22-870d-a85dc54989ea",
-      "at": "2026-10-06T08:48:06.719Z",
+      "id": "bab273cc-0f32-449a-b32c-fd9cf9c37a9c",
+      "at": "2026-10-06T08:55:44.964Z",
       "actor": "TREASURY_ENGINE",
       "title": "PLAN_SUPERSEDED",
       "detail": "plan-001; 3 decisions reopened, 2 identities retained.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
         "planId": "plan-001"
       }
     },
     {
-      "id": "11542764-c6e0-4ae2-88ef-bff3072095dd",
-      "at": "2026-10-06T08:48:06.719Z",
+      "id": "b3d8366d-4262-408c-b234-140d34379897",
+      "at": "2026-10-06T08:55:44.964Z",
       "actor": "POLICY_ENGINE",
       "title": "POLICY_CHECKED",
       "detail": "Confidence 31%; authority USD 2500; reserve protected.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
         "planId": "plan-002"
       }
     },
     {
-      "id": "9eefec41-bb7b-4529-9613-2beafcba5dd4",
-      "at": "2026-10-06T08:48:06.719Z",
+      "id": "f5c3c60e-71cd-4c3e-9c22-e6dffbf71492",
+      "at": "2026-10-06T08:55:44.964Z",
       "actor": "TREASURY_ENGINE",
       "title": "PLAN_RECALCULATED",
       "detail": "plan-002; 3 reopened, 2 unchanged; remaining reserve USD 18828.13.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
         "planId": "plan-002"
       }
     },
     {
-      "id": "fe3ded53-9ef1-48d2-9c2b-316d781398ae",
-      "at": "2026-10-06T08:48:08.894Z",
+      "id": "49705e3d-e6ef-41ca-a531-ff87f166d82b",
+      "at": "2026-10-06T08:55:47.204Z",
       "actor": "AIRWALLEX",
       "title": "BALANCES_REFRESHED",
       "detail": "Fresh provider reads; no financial mutation.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
         "planId": "plan-002"
       }
     },
     {
-      "id": "758846b0-7e19-48db-bc60-1cd2dcff8126",
-      "at": "2026-10-06T08:48:08.894Z",
+      "id": "39fc252e-d722-4212-a14b-2d68a8e903ac",
+      "at": "2026-10-06T08:55:47.204Z",
       "actor": "USER",
       "title": "RECEIPT_AUTHORITY_ALLOCATED",
       "detail": "Previously settled Sandbox receipt assigned to this operating plan once. No new deposit POST.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "945f07b366c85ac97bc226872b7a45f25ea7772257b4e311ef688591692e8f03",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "57ca09ad8f6e6024e143eeb733b36e678926df367bc32d5438121f478249ca10",
         "planId": "plan-002"
       }
     },
     {
-      "id": "48729359-9395-4393-8401-946b7e15eae9",
-      "at": "2026-10-06T08:48:08.895Z",
+      "id": "2c6d85ef-ead8-4459-88ff-f8d8ec5400de",
+      "at": "2026-10-06T08:55:47.205Z",
       "actor": "TREASURY_ENGINE",
       "title": "PLAN_SUPERSEDED",
       "detail": "plan-002; 1 decisions reopened, 4 identities retained.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
         "planId": "plan-002"
       }
     },
     {
-      "id": "467bb25b-bc84-45b5-aba3-db13b1ca516f",
-      "at": "2026-10-06T08:48:08.895Z",
+      "id": "82e277d0-cbf7-4a8f-9101-d06bd319ef6d",
+      "at": "2026-10-06T08:55:47.205Z",
       "actor": "POLICY_ENGINE",
       "title": "POLICY_CHECKED",
       "detail": "Confidence 31%; authority USD 2500; reserve protected.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
         "planId": "plan-003"
       }
     },
     {
-      "id": "61759f5d-7112-4f83-9c33-7b0e7573967d",
-      "at": "2026-10-06T08:48:08.895Z",
+      "id": "0afbc5bb-d7d5-4508-b25c-f60b26b52a66",
+      "at": "2026-10-06T08:55:47.205Z",
       "actor": "TREASURY_ENGINE",
       "title": "PLAN_RECALCULATED",
-      "detail": "plan-003; 1 reopened, 4 unchanged; remaining reserve USD 16997.12.",
+      "detail": "plan-003; 1 reopened, 4 unchanged; remaining reserve USD 16999.53.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
         "planId": "plan-003"
       }
     },
     {
-      "id": "02dbc88b-9366-4232-8bf6-2d646b1f287f",
-      "at": "2026-10-06T08:48:08.895Z",
+      "id": "501fa43e-cf29-48bc-aa71-b2999fc710ed",
+      "at": "2026-10-06T08:55:47.206Z",
       "actor": "TREASURY_ENGINE",
       "title": "RECONCILIATION_CHECKED",
       "detail": "4 matched; 0 exceptions; 0 pending.",
       "correlation": {
-        "workspaceId": "8283d2b6-c371-4833-b7cc-5b0b78df06da",
-        "contextVersion": "a2d2fecd84f87f3e67b4cbf20d10aeb7df5034ab861f136d6f43f1a96d692e8c",
+        "workspaceId": "67e8ace3-2b11-42d9-b480-c72d2f9640d8",
+        "contextVersion": "4b5d06a115f80c965d25b8f20848a22d1dd04190b73e27605fc08d221e0a70b1",
         "planId": "plan-003",
         "reconciliationIds": [
           "rec-570cbe8f-2d8e-536e-af92-d6c017d390c9",
@@ -1619,9 +1607,9 @@
       {
         "currency": "EUR",
         "wallet": 1000800000,
-        "current": 718749,
+        "current": 719076,
         "target": 0,
-        "gap": -718749,
+        "gap": -719076,
         "why": "Funded EUR obligations due within 72h, excluding the previously paid supplier."
       },
       {
@@ -1637,20 +1625,20 @@
       {
         "sellCurrency": "USD",
         "buyCurrency": "GBP",
-        "sellAmount": 382813,
-        "buyAmount": 292045,
-        "valueUsd": 382813
+        "sellAmount": 382812,
+        "buyAmount": 292116,
+        "valueUsd": 382812
       },
       {
         "sellCurrency": "EUR",
         "buyCurrency": "GBP",
-        "sellAmount": 539321,
-        "buyAmount": 457955,
-        "valueUsd": 600289
+        "sellAmount": 539350,
+        "buyAmount": 457884,
+        "valueUsd": 600048
       }
     ],
     "conserved": true,
-    "reserveAfter": 1699711,
+    "reserveAfter": 1699952,
     "reason": "Minimum indicated movements to place funded cash by currency. Indicative rates; exact quotes and fees are required before execution."
   },
   "nextStep": "MONITOR",

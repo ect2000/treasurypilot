@@ -325,9 +325,9 @@
   ],
   "rates": {
     "USD": "1",
-    "EUR": "1.113044",
-    "GBP": "1.310801",
-    "CNY": "0.1477399481432782017093512"
+    "EUR": "1.112538",
+    "GBP": "1.310479",
+    "CNY": "0.1477424146458828547439424502"
   },
   "globalAccounts": [
     {
@@ -421,7 +421,7 @@
       "marketing"
     ]
   },
-  "fetchedAt": "2026-10-06T08:48:00.552Z",
+  "fetchedAt": "2026-10-06T08:55:30.545Z",
   "source": "AIRWALLEX_REST_SANDBOX",
   "rateSource": "Airwallex indicative rates · normalized to USD per unit",
   "executionAvailable": true

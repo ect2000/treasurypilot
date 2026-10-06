@@ -50,6 +50,8 @@ Private Vercel Blob stores the aggregate with strong ETag conditional writes. Co
 
 Additional obligations remain planning-only. The contractor proposal still needs approval and cannot execute through the completed supplier campaign. Current reserve uses current indicative rates; the historical USD 17,025.12 valuation is not presented as today's calculation.
 
+The final public verification on 6 October at 08:55 UTC recorded **USD 16,999.53** remaining planned reserve, one reopened decision, four unchanged decisions and four reconciliation matches, with zero new banking mutations. The forward forecast already deducts the paid supplier from opening cash. [Deployment and validation evidence](docs/evidence/v2/deployment.json).
+
 The [4:40 recording plan](docs/demo-script.md) reuses clearly dated original approval/financial footage. Free inference or deterministic fallback is labelled truthfully.
 
 ## Setup and deployment

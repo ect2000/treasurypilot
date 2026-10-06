@@ -11,3 +11,5 @@ Original FX/transfer/deposit remain in parent financial-actions.json and deposit
 Historical receipt delta: EUR +8,000. New v2 wallet delta: zero. Current reserve can differ from historical USD 17,025.12 because rates change; use each capture timestamp.
 
 No credential, auth token, raw recipient detail or Global Account ID belongs here.
+
+deployment.json identifies the immutable hosted build and its runtime source commit. Documentation and evidence may have a later Git commit without changing that deployed runtime. The final deployed walkthrough at 2026-10-06T08:55:39.985Z records successful free inference, one reopened decision, four unchanged decisions, USD 16,999.53 remaining planned reserve and four reconciliation matches.

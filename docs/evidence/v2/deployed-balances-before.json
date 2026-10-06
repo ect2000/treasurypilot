@@ -1,0 +1,428 @@
+{
+  "balances": [
+    {
+      "currency": "AED",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "ARS",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "AUD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "BDT",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "BHD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "BOB",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "BRL",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "CAD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "CHF",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "CLP",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "CNY",
+      "available": 1000000000,
+      "pending": 0,
+      "reserved": 0,
+      "total": 1000000000
+    },
+    {
+      "currency": "COP",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "CZK",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "DKK",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "EGP",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "EUR",
+      "available": 1000800000,
+      "pending": 0,
+      "reserved": 0,
+      "total": 1000800000
+    },
+    {
+      "currency": "GBP",
+      "available": 1000000000,
+      "pending": 0,
+      "reserved": 0,
+      "total": 1000000000
+    },
+    {
+      "currency": "HKD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "HRK",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "HUF",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "IDR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "ILS",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "INR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "JPY",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "KRW",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "LKR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "MAD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "MXN",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "MYR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "NOK",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "NPR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "NZD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "PEN",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "PHP",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "PKR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "PLN",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "RON",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "SAR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "SEK",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "SGD",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "THB",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "TRY",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "USD",
+      "available": 998402813,
+      "pending": 0,
+      "reserved": 0,
+      "total": 998402813
+    },
+    {
+      "currency": "UYU",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "VND",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    },
+    {
+      "currency": "ZAR",
+      "available": 0,
+      "pending": 0,
+      "reserved": 0,
+      "total": 0
+    }
+  ],
+  "rates": {
+    "USD": "1",
+    "EUR": "1.112538",
+    "GBP": "1.310479",
+    "CNY": "0.1477463874161446909921243788"
+  },
+  "globalAccounts": [
+    {
+      "currency": "EUR",
+      "country": "NL",
+      "status": "ACTIVE"
+    }
+  ],
+  "beneficiaries": [
+    {
+      "currency": "EUR",
+      "country": "DE",
+      "method": "LOCAL"
+    },
+    {
+      "currency": "EUR",
+      "country": "DE",
+      "method": "SWIFT"
+    },
+    {
+      "currency": "CNY",
+      "country": "CN",
+      "method": "LOCAL"
+    },
+    {
+      "currency": "CNY",
+      "country": "CN",
+      "method": "SWIFT"
+    },
+    {
+      "currency": "GBP",
+      "country": "GB",
+      "method": "SWIFT"
+    },
+    {
+      "currency": "USD",
+      "country": "US",
+      "method": "LOCAL"
+    },
+    {
+      "currency": "USD",
+      "country": "US",
+      "method": "SWIFT"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "FX_CONVERSION",
+      "id": "1878f1df-3b32-4d92-8b1e-9bbd83287e4d",
+      "requestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+      "status": "SETTLED",
+      "buyCurrency": "EUR",
+      "sellCurrency": "USD",
+      "buyAmount": 1400000,
+      "sellAmount": 1597187,
+      "createdAt": "2026-10-03T16:51:21+0000"
+    },
+    {
+      "kind": "TRANSFER",
+      "id": "9ad1dd38-ae3b-49bd-961b-ed0adfda7049",
+      "requestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+      "status": "PAID",
+      "amount": 1400000,
+      "currency": "EUR",
+      "createdAt": "2026-10-03T16:55:10+0000"
+    }
+  ],
+  "deposit": {
+    "state": "RECEIVED",
+    "operatorAvailable": false,
+    "amount": 800000,
+    "currency": "EUR",
+    "id": "7bee857c-9151-43ac-adde-0d4310fe87fa",
+    "status": "SETTLED",
+    "beforeAvailable": 1000000000,
+    "afterAvailable": 1000800000,
+    "delta": 800000,
+    "credit": 800000,
+    "receivedAt": "2026-10-03T18:22:18.526Z",
+    "decisionBefore": "ESCALATE",
+    "decisionAfter": "CONVERT_AND_PAY",
+    "reserveBefore": 1882813,
+    "reserveAfter": 1702512,
+    "reopened": [
+      "contractor"
+    ],
+    "unchanged": [
+      "logistics",
+      "cloud",
+      "insurance",
+      "marketing"
+    ]
+  },
+  "fetchedAt": "2026-10-06T08:55:20.493Z",
+  "source": "AIRWALLEX_REST_SANDBOX",
+  "rateSource": "Airwallex indicative rates · normalized to USD per unit",
+  "executionAvailable": true
+}

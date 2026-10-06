@@ -10,6 +10,7 @@ Windows, Node 24.13.1, Next.js 16.3.8 and React 19.3.0.
 | Lint                                        | Pass, zero warnings                                                                |
 | TypeScript                                  | Pass                                                                               |
 | Local production build                      | Pass                                                                               |
+| Vercel production hosting build             | Pass; source f5b154e, deployment READY, banking remains Sandbox only               |
 | Runtime dependency audit                    | Zero vulnerabilities, npm audit --omit=dev                                         |
 | Secret scan                                 | Zero known credential matches in source/evidence and built client files            |
 | Actual local world                          | Private Blob persistence, refresh survival and conditional write verified          |
@@ -20,7 +21,9 @@ Windows, Node 24.13.1, Next.js 16.3.8 and React 19.3.0.
 | Actual browser                              | No page/console errors recorded                                                    |
 | New financial operations in v2 verification | Zero                                                                               |
 
-The actual live walkthrough records the current provider/fallback. Free inference may fail or be throttled; labelled deterministic extraction preserves review and treasury controls. A prior real free model response remains in original live-read evidence. No paid fallback is enabled.
+The final public walkthrough passed at 2026-10-06T08:55:39.985Z, and the local production walkthrough passed at 08:55:51.389Z. Both used successful, schema-validated free OpenRouter inference with nvidia/nemotron-3-super-120b-a12b:free. Confidence changed from 92% to 31%; the autonomous limit changed from USD 10,000 to USD 2,500. Free inference may fail or be throttled; labelled deterministic extraction preserves review and treasury controls. No paid fallback is enabled.
+
+The verified receipt allocation reopened only contractor, from ESCALATE to CONVERT_AND_PAY, still subject to approval and planning-only. Logistics, cloud, insurance and marketing retained their decision identities and evaluation timestamps. Remaining planned reserve was USD 16,999.53; conservatively rounded indicative currency placement left USD 16,999.52. Four provider reconciliation checks matched. New wallet delta and banking mutation count were zero. The historical EUR 8,000 deposit was read back without replay. The 72-hour forward forecast deducts the already-paid supplier from opening cash and does not project that payment a second time.
 
 Fixture tests are explicit and isolated from real provider evidence. HTTP failures, response loss, partial/uncertain operation claims, storage absence, strong-version refusal, quote/approval expiry, tampering, policy injection, stale context and nonterminal payment cases are tested.
 

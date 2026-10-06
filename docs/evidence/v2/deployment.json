@@ -1,0 +1,36 @@
+{
+  "sourceCommit": "f5b154e46cd01810d23f835a43f5cb9142eb626e",
+  "deploymentId": "dpl_4hgy9CV28ptN6m8BgdcX3TuXK98f",
+  "deploymentStatus": "READY",
+  "publicUrl": "https://treasurypilot-sooty.vercel.app",
+  "immutableUrl": "https://treasurypilot-2w14oiyp7-3eemiliocastejon-gmailcoms-projects.vercel.app",
+  "hostingEnvironment": "Vercel Production",
+  "bankingEnvironment": "AIRWALLEX_SANDBOX_ONLY",
+  "deployedWalkthroughCheckedAt": "2026-10-06T08:55:39.985Z",
+  "localWalkthroughCheckedAt": "2026-10-06T08:55:51.389Z",
+  "durableApplicationStorage": "PRIVATE_BLOB",
+  "validation": {
+    "unitTestsPassed": 50,
+    "playwrightCasesPassed": 24,
+    "lint": "PASS_ZERO_WARNINGS",
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "hostedProductionBuild": "PASS",
+    "runtimeDependencyVulnerabilities": 0,
+    "responsiveWidthsWithoutOverflow": [375, 390, 768, 1024, 1280, 1440, 1920],
+    "newFinancialMutations": 0
+  },
+  "verifiedPlan": {
+    "reopened": ["contractor"],
+    "unchanged": ["logistics", "cloud", "insurance", "marketing"],
+    "reserveAfterMinorUsd": 1699953,
+    "placementReserveAfterMinorUsd": 1699952,
+    "reconciliationMatches": 4
+  },
+  "originalFinancialIdentities": {
+    "fxRequestId": "570cbe8f-2d8e-536e-af92-d6c017d390c9",
+    "transferRequestId": "de5b666d-b246-5bd0-abd6-21adc50ab756",
+    "depositStatementRef": "TPKIT1-2026-ONE"
+  },
+  "disclosure": "Runtime source is the immutable deployed commit. Later documentation/evidence commits do not imply a new runtime deployment. All financial resources are pre-existing v1; v2 validation does not replay them. Amounts explicitly marked MinorUsd are integer cents; provider requests use major units."
+}
