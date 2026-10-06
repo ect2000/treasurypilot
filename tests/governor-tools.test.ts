@@ -100,6 +100,10 @@ it("invalidates a centrally persisted approval when reviewed context changes", a
   expect(next.events.some((e) => e.title === "APPROVAL_INVALIDATED")).toBe(
     true,
   );
+  expect(
+    next.events.find((e) => e.title === "APPROVAL_INVALIDATED")?.correlation
+      ?.approvalId,
+  ).toBe(next.approvals[0].id);
 });
 it("keeps ambiguous execution locked against evidence edits and clears only on original terminal readback", async () => {
   memory.state!.executionLock = "not-observed-operation";

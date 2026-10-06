@@ -95,9 +95,13 @@ function event(
   detail: string,
   at = new Date().toISOString(),
 ) {
-  const intent = /APPROVAL|ACTION/.test(title) ? s.approvals.at(-1) : undefined;
+  const intent = /APPROVAL|ACTION/.test(title)
+    ? (s.approvals.find((a) => detail.includes(a.id)) ?? s.approvals.at(-1))
+    : undefined;
   const operation = /ACTION|DEPOSIT/.test(title)
-    ? s.operations.at(-1)
+    ? intent
+      ? s.operations.find((o) => o.requestId === intent.requestId)
+      : s.operations.at(-1)
     : undefined;
   const e: AuditEvent = {
     id: randomUUID(),
@@ -110,6 +114,7 @@ function event(
       contextVersion: s.contextVersion,
       planId: s.plans.at(-1)?.id,
       approvalId: intent?.id,
+      actionId: intent?.requestId ?? operation?.id,
       requestId: intent?.requestId ?? operation?.requestId,
       providerResourceId: operation?.resourceId,
       reconciliationIds:

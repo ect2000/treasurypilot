@@ -48,6 +48,7 @@ export type AuditEvent = {
     contextVersion: string;
     planId?: string;
     approvalId?: string;
+    actionId?: string;
     requestId?: string;
     providerResourceId?: string;
     reconciliationIds?: string[];
