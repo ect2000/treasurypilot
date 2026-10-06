@@ -5,6 +5,8 @@ const names = [
   "AIRWALLEX_API_KEY",
   "OPENROUTER_API_KEY",
   "AUTHORIZATION_SECRET",
+  "BLOB_READ_WRITE_TOKEN",
+  "VERCEL_OIDC_TOKEN",
 ];
 const lines = readFileSync(".env.local", "utf8").split(/\r?\n/);
 const secrets = names

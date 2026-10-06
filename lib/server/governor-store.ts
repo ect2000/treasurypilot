@@ -4,7 +4,15 @@ import {
   BlobNotFoundError,
   BlobPreconditionFailedError,
 } from "@vercel/blob";
-import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
+import {
+  mkdir,
+  readdir,
+  readFile,
+  writeFile,
+  link,
+  unlink,
+} from "node:fs/promises";
+import { randomUUID } from "node:crypto";
 import { join } from "node:path";
 import type { GovernorState } from "../governor/types";
 
@@ -35,6 +43,8 @@ export async function loadWorld(id: string): Promise<Stored | undefined> {
       const result = await get(`governor/worlds/${id}.json`, {
         access: "private",
         useCache: false,
+        // Compression can produce a weak HTTP ETag, which cannot authorize an If-Match write.
+        headers: { "Accept-Encoding": "identity" },
         token: process.env.BLOB_READ_WRITE_TOKEN,
       });
       if (!result) return undefined;
@@ -45,6 +55,10 @@ export async function loadWorld(id: string): Promise<Stored | undefined> {
       ) as GovernorState;
       if (state.schema !== 2 || state.id !== id)
         throw new Error("Invalid financial context schema");
+      if (!result.blob.etag || result.blob.etag.startsWith("W/"))
+        throw new Error(
+          "Strong storage version unavailable. Actions are stopped.",
+        );
       return { state, etag: result.blob.etag };
     } catch (error) {
       if (error instanceof BlobNotFoundError) return undefined;
@@ -84,23 +98,37 @@ export async function saveWorld(state: GovernorState, previous?: Stored) {
       if (
         error instanceof BlobPreconditionFailedError ||
         /already exists/i.test(String(error))
-      )
+      ) {
+        console.warn(
+          JSON.stringify({
+            event: "STATE_WRITE_CONFLICT",
+            workspace_id: state.id,
+            revision: state.revision,
+            error_type:
+              error instanceof Error ? error.constructor.name : "Unknown",
+          }),
+        );
         throw new StateConflict();
+      }
       throw error;
     }
   } else {
     const dir = join(process.cwd(), ".operator", "governor", state.id);
     await mkdir(dir, { recursive: true });
+    const temporary = join(dir, `${randomUUID()}.tmp`);
+    await writeFile(temporary, payload, { flag: "wx" });
     try {
-      await writeFile(
+      // Publish a complete immutable revision atomically; readers never observe a partial JSON file.
+      await link(
+        temporary,
         join(dir, `${String(state.revision).padStart(8, "0")}.json`),
-        payload,
-        { flag: "wx" },
       );
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === "EEXIST")
         throw new StateConflict();
       throw error;
+    } finally {
+      await unlink(temporary);
     }
   }
 }

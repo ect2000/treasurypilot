@@ -5,6 +5,7 @@ import {
   buildPlan,
   initialForecast,
   POLICY,
+  obligations,
   replanAfterDeposit,
   replanForecastOnly,
 } from "../treasury";
@@ -17,7 +18,7 @@ import type {
   Incident,
   FinanceContextProvider,
 } from "./types";
-import financialProof from "../../docs/evidence/financial-actions.json";
+import financialProof from "../../docs/evidence/financial-actions.json" with { type: "json" };
 
 export const defaultPolicy: GovernorPolicy = {
   reserve: POLICY.reserve,
@@ -31,6 +32,7 @@ export const syntheticContext: FinanceContextProvider = {
   name: "TreasuryPilot demonstration invoices",
   source: "SYNTHETIC",
   forecast: () => ({ ...initialForecast }),
+  obligations: () => structuredClone(obligations),
 };
 export function authority(policy: GovernorPolicy, confidence: number) {
   if (!Number.isFinite(confidence) || confidence < 0 || confidence > 1)
@@ -89,8 +91,17 @@ export function calculatePlan(
     JSON.stringify(previous.forecast) !== JSON.stringify(forecast)
   )
     return replanForecastOnly(previous, forecast, now);
-  if(previous && previous.receiptCredit===credit && stableCosts && JSON.stringify(previous.forecast)===JSON.stringify(forecast))
-    return {...previous,reopened:[],unchanged:previous.decisions.map(d=>d.id)};
+  if (
+    previous &&
+    previous.receiptCredit === credit &&
+    stableCosts &&
+    JSON.stringify(previous.forecast) === JSON.stringify(forecast)
+  )
+    return {
+      ...previous,
+      reopened: [],
+      unchanged: previous.decisions.map((d) => d.id),
+    };
   if (
     previous?.receiptCredit === 0 &&
     credit > 0 &&

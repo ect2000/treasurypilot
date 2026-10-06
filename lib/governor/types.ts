@@ -5,6 +5,7 @@ import type {
   Interpretation,
   Plan,
   Snapshot,
+  Obligation,
 } from "../types";
 
 export type GovernorPolicy = {
@@ -169,5 +170,6 @@ export type GovernorView = Omit<GovernorState, "approvals"> & {
 export interface FinanceContextProvider {
   name: string;
   forecast(): Forecast;
+  obligations(): Obligation[];
   source: "SYNTHETIC" | "ACCOUNTING";
 }

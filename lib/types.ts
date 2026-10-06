@@ -43,6 +43,16 @@ export type AuditEvent = {
   actor: "USER" | "AGENT" | "TREASURY_ENGINE" | "POLICY_ENGINE" | "AIRWALLEX";
   title: string;
   detail: string;
+  correlation?: {
+    workspaceId: string;
+    contextVersion: string;
+    planId?: string;
+    approvalId?: string;
+    requestId?: string;
+    providerResourceId?: string;
+    reconciliationIds?: string[];
+    incidentId?: string;
+  };
 };
 export type Plan = {
   decisions: Decision[];

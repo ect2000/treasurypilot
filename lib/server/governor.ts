@@ -14,7 +14,6 @@ import {
 import type { GovernorState, GovernorView } from "../governor/types";
 import type { AuditEvent, Snapshot } from "../types";
 import { updateForecast } from "../treasury";
-import { obligations } from "../treasury";
 import { interpretEvidence } from "./ai";
 import { readSnapshot } from "./airwallex";
 import {
@@ -96,16 +95,42 @@ function event(
   detail: string,
   at = new Date().toISOString(),
 ) {
-  const e = { id: randomUUID(), at, actor, title, detail };
+  const intent = /APPROVAL|ACTION/.test(title) ? s.approvals.at(-1) : undefined;
+  const operation = /ACTION|DEPOSIT/.test(title)
+    ? s.operations.at(-1)
+    : undefined;
+  const e: AuditEvent = {
+    id: randomUUID(),
+    at,
+    actor,
+    title,
+    detail,
+    correlation: {
+      workspaceId: s.id,
+      contextVersion: s.contextVersion,
+      planId: s.plans.at(-1)?.id,
+      approvalId: intent?.id,
+      requestId: intent?.requestId ?? operation?.requestId,
+      providerResourceId: operation?.resourceId,
+      reconciliationIds:
+        title === "RECONCILIATION_CHECKED"
+          ? s.reconciliations.map((r) => r.id)
+          : undefined,
+      incidentId: /INCIDENT/.test(title) ? s.incidents.at(-1)?.id : undefined,
+    },
+  };
   s.events.push(e);
-  console.info(
-    JSON.stringify({
-      event: title,
-      workspace_id: s.id,
-      context_version: s.contextVersion,
-      plan_id: s.plans.at(-1)?.id,
-    }),
-  );
+}
+function logCommittedEvents(s: GovernorState, previousEventCount = 0) {
+  for (const e of s.events.slice(previousEventCount))
+    console.info(
+      JSON.stringify({
+        event: e.title,
+        audit_event_id: e.id,
+        at: e.at,
+        ...e.correlation,
+      }),
+    );
 }
 function importOperations(s: GovernorState) {
   const observedAt = s.snapshot.fetchedAt;
@@ -236,7 +261,7 @@ function normalizeContext(s: GovernorState) {
     insurance: 50000,
     marketing: 0,
   };
-  s.obligations = obligations.map((o) => ({
+  s.obligations = syntheticContext.obligations().map((o) => ({
     id: o.id,
     vendor: o.title,
     amount: o.amount,
@@ -386,6 +411,7 @@ export async function getWorld(id: string) {
   }
   const s = initializeWorld(id, await readSnapshot());
   await saveWorld(s);
+  logCommittedEvents(s);
   return s;
 }
 export async function runTool(
@@ -649,6 +675,7 @@ export async function runTool(
       s.revision++;
       s.nextStep = nextStep(s);
       await saveWorld(s, approved);
+      logCommittedEvents(s, stored.state.events.length);
       return s;
     }
   }
@@ -656,5 +683,6 @@ export async function runTool(
   s.updatedAt = new Date().toISOString();
   s.nextStep = nextStep(s);
   await saveWorld(s, stored);
+  logCommittedEvents(s, stored.state.events.length);
   return s;
 }
