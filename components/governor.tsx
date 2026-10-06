@@ -548,7 +548,7 @@ export function CashGovernor() {
                     <section className="g-forecast">
                       <SectionTitle
                         title="72-hour liquidity"
-                        detail="Operating allocation · USD equivalent"
+                        detail="Remaining operating cash · original paid supplier already deducted"
                         action={<Status>Reserve safe</Status>}
                       />
                       <div className="g-chart-legend">

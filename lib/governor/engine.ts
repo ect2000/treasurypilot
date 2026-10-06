@@ -8,6 +8,7 @@ import {
   obligations,
   replanAfterDeposit,
   replanForecastOnly,
+  cashTimeline,
 } from "../treasury";
 import type { Forecast, Plan, Snapshot } from "../types";
 import type {
@@ -77,6 +78,22 @@ export function calculatePlan(
   const settled = snapshot.evidence.find(
     (e) => e.kind === "FX_CONVERSION" && e.status === "SETTLED",
   )?.sellAmount;
+  const project = (plan: Plan): Plan => {
+    const paid = snapshot.evidence.some(
+      (e) => e.kind === "TRANSFER" && e.status === "PAID",
+    );
+    const supplier = plan.decisions.find((d) => d.id === "logistics");
+    if (!paid || settled === undefined || !supplier) return plan;
+    // The original supplier is already funded and paid: forecast only outstanding commitments.
+    return {
+      ...plan,
+      timeline: cashTimeline(
+        plan.decisions.filter((d) => d.id !== "logistics"),
+        plan.allocation - supplier.cost,
+        forecast,
+      ),
+    };
+  };
   const stableCosts = previous?.decisions.every(
     (d) =>
       d.cost ===
@@ -90,18 +107,18 @@ export function calculatePlan(
     stableCosts &&
     JSON.stringify(previous.forecast) !== JSON.stringify(forecast)
   )
-    return replanForecastOnly(previous, forecast, now);
+    return project(replanForecastOnly(previous, forecast, now));
   if (
     previous &&
     previous.receiptCredit === credit &&
     stableCosts &&
     JSON.stringify(previous.forecast) === JSON.stringify(forecast)
   )
-    return {
+    return project({
       ...previous,
       reopened: [],
       unchanged: previous.decisions.map((d) => d.id),
-    };
+    });
   if (
     previous?.receiptCredit === 0 &&
     credit > 0 &&
@@ -109,23 +126,19 @@ export function calculatePlan(
     stableCosts &&
     JSON.stringify(previous.forecast) === JSON.stringify(forecast)
   )
-    return replanAfterDeposit(
-      snapshot.rates,
-      forecast,
-      previous,
-      credit,
-      settled,
-      [],
-      now,
+    return project(
+      replanAfterDeposit(
+        snapshot.rates,
+        forecast,
+        previous,
+        credit,
+        settled,
+        [],
+        now,
+      ),
     );
-  return buildPlan(
-    snapshot.rates,
-    forecast,
-    previous,
-    [],
-    now,
-    settled,
-    credit,
+  return project(
+    buildPlan(snapshot.rates, forecast, previous, [], now, settled, credit),
   );
 }
 

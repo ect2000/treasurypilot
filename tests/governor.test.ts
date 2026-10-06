@@ -180,6 +180,10 @@ describe("Autonomous cash governor invariants", () => {
     expect(s.approvals).toHaveLength(0);
     expect(s.plans[0].plan.receiptCredit).toBe(0);
     expect(s.nextStep).toBe("MONITOR");
+    expect(s.plans[0].plan.timeline[0].cash).toBe(32028.13);
+    expect(s.plans[0].plan.timeline.some((point) => point.hour === 13)).toBe(
+      false,
+    );
   });
   it("typed tools reject model-specified amounts, URLs, beneficiaries and authority", () => {
     expect(
